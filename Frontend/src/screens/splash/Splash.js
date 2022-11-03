@@ -1,5 +1,5 @@
 /**
- * This compoenets used to dipaly small loading page
+ * This components used to display small loading page
  */
 import {useNavigation} from '@react-navigation/native';
 import {React, useState, useEffect} from 'react';
@@ -14,15 +14,15 @@ export default function Splash() {
       setTimeout(() => {
         Navigation.navigate('Login');
         setIsGo(false);
-      }, 2000);
+      }, 3000);
     }
   }, []);
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Image
-        source={require('../../assets/images/Hygienewise-Logo.png')}
-        style={{width: 200, height: 150}}
+        source={require('../../assets/images/SplashImg.png')}
+        style={{width: '100%', height: '100%'}}
       />
     </View>
   );
