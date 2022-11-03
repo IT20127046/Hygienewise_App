@@ -44,6 +44,7 @@ export default function Navigation() {
           options={{title: "Hygiene Tracker Menu"}}
           name="HygieneTrackerMenu"
           component={HygieneTrackerMenu}
+          />
 
          <Stack.Screen
           options={{headerShown: false}}
