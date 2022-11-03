@@ -15,6 +15,9 @@ app.use(cors());
 const sampleRoutes = require('./routes/sampleRoutes');
 app.use(sampleRoutes);
 
+const userRoutes = require("./routes/userRoutes");
+app.use(userRoutes);
+
 const PostRoutes = require('./routes/postRouter');
 app.use(PostRoutes);
 
