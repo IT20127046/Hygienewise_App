@@ -16,7 +16,7 @@ export default function Home({ navigation }) {
     <ScrollView>
       <Background>
         <Text /><Text /><Logo /><Text />
-        <SubmitButton mode="contained" color="#6495ed" onPress={() => navigation.navigate("Home")}>Posts</SubmitButton><Text /><Text />
+        <SubmitButton mode="contained" color="#6495ed" onPress={() => navigation.navigate("Posts")}>Posts</SubmitButton><Text /><Text />
         <SubmitButton mode="contained" color="#6495ed" onPress={() => navigation.navigate("Home")}>Complaints</SubmitButton><Text /><Text />
         <SubmitButton mode="contained" color="#6495ed" onPress={() => navigation.navigate("Home")}>Sessions and Donations</SubmitButton><Text /><Text />
         <SubmitButton mode="contained" color="#6495ed" onPress={() => navigation.navigate("HygieneTrackerMenu")}>Hygiene Tracker</SubmitButton><Text /><Text />
@@ -26,23 +26,5 @@ export default function Home({ navigation }) {
   );
 }
 
- import React from 'react';
- import {useNavigation} from '@react-navigation/native';
- import {StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native';
- 
- export default function Home({navigation}) {
-   const Navigation = useNavigation();
- 
-   return (
-     <View>
-       <Text></Text>
-       <Text>Hello Home!</Text>
-       <Button title='posts' onPress={()=>{ Navigation.navigate('Posts');}}/>
 
-  
-       <Text></Text>
-     </View>
-   );
- }
- 
 
