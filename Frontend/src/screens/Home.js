@@ -12,6 +12,9 @@
      <View>
        <Text></Text>
        <Text>Hello Home!</Text>
+       <Button title='posts' onPress={()=>{ Navigation.navigate('Posts');}}/>
+
+  
        <Text></Text>
      </View>
    );

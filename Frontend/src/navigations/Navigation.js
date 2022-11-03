@@ -12,6 +12,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../screens/Home';
 import SplashScreen from '../screens/splash/Splash';
 import LoginScreen from '../screens/auth/Login';
+import Posts from '../screens/Posts'
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,11 @@ export default function Navigation() {
           options={{headerShown: false}}
           name="Login"
           component={LoginScreen}
+        />
+         <Stack.Screen
+          options={{headerShown: false}}
+          name="Posts"
+          component={Posts}
         />
 
       </Stack.Navigator>
