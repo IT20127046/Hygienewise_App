@@ -19,4 +19,3 @@ SampleRouter.delete('/sample/delete/:id', SampleController.delete_sample);
 
 module.exports = SampleRouter;
 
-//hello
