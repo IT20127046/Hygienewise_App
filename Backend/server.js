@@ -15,6 +15,9 @@ app.use(cors());
 const sampleRoutes = require('./routes/sampleRoutes');
 app.use(sampleRoutes);
 
+const PostRoutes = require('./routes/postRouter');
+app.use(PostRoutes);
+
 //Backend server running post number
 const port = process.env.PORT || 5000;
 
