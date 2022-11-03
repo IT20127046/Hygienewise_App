@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "android",
+			"path": "Frontend",
+			"problemMatcher": [],
+			"label": "npm: android - Frontend",
+			"detail": "react-native run-android",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}

@@ -12,6 +12,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../screens/Home';
 import SplashScreen from '../screens/splash/Splash';
 import LoginScreen from '../screens/auth/Login';
+import HygieneTrackerMenu from '../screens/hygieneTracker/Menu';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +22,7 @@ export default function Navigation() {
       <Stack.Navigator initialRouteName="Splash">
         
         <Stack.Screen
-          options={{headerShown: false}}
+          options={{headerBackVisible: false, title: 'Dashboard'}}
           name="Home"
           component={HomeScreen}
         />
@@ -34,6 +35,11 @@ export default function Navigation() {
           options={{headerShown: false}}
           name="Login"
           component={LoginScreen}
+        />
+        <Stack.Screen
+          options={{title: "Hygiene Tracker Menu"}}
+          name="HygieneTrackerMenu"
+          component={HygieneTrackerMenu}
         />
 
       </Stack.Navigator>
