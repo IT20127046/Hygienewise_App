@@ -13,9 +13,10 @@ import HomeScreen from '../screens/Home';
 import SplashScreen from '../screens/splash/Splash';
 import LoginScreen from '../screens/auth/Login';
 import AddSession from '../screens/sessions/AddSession';
-
 import HygieneTrackerMenu from '../screens/hygieneTracker/Menu';
-
+import UserComplaints from '../screens/userComplaints/Complaints';
+import SelectComplaintType from '../screens/userComplaints/SelectComplaintType';
+import AddComplaintDetails from '../screens/userComplaints/AddComplaintDetails';
 import Posts from '../screens/Posts'
 
 
@@ -51,7 +52,23 @@ export default function Navigation() {
           options={{headerShown: false}}
           name="Posts"
           component={Posts}
+        />
 
+        
+        <Stack.Screen
+          options={{title: "User Complaints"}}
+          name="Complaints"
+          component={UserComplaints}
+        />
+        <Stack.Screen
+          options={{title: "Add New Complaint"}}
+          name="SelectComplaintType"
+          component={SelectComplaintType}
+        />
+        <Stack.Screen
+          options={{title: "Add New Complaint"}}
+          name="AddComplaintDetails"
+          component={AddComplaintDetails}
         />
 
 <Stack.Screen
