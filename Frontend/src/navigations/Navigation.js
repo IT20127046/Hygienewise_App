@@ -12,12 +12,12 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../screens/Home';
 import SplashScreen from '../screens/splash/Splash';
 import LoginScreen from '../screens/auth/Login';
-// import AddSession from '../screens/sessions/AddSession';
 import HygieneTrackerMenu from '../screens/hygieneTracker/Menu';
 import UserComplaints from '../screens/userComplaints/Complaints';
 import SelectComplaintType from '../screens/userComplaints/SelectComplaintType';
 import AddComplaintDetails from '../screens/userComplaints/AddComplaintDetails';
 import Posts from '../screens/Posts'
+import AddSessions from '../screens/sessions/AddSession';
 
 
 const Stack = createNativeStackNavigator();
@@ -71,12 +71,12 @@ export default function Navigation() {
           component={AddComplaintDetails}
         />
 
-{/* <Stack.Screen
+<Stack.Screen
           options={{headerShown: false}}
           name="Sessions"
-          component={AddSession}
+          component={AddSessions}
 
-        /> */}
+        />
 
 
 
