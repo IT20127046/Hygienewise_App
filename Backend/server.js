@@ -21,6 +21,15 @@ app.use(userRoutes);
 const PostRoutes = require('./routes/postRouter');
 app.use(PostRoutes);
 
+const sessionRouter = require('./routes/sessionRouter');
+app.use(sessionRouter);
+
+const DonationRouter = require('./routes/donationRouter');
+app.use(DonationRouter);
+
+const ContactRouter = require('./routes/contactRouter');
+app.use(ContactRouter);
+
 //Backend server running post number
 const port = process.env.PORT || 5000;
 
