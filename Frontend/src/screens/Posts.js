@@ -24,46 +24,60 @@ export default function Posts() {
   const Navigation = useNavigation();
 
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
+  const [title, setTitle] = useState({value: '', error: ''});
+  const [description, setDescription] = useState({value: '', error: ''});
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
-
   const hideDatePicker = () => {
     setDatePickerVisibility(false);
   };
-
-  const handleConfirm = date => {
-    console.warn('A date has been picked: ', date);
+  const handleDateConfirm = dates => {
+    setDate(dates);
     hideDatePicker();
   };
 
-  //  const [titleemail, setEmail] = useState({value: '', error: ''});
-  //  const [password, setPassword] = useState({value: '', error: ''});
+  const showTimePicker = () => {
+    setTimePickerVisibility(true);
+  };
+  const hideTimePicker = () => {
+    setTimePickerVisibility(false);
+  };
+  const handleTimeConfirm = times => {
+    setTime(times);
+    hideTimePicker();
+  };
 
-  //  // This function call when the user click login button
-  //  const onLoginPressed = () => {
-  //    // Create constant object to pass value to backend
-  //    const data = {
-  //      userID: email.value,
-  //      password: password.value,
-  //    };
+  // This function call when the user click submit button
+  const onPostPressed = () => {
+    // Create constant object to pass value to backend
+    const data = {
+      title: title.value,
+      description: description.value,
+      publishDate: date,
+      publishTime: time,
 
-  //    //Call POST method to validate user crenditals form backend and get reponse
-  //    axios
-  //      .post('http://172.18.12.241:5000/user/login', data)
-  //      .then(function (response) {
-  //        if (response.data.success) {
-  //          alert('Login Success');
-  //          setTimeout(() => {
-  //            Navigation.navigate('Home');
-  //          }, 2000);
-  //        }
-  //      })
-  //      .catch(function (error) {
-  //        alert('Login Fail');
-  //      });
-  //  };
+    };
+console.log(data);
+    //Call POST method to validate user crenditals form backend and get reponse
+    axios
+      .post('http://172.18.12.241:5000/post/add', data)
+      .then(function (response) {
+        if (response.data.success) {
+          alert('Post Created Success');
+          setTimeout(() => {
+            Navigation.navigate('Posts');
+          }, 2000);
+        }
+      })
+      .catch(function (error) {
+        alert('Post Creation Fail');
+      });
+  };
 
   return (
     <Background>
@@ -82,7 +96,7 @@ export default function Posts() {
         <TextInput
           label="Post Title"
           returnKeyType="next"
-          //  value={email.value}
+          value={title.value}
           onChangeText={text => setTitle({value: text, error: ''})}
         />
 
@@ -90,10 +104,10 @@ export default function Posts() {
           label="Description"
           multiline={true}
           numberOfLines={4}
-          //  value={password.value}
-          onChangeText={text => setDescription({value: text, error: ''})}
-          secureTextEntry
+          value={description.value}
+          onChangeText={text => setDescription({value: text, error: ''})}         
         />
+
         <View style={styles.parent}>
           <DatePickerButton
             mode="contained"
@@ -107,20 +121,27 @@ export default function Posts() {
           <DateTimePickerModal
             isVisible={isDatePickerVisible}
             mode="date"
-            onConfirm={handleConfirm}
-            onCancel={hideDatePicker}
+            onConfirm={handleDateConfirm}
+            onCancel={hideDatePicker}     
           />
 
           <DatePickerButton
             mode="contained"
             color="#dfdfdf"
-            onPress={showDatePicker}>
+            onPress={showTimePicker}>
             <Icon name="clock" size={20} fontWeight="bold" color="black">
               &nbsp;Time
             </Icon>
           </DatePickerButton>
+          <DateTimePickerModal
+            isVisible={isTimePickerVisible}
+            mode="time"
+            onConfirm={handleTimeConfirm}
+            onCancel={hideTimePicker}
+          />
         </View>
-        <SubmitButton mode="contained" color="#6495ed">
+
+        <SubmitButton mode="contained" color="#6495ed" onPress={onPostPressed}>
           Submit
         </SubmitButton>
       </View>
@@ -154,6 +175,7 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
     paddingHorizontal: 25,
     width: '115%',
+    height: '95%',
     marginVertical: 3,
     borderWidth: 1,
   },
@@ -165,9 +187,9 @@ const styles = StyleSheet.create({
   },
   container: {
     alignSelf: 'center',
-    marginTop: 5,
+    margin: 2,
     flex: 1,
-    width: 380,
+    width: 350,
     overflow: 'hidden', // for hide the not important parts from circle
     margin: 10,
     height: 200,
@@ -175,7 +197,7 @@ const styles = StyleSheet.create({
   background: {
     // this shape is a circle
     borderRadius: 400, // border borderRadius same as width and height
-    width: 600,
+    width: 535,
     height: 600,
     marginLeft: -100, // reposition the circle inside parent view
     position: 'absolute',
@@ -184,9 +206,9 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 200, // same width and height for the container
-    width: 370,
+    width: 380,
     position: 'absolute', // position it in circle
     bottom: 5, // position it in circle
-    marginLeft: 105, // center it in main view same value as marginLeft for circle but positive
+    marginLeft: 100, // center it in main view same value as marginLeft for circle but positive
   },
 });
