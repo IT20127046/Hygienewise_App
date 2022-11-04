@@ -12,8 +12,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../screens/Home';
 import SplashScreen from '../screens/splash/Splash';
 import LoginScreen from '../screens/auth/Login';
-
 import HygieneTrackerMenu from '../screens/hygieneTracker/Menu';
+import UserComplaints from '../screens/userComplaints/Complaints';
 
 import Posts from '../screens/Posts'
 
@@ -50,6 +50,12 @@ export default function Navigation() {
           options={{headerShown: false}}
           name="Posts"
           component={Posts}
+        />
+
+        <Stack.Screen
+          options={{title: "User Complaints"}}
+          name="Complaints"
+          component={UserComplaints}
 
         />
 
