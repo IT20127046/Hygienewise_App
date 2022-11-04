@@ -29,8 +29,7 @@ export default function AddSessions() {
   const [description, setDescription] = useState({value: '', error: ''});
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  
-
+  const [link, setLink] = useState("");
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -60,57 +59,51 @@ export default function AddSessions() {
     const data = {
       title: title.value,
       description: description.value,
-      publishDate: date,
-      publishTime: time,
+      date: date,
+      time: time,
+      link: link.value,
 
     };
 console.log(data);
     //Call POST method to validate user crenditals form backend and get reponse
     axios
-      .post('http://192.168.43.153:5000/post/add', data)
+      .post('http://192.168.43.153:5000/session/add', data)
       .then(function (response) {
         if (response.data.success) {
-          alert('Post Created Success');
+          alert('Session Created Success');
           setTimeout(() => {
-            Navigation.navigate('Posts');
+            Navigation.navigate('Sessions');
           }, 2000);
         }
       })
       .catch(function (error) {
-        alert('Post Creation Fail');
+        alert('Session Creation Fail');
       });
   };
 
   return (
     <Background>
-      <Text style={styles.header}>Create New Post</Text>
+      <Text style={styles.header}>Add New Session</Text>
 
       <View style={[styles.card, styles.shadowProp]}>
         <View style={styles.container}>
           <View style={styles.background}>
             <Image
               style={styles.image}
-              source={require('../../assets/images/CreatePost.jpg')}
+              source={require('../../assets/images/session.jpg')}
             />
           </View>
         </View>
 
         <TextInput
-          label="Post Title"
+          label="Session Title"
           returnKeyType="next"
           value={title.value}
           onChangeText={text => setTitle({value: text, error: ''})}
         />
 
-        <TextInput
-          label="Description"
-          multiline={true}
-          numberOfLines={4}
-          value={description.value}
-          onChangeText={text => setDescription({value: text, error: ''})}         
-        />
 
-        <View style={styles.parent}>
+<View style={styles.parent}>
           <DatePickerButton
             mode="contained"
             color="#dfdfdf"
@@ -143,6 +136,23 @@ console.log(data);
           />
         </View>
 
+
+        <TextInput
+          label="Link"
+          value={link.value}
+          onChangeText={text => setLink({value: text, error: ''})}         
+        />
+
+        <TextInput
+          label="Description"
+          multiline={true}
+          numberOfLines={4}
+          value={description.value}
+          onChangeText={text => setDescription({value: text, error: ''})}         
+        />
+
+
+       
         <SubmitButton mode="contained" color="#6495ed" onPress={onPostPressed}>
           Submit
         </SubmitButton>
@@ -158,6 +168,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     marginTop: -60,
     bottom: 5,
+    color: 'blue'
   },
   row: {
     flexDirection: 'row',
@@ -179,7 +190,7 @@ const styles = StyleSheet.create({
     width: '115%',
     height: '95%',
     marginVertical: 3,
-    borderWidth: 1,
+   
   },
   shadowProp: {
     shadowColor: '#171717',
@@ -198,7 +209,8 @@ const styles = StyleSheet.create({
   },
   background: {
     // this shape is a circle
-    borderRadius: 400, // border borderRadius same as width and height
+     // border borderRadius same as width and height
+    borderRadius: 100,
     width: 535,
     height: 600,
     marginLeft: -100, // reposition the circle inside parent view
