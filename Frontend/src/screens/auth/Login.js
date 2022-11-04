@@ -28,7 +28,9 @@ export default function Login() {
 
     //Call POST method to validate user crenditals form backend and get reponse
     axios
+
       .post('http://192.168.43.153:5000/user/login', data)
+
       .then(function (response) {
         if (response.data.success) {
           alert('Login Success');
