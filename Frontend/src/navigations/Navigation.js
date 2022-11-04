@@ -12,6 +12,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../screens/Home';
 import SplashScreen from '../screens/splash/Splash';
 import LoginScreen from '../screens/auth/Login';
+import AddSession from '../screens/sessions/AddSession';
 
 import HygieneTrackerMenu from '../screens/hygieneTracker/Menu';
 
@@ -52,6 +53,15 @@ export default function Navigation() {
           component={Posts}
 
         />
+
+<Stack.Screen
+          options={{headerShown: false}}
+          name="Sessions"
+          component={AddSession}
+
+        />
+
+
 
       </Stack.Navigator>
     </NavigationContainer>
