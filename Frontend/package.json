@@ -15,6 +15,7 @@
     "@react-navigation/native-stack": "^6.9.1",
     "axios": "^0.27.2",
     "react": "18.1.0",
+    "react-cross-form": "^1.2.12",
     "react-native": "0.70.4",
     "react-native-image-picker": "^4.10.0",
     "react-native-modal-datetime-picker": "^14.0.0",
