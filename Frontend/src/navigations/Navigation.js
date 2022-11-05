@@ -12,13 +12,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/Home';
 import SplashScreen from '../screens/splash/Splash';
 import LoginScreen from '../screens/auth/Login';
-
 import HygieneTrackerMenu from '../screens/hygieneTracker/Menu';
-
+import UserComplaints from '../screens/userComplaints/Complaints';
+import SelectComplaintType from '../screens/userComplaints/SelectComplaintType';
+import AddComplaintDetails from '../screens/userComplaints/AddComplaintDetails';
 import Posts from '../screens/Posts'
 import DailyTasksMainPage from '../screens/hygieneTracker/dailyTasks/MainPage';
 import ChallengesMainPage from '../screens/hygieneTracker/challenges/MainPage';
 import OtherTasksMainPage from '../screens/hygieneTracker/otherTasks/MainPage';
+import AddSessions from '../screens/sessions/AddSession';
 
 
 const Stack = createNativeStackNavigator();
@@ -66,6 +68,26 @@ export default function Navigation() {
           options={{ title: "Other Tasks" }}
           name="OtherTasksMainPage"
           component={OtherTasksMainPage}
+        />    
+        <Stack.Screen
+          options={{title: "User Complaints"}}
+          name="Complaints"
+          component={UserComplaints}
+        />
+        <Stack.Screen
+          options={{title: "Add New Complaint"}}
+          name="SelectComplaintType"
+          component={SelectComplaintType}
+        />
+        <Stack.Screen
+          options={{title: "Add New Complaint"}}
+          name="AddComplaintDetails"
+          component={AddComplaintDetails}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Sessions"
+          component={AddSessions}
         />
       </Stack.Navigator>
     </NavigationContainer>

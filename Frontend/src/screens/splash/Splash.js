@@ -12,7 +12,7 @@ export default function Splash() {
   useEffect(() => {
     if (isGo == true) {
       setTimeout(() => {
-        Navigation.navigate('Login');
+        Navigation.navigate('Posts');
         setIsGo(false);
       }, 3000);
     }
