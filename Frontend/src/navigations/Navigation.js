@@ -17,7 +17,7 @@ import UserComplaints from '../screens/userComplaints/Complaints';
 import SelectComplaintType from '../screens/userComplaints/SelectComplaintType';
 import AddComplaintDetails from '../screens/userComplaints/AddComplaintDetails';
 import Posts from '../screens/Posts'
-
+import AddImageToComplaint from '../screens/userComplaints/AddImage';
 
 const Stack = createNativeStackNavigator();
 
@@ -68,6 +68,12 @@ export default function Navigation() {
           options={{title: "Add New Complaint"}}
           name="AddComplaintDetails"
           component={AddComplaintDetails}
+        />
+
+        <Stack.Screen
+          options={{title: "Add New Complaint"}}
+          name="AddImageToComplaint"
+          component={AddImageToComplaint}
         />
 
       </Stack.Navigator>
