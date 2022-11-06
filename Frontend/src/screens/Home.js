@@ -18,7 +18,7 @@ export default function Home({ navigation }) {
         <Text /><Text /><Logo /><Text />
         <SubmitButton mode="contained" color="#6495ed" onPress={() => navigation.navigate("Posts")}>Posts</SubmitButton><Text /><Text />
         <SubmitButton mode="contained" color="#6495ed" onPress={() => navigation.navigate("Complaints")}>Complaints</SubmitButton><Text /><Text />
-        <SubmitButton mode="contained" color="#6495ed" onPress={() => navigation.navigate("Home")}>Sessions and Donations</SubmitButton><Text /><Text />
+        <SubmitButton mode="contained" color="#6495ed" onPress={() => navigation.navigate("Sessions")}>Sessions and Donations</SubmitButton><Text /><Text />
         <SubmitButton mode="contained" color="#6495ed" onPress={() => navigation.navigate("HygieneTrackerMenu")}>Hygiene Tracker</SubmitButton><Text /><Text />
         <Text></Text>
       </Background>

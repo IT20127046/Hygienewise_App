@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     marginTop: -60,
     bottom: 5,
-    color: 'blue'
+    color: 'black'
   },
   row: {
     flexDirection: 'row',
