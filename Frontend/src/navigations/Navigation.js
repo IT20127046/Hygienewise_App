@@ -21,6 +21,7 @@ import DailyTasksMainPage from '../screens/hygieneTracker/dailyTasks/MainPage';
 import ChallengesMainPage from '../screens/hygieneTracker/challenges/MainPage';
 import OtherTasksMainPage from '../screens/hygieneTracker/otherTasks/MainPage';
 import AddSessions from '../screens/sessions/AddSession';
+import AddImageToComplaint from '../screens/userComplaints/AddImage';
 
 
 const Stack = createNativeStackNavigator();
@@ -44,6 +45,8 @@ export default function Navigation() {
           name="Login"
           component={LoginScreen}
         />
+
+
         <Stack.Screen
           options={{ title: "Hygiene Tracker Menu" }}
           name="HygieneTrackerMenu"
@@ -70,6 +73,13 @@ export default function Navigation() {
           component={OtherTasksMainPage}
         />    
         <Stack.Screen
+          options={{title: "Sessions"}}
+          name="Sessions"
+          component={AddSessions}
+        />
+
+
+        <Stack.Screen
           options={{title: "User Complaints"}}
           name="Complaints"
           component={UserComplaints}
@@ -85,10 +95,17 @@ export default function Navigation() {
           component={AddComplaintDetails}
         />
         <Stack.Screen
+
           options={{title: ""}}
           name="Sessions"
           component={AddSessions}
+
+          options={{title: "Add New Complaint"}}
+          name="AddImageToComplaint"
+          component={AddImageToComplaint}
+
         />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
