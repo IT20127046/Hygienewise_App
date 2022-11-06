@@ -45,6 +45,8 @@ export default function Navigation() {
           name="Login"
           component={LoginScreen}
         />
+
+
         <Stack.Screen
           options={{ title: "Hygiene Tracker Menu" }}
           name="HygieneTrackerMenu"
@@ -71,6 +73,13 @@ export default function Navigation() {
           component={OtherTasksMainPage}
         />    
         <Stack.Screen
+          options={{title: "Sessions"}}
+          name="Sessions"
+          component={AddSessions}
+        />
+
+
+        <Stack.Screen
           options={{title: "User Complaints"}}
           name="Complaints"
           component={UserComplaints}
@@ -85,12 +94,6 @@ export default function Navigation() {
           name="AddComplaintDetails"
           component={AddComplaintDetails}
         />
-        <Stack.Screen
-          options={{headerShown: false}}
-          name="Sessions"
-          component={AddSessions}
-        />
-
         <Stack.Screen
           options={{title: "Add New Complaint"}}
           name="AddImageToComplaint"
