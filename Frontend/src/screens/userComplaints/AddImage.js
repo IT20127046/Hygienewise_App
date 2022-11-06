@@ -6,21 +6,14 @@ import FormBackground from '../../components/form/FormBackground';
 import TextArea from '../../components/form/TextArea';
 import SubmitButton  from '../../components/form/SubmitButton';
 
-export default function AddComplaintDetails() {
-  const Navigation = useNavigation();
+export default function AddImage({route}) {
+    const Navigation = useNavigation();
 
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-
-  const onPressNext = () => {
-
-    const data = {
-        title: title,
-        description: description
-    }
-
-    Navigation.navigate("AddImageToComplaint", data)
-  }
+    const title = route.params.title;
+    const description = route.params.description;
+    const [imageName, setImageName] = useState('');
+    const [place, setPlace] = useState('');
+    const [date, setDate] = useState('');
 
   return (
     <View>
@@ -28,26 +21,26 @@ export default function AddComplaintDetails() {
 
       <FormBackground>
         <TextInput
-          label="Title"
+          label="Place"
           returnKeyType="next"
-          value={title}
-          onChangeText={text => setTitle(text)}
+          value={place}
+          onChangeText={text => setPlace(text)}
           textContentType="text"
         />
 
         <TextArea
-          label="Description"
+          label="Date"
           returnKeyType="next"
-          value={description}
-          onChangeText={text => setDescription(text)}
+          value={date}
+          onChangeText={text => setDate(text)}
           textContentType="text"
         />
 
-        <SubmitButton mode="contained" color="#6495ed" onPress={onPressNext}>
+        <SubmitButton mode="contained" color="#6495ed">
         Next
       </SubmitButton>
 
       </FormBackground>
     </View>
-  );
+  )
 }
