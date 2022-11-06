@@ -34,7 +34,7 @@ export default function Home({ navigation }) {
         </ImageBackground>
       </Card>
       <Text />
-      <Card onPress={() => navigation.navigate("Home")}>
+      <Card onPress={() => navigation.navigate("Sessions")}>
         <ImageBackground source={require('../assets/images/MenuBackground.jpg')} style={{ width: '100%', height: 120 }}>
           <Card.Title title="Sessions and Donations" subtitle="Subtitle or description" />
         </ImageBackground>

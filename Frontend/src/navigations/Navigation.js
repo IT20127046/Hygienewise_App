@@ -85,7 +85,7 @@ export default function Navigation() {
           component={AddComplaintDetails}
         />
         <Stack.Screen
-          options={{headerShown: false}}
+          options={{title: ""}}
           name="Sessions"
           component={AddSessions}
         />
