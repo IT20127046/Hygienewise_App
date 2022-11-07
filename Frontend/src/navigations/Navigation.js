@@ -25,6 +25,8 @@ import AddNewDailyTask from '../screens/hygieneTracker/dailyTasks/AddNewDailyTas
 import AddNewOtherTask from '../screens/hygieneTracker/otherTasks/AddNewOtherTask';
 import AddImageToComplaint from '../screens/userComplaints/AddImage';
 import ViewSessions from '../screens/sessions/ViewSession';
+import DailyTasksListSummary from '../screens/hygieneTracker/dailyTasks/DailyTasksListSummary';
+import OtherTasksListForSummary from '../screens/hygieneTracker/otherTasks/OtherTasksSummary';
 
 const Stack = createNativeStackNavigator();
 
@@ -74,11 +76,6 @@ export default function Navigation() {
           name="OtherTasksMainPage"
           component={OtherTasksMainPage}
         />    
-        <Stack.Screen
-          options={{title: "Sessions"}}
-          name="Sessions"
-          component={AddSessions}
-        />
 
 
         <Stack.Screen
@@ -122,6 +119,16 @@ export default function Navigation() {
           options={{title: "Add New Other Task"}}
           name="AddNewOtherTask"
           component={AddNewOtherTask}
+        />
+        <Stack.Screen
+          options={{title: "Daily Tasks List For Summary"}}
+          name="DailyTasksListForSummary"
+          component={DailyTasksListSummary}
+        />
+        <Stack.Screen
+          options={{title: "Other Tasks List For Summary"}}
+          name="OtherTasksListForSummary"
+          component={OtherTasksListForSummary}
         />
       </Stack.Navigator>
     </NavigationContainer>

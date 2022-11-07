@@ -12,11 +12,11 @@ export default function Menu({ navigation }) {
   const id = "6363813ab4af9dcf571763fc"
 
   React.useEffect(() => {
-    axios.get(`http://192.168.1.102:5000/userTasks/getByUserID/${id}`).then(function (response) {
+    axios.get(`http://192.168.1.103:5000/userTasks/getByUserID/${id}`).then(function (response) {
       //console.log(response.data);
       if (response.data.success) {
         if (response.data.existingRecord === null) {
-          axios.post('http://192.168.1.102:5000/userTasks/add', {
+          axios.post('http://192.168.1.103:5000/userTasks/add', {
             userId: id,
             dailyTasks: [],
             challenges: [],
