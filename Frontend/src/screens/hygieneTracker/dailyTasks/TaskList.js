@@ -3,6 +3,10 @@ import axios from 'axios'
 import { Divider, List } from 'react-native-paper'
 import { View } from 'react-native'
 
+/** 
+ * This is for displaying the daily tasks of the current logged in user
+ */
+
 export default function TaskList() {
   const [dailyTasks, setDailyTasks] = React.useState([])
   const id = "6363813ab4af9dcf571763fc"
@@ -19,6 +23,7 @@ export default function TaskList() {
         console.log(error)
       })
   }, [])
+  
   return (
     <List.Section>
       {dailyTasks.map((item, index) => {

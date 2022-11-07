@@ -1,7 +1,11 @@
 import axios from 'axios';
 import React from 'react'
-import { Alert, ScrollView, Text, ImageBackground, View } from 'react-native'
+import { Alert, ScrollView, Text, ImageBackground, View, StyleSheet } from 'react-native'
 import { Button, TextInput } from 'react-native-paper'
+
+/**
+ * This component is used to add a new other task.
+ */
 
 export default function AddNewOtherTask({ navigation }) {
   const [userId, setUserId] = React.useState({ value: "6363813ab4af9dcf571763fc", error: "" });
@@ -20,7 +24,9 @@ export default function AddNewOtherTask({ navigation }) {
     })
   }, []);
 
+  // This function is used to add a new other task when the user clicks the "Add" button.
   const onSubmit = () => {
+    // validate the input
     let isValid = false;
 
     if (taskName.value === "") {
@@ -49,8 +55,8 @@ export default function AddNewOtherTask({ navigation }) {
       taskType: taskType.value,
       taskDescription: taskDescription.value
     }
-    //console.log(data);
 
+    // If the user enters valid data, the new task is added to the database.
     if (isValid) {
       // insert task to tasks collection
       axios.post('http://192.168.1.103:5000/task/add', data).then(function (response) {
@@ -89,20 +95,12 @@ export default function AddNewOtherTask({ navigation }) {
   }
 
   return (
-    <ImageBackground source={require('../../../assets/images/gradientBackground.png')} style={{ width: '100%', height: '100%' }}>
+    <ImageBackground source={require('../../../assets/images/gradientBackground.png')} style={styles.imageBackground}>
       <ScrollView>
-        <View
-          style={{
-            flexDirection: 'column',
-            padding: 20,
-            alignContent: 'center',
-            marginVertical: 20,
-            marginHorizontal: 10,
-          }}
-        >
+        <View style={styles.viewForTextInput}>
           <TextInput
             theme={{ colors: { primary: '#6495ed', underlineColor: 'transparent', } }}
-            style={{ backgroundColor: 'white' }}
+            style={styles.textInput}
             mode='outlined'
             underlineColor="transparent"
             label="Task Name"
@@ -113,7 +111,7 @@ export default function AddNewOtherTask({ navigation }) {
           <Text />
           <TextInput
             theme={{ colors: { primary: '#6495ed', underlineColor: 'transparent', } }}
-            style={{ backgroundColor: 'white' }}
+            style={styles.textInput}
             mode='outlined'
             underlineColor="transparent"
             label="Task Description"
@@ -123,18 +121,34 @@ export default function AddNewOtherTask({ navigation }) {
           />
         </View>
       </ScrollView>
-      <View
-        style={{
-          flexDirection: 'column',
-          padding: 20,
-          alignContent: 'center',
-          marginVertical: 20,
-          marginHorizontal: 10,
-          bottom: 0,
-        }}
-      >
+      <View style={styles.viewForButton}>
         <Button mode='contained' color='#5CB3FF' onPress={onSubmit}>Add</Button>
       </View>
     </ImageBackground>
   )
 }
+
+const styles = StyleSheet.create({
+  imageBackground: { 
+    width: '100%', 
+    height: '100%' 
+  },
+  viewForTextInput: {
+    flexDirection: 'column',
+    padding: 20,
+    alignContent: 'center',
+    marginVertical: 20,
+    marginHorizontal: 10,
+  },
+  viewForButton: {
+    flexDirection: 'column',
+    padding: 20,
+    alignContent: 'center',
+    marginVertical: 20,
+    marginHorizontal: 10,
+    bottom: 0,
+  },
+  textInput: { 
+    backgroundColor: 'white' 
+  }
+});

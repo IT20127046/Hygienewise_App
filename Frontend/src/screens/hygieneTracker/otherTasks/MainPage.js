@@ -4,12 +4,14 @@ import { Button } from 'react-native-paper'
 import axios from 'axios'
 import TaskList from './TaskList'
 
+/** 
+ * This component is for the main page of the other tasks.
+ */
+
 export default function MainPage({ navigation }) {
 
-  //const id = "6363813ab4af9dcf571763fc"
-
   return (
-    <ImageBackground source={require('../../../assets/images/gradientBackground.png')} style={{ width: '100%', height: '100%' }}>
+    <ImageBackground source={require('../../../assets/images/gradientBackground.png')} style={styles.imageBackground}>
       <View style={styles.viewForSummaryButton}>
         <Button mode='contained' color='white' onPress={() => navigation.navigate("OtherTasksListForSummary")}>Summary</Button>
       </View>
@@ -43,5 +45,9 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     marginHorizontal: 10,
     bottom: 0,
+  }, 
+  imageBackground: { 
+    width: '100%', 
+    height: '100%' 
   }
 }) 

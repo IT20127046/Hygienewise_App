@@ -1,15 +1,16 @@
 import React from 'react'
 import { ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { Button } from 'react-native-paper'
-import axios from 'axios'
 import TaskList from './TaskList'
+
+/**
+ * The main component of the daily tasks screen
+ */
 
 export default function MainPage({ navigation }) {
 
-  //const id = "6363813ab4af9dcf571763fc"
-
   return (
-    <ImageBackground source={require('../../../assets/images/gradientBackground.png')} style={{ width: '100%', height: '100%' }}>
+    <ImageBackground source={require('../../../assets/images/gradientBackground.png')} style={styles.imageBackground}>
       <View style={styles.viewForSummaryButton}>
         <Button mode='contained' color='white' onPress={() => navigation.navigate("DailyTasksListForSummary")}>Summary</Button>
       </View>
@@ -43,5 +44,9 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     marginHorizontal: 10,
     bottom: 0,
+  },
+  imageBackground: {
+    width: '100%',
+    height: '100%'
   }
 }) 

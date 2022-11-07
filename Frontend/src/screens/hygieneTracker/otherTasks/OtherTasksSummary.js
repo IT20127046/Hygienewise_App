@@ -1,14 +1,19 @@
 import axios from 'axios'
 import React from 'react'
-import { ImageBackground, ScrollView, View } from 'react-native'
+import { ImageBackground, ScrollView, StyleSheet, View } from 'react-native'
 import { Button, Dialog, Divider, List, Paragraph, Portal } from 'react-native-paper'
 import CalenderViewSummary from '../../../components/hygieneTracker/CalenderView'
+
+/**
+ * This component is used to display the list of other tasks to view the summary
+ */
 
 export default function OtherTasksListForSummary() {
 
   const [otherTasks, setOtherTasks] = React.useState([])
   const id = "6363813ab4af9dcf571763fc"
 
+  // This state is used to display the dialog box.
   const [visible, setVisible] = React.useState(false);
   const [selectedTask, setSelectedTask] = React.useState("");
 
@@ -32,6 +37,7 @@ export default function OtherTasksListForSummary() {
       })
   }, [])
 
+  // to render the dialog box with the selected task details and calender
   if (visible) {
     return (
       <Portal.Host>
@@ -54,7 +60,7 @@ export default function OtherTasksListForSummary() {
   }
 
   return (
-    <ImageBackground source={require('../../../assets/images/gradientBackground.png')} style={{ width: '100%', height: '100%' }}>
+    <ImageBackground source={require('../../../assets/images/gradientBackground.png')} style={styles.imageBackground}>
       <List.Section>
         {otherTasks.map((item, index) => {
           return (
@@ -80,3 +86,10 @@ export default function OtherTasksListForSummary() {
     </ImageBackground>
   )
 }
+
+const styles = StyleSheet.create({
+  imageBackground: { 
+    width: '100%', 
+    height: '100%' 
+  }
+})
