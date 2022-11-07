@@ -3,17 +3,21 @@ import axios from 'axios'
 import { Divider, List } from 'react-native-paper'
 import { View } from 'react-native'
 
+/**
+ * This component is used to display the list of other tasks.
+ */
+
 export default function TaskList() {
   const [otherTasks, setOtherTasks] = React.useState([])
   const id = "6363813ab4af9dcf571763fc"
 
   React.useEffect(() => {
+    // Get the list of other tasks from the database.
     axios.get(`http://192.168.1.103:5000/userTasks/getByUserID/${id}`)
       .then(response => {
         if (response.data.success) {
           setOtherTasks(response.data.existingRecord.otherTasks)
         }
-        //console.log(otherTasks)
       })
       .catch(error => {
         console.log(error)

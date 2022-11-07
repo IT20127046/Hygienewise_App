@@ -1,10 +1,28 @@
 import React from 'react'
-import { Text, ImageBackground } from 'react-native'
+import { ScrollView, StyleSheet } from 'react-native'
+import ChallengesList from './ChallengesList'
+
+/**
+ * The main component of the challenges
+ */
 
 export default function MainPage() {
   return (
-    <ImageBackground source={require('../../../assets/images/gradientBackground.png')} style={{ width: '100%', height: '100%' }}>
-      <Text>Challenges</Text>
-    </ImageBackground>
+    <ScrollView style={styles.scrollView} >
+      <ChallengesList />
+    </ScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: 'white',
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    height: '100%',
+    marginLeft: 0,
+    marginRight: 0,
+    padding: 10,
+  }
+})

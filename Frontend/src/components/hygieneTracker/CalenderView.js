@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import {
-    StyleSheet,
-    Text,
-    View
-} from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker';
+
+/**
+ * calendar view
+ */
 
 export default function CalenderViewSummary() {
 

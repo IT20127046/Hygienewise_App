@@ -1,14 +1,18 @@
 import axios from 'axios'
 import React from 'react'
-import { ImageBackground, ScrollView, View } from 'react-native'
+import { ImageBackground, ScrollView, StyleSheet, View } from 'react-native'
 import { Button, Dialog, Divider, List, Paragraph, Portal } from 'react-native-paper'
 import CalenderViewSummary from '../../../components/hygieneTracker/CalenderView'
 
-export default function DailyTasksListForSummary() {
+/**
+ * This is for displaying daily task list to view the summary.
+ */
 
-  const [dailyTasks, setDailyTasks] = React.useState([])
+export default function DailyTasksListForSummary() {
+  const [dailyTasks, setDailyTasks] = React.useState([]) 
   const id = "6363813ab4af9dcf571763fc"
 
+  // This is the state for the dialog box
   const [visible, setVisible] = React.useState(false);
   const [selectedTask, setSelectedTask] = React.useState("");
 
@@ -21,6 +25,7 @@ export default function DailyTasksListForSummary() {
   }
 
   React.useEffect(() => {
+    // This is for getting the daily tasks(of the logged in user) from the database and set it to the state 
     axios.get(`http://192.168.1.103:5000/userTasks/getByUserID/${id}`)
       .then(response => {
         if (response.data.success) {
@@ -32,6 +37,7 @@ export default function DailyTasksListForSummary() {
       })
   }, [])
 
+  // To display a dialog box with task name and calendar view when a task is clicked
   if (visible) {
     return (
       <Portal.Host>
@@ -54,7 +60,7 @@ export default function DailyTasksListForSummary() {
   }
 
   return (
-    <ImageBackground source={require('../../../assets/images/gradientBackground.png')} style={{ width: '100%', height: '100%' }}>
+    <ImageBackground source={require('../../../assets/images/gradientBackground.png')} style={styles.imageBackground}>
       <List.Section>
         {dailyTasks.map((item, index) => {
           return (
@@ -80,3 +86,10 @@ export default function DailyTasksListForSummary() {
     </ImageBackground>
   )
 }
+
+const styles = StyleSheet.create({
+  imageBackground: {
+    width: '100%',
+    height: '100%'
+  }
+})
