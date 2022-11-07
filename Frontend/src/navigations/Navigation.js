@@ -50,33 +50,11 @@ export default function Navigation() {
           component={LoginScreen}
         />
 
-
-        <Stack.Screen
-          options={{ title: "Hygiene Tracker Menu" }}
-          name="HygieneTrackerMenu"
-          component={HygieneTrackerMenu}
-        />
         <Stack.Screen
           options={{ headerShown: false }}
           name="Posts"
           component={Posts}
-        />
-        <Stack.Screen
-          options={{ title: "Daily Tasks" }}
-          name="DailyTasksMainPage"
-          component={DailyTasksMainPage}
-        />
-        <Stack.Screen
-          options={{ title: "Challenges" }}
-          name="ChallengesMainPage"
-          component={ChallengesMainPage}
-        />
-        <Stack.Screen
-          options={{ title: "Other Tasks" }}
-          name="OtherTasksMainPage"
-          component={OtherTasksMainPage}
-        />    
-
+        /> 
 
         <Stack.Screen
           options={{title: "User Complaints"}}
@@ -110,6 +88,36 @@ export default function Navigation() {
           component={AddImageToComplaint}
 
         />
+        {/* -------------------- Posts -------------------- */}
+
+
+        {/* -------------------- Complaints -------------------- */}
+
+
+        {/* -------------------- Sessions and Donations -------------------- */}
+
+
+        {/* -------------------- Hygiene Tracker -------------------- */}
+        <Stack.Screen
+          options={{ title: "Hygiene Tracker Menu" }}
+          name="HygieneTrackerMenu"
+          component={HygieneTrackerMenu}
+        />
+        <Stack.Screen
+          options={{ title: "Daily Tasks" }}
+          name="DailyTasksMainPage"
+          component={DailyTasksMainPage}
+        />
+        <Stack.Screen
+          options={{ title: "Challenges" }}
+          name="ChallengesMainPage"
+          component={ChallengesMainPage}
+        />
+        <Stack.Screen
+          options={{ title: "Other Tasks" }}
+          name="OtherTasksMainPage"
+          component={OtherTasksMainPage}
+        />  
         <Stack.Screen
           options={{title: "Add New Daily Task"}}
           name="AddNewDailyTask"
