@@ -4,16 +4,16 @@ import { Divider, List } from 'react-native-paper'
 import { View } from 'react-native'
 
 export default function TaskList() {
-  const [dailyTasks, setDailyTasks] = React.useState([])
+  const [otherTasks, setOtherTasks] = React.useState([])
   const id = "6363813ab4af9dcf571763fc"
 
   React.useEffect(() => {
     axios.get(`http://192.168.1.103:5000/userTasks/getByUserID/${id}`)
       .then(response => {
         if (response.data.success) {
-          setDailyTasks(response.data.existingRecord.dailyTasks)
+          setOtherTasks(response.data.existingRecord.otherTasks)
         }
-        //console.log(dailyTasks)
+        //console.log(otherTasks)
       })
       .catch(error => {
         console.log(error)
@@ -21,7 +21,7 @@ export default function TaskList() {
   }, [])
   return (
     <List.Section>
-      {dailyTasks.map((item, index) => {
+      {otherTasks.map((item, index) => {
         return (
           <View key={index}>
             <List.Item

@@ -11,7 +11,7 @@ export default function AddNewOtherTask({ navigation }) {
   const [userTasksList, setUserTasksList] = React.useState({ value: {}, error: "" });
 
   React.useEffect(() => {
-    axios.get(`http://192.168.1.102:5000/userTasks/getByUserID/${userId.value}`).then(function (response) {
+    axios.get(`http://192.168.1.103:5000/userTasks/getByUserID/${userId.value}`).then(function (response) {
       if (response.data.success && response.data.existingRecord !== null) {
         setUserTasksList({ value: response.data.existingRecord, error: "" });
       }
@@ -53,11 +53,11 @@ export default function AddNewOtherTask({ navigation }) {
 
     if (isValid) {
       // insert task to tasks collection
-      axios.post('http://192.168.1.102:5000/task/add', data).then(function (response) {
+      axios.post('http://192.168.1.103:5000/task/add', data).then(function (response) {
         if (response.data.success) {
           // update task in the userTasks collection
 
-          axios.patch(`http://192.168.1.102:5000/userTasks/update/${userTasksList.value._id}`, {
+          axios.patch(`http://192.168.1.103:5000/userTasks/update/${userTasksList.value._id}`, {
             otherTasks: [...userTasksList.value.otherTasks, { id: response.data._id, userId: userId.value, taskName: taskName.value, taskType: taskType.value, taskDescription: taskDescription.value }]
           }).then(function (response1) {
             console.log(response1.data);
@@ -69,7 +69,7 @@ export default function AddNewOtherTask({ navigation }) {
           }).catch(function (error1) {
 
             // delete task from tasks collection if the task is not added to userTasks collection
-            axios.delete(`http://192.168.1.102:5000/task/delete/${response.data._id}`).then(function (response2) {
+            axios.delete(`http://192.168.1.103:5000/task/delete/${response.data._id}`).then(function (response2) {
               console.log(response2.data);
               if (response2.data.success) {
                 console.log("Task Deleted Successfully");
