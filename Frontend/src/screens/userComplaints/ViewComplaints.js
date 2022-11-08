@@ -49,6 +49,18 @@ export default function ViewComplaints() {
     Navigation.navigate('ViewSpecificComplaint', complaintData);
   }
 
+  const onEditComplaint = (complaint) => {
+    const complaintData = {
+        complaintID: complaint._id,
+        title: complaint.title,
+        description: complaint.description,
+        imagePlace: complaint.imagePlace,
+        imageDate: complaint.imageDate
+    }
+
+    Navigation.navigate('EditComplaint', complaintData);
+  }
+
   return (
     <ScrollView>
       <View>
@@ -66,7 +78,7 @@ export default function ViewComplaints() {
                       <Text>{complaint.title}</Text>
                       <View style={styles.fixToButton}>
                         <View style={{ margin: 5}}><Button title='View' color="#6495ed" onPress={()=> onViewComplaint(complaint)} style={{ width: 100, fontSize: 12}}/></View>
-                        <View style={{ margin: 5}}><Button title='E' color="#6495ed" style={{ width: 100, fontSize: 12}}/></View>
+                        <View style={{ margin: 5}}><Button title='E' color="#6495ed"    onPress={()=> onEditComplaint(complaint)}style={{ width: 100, fontSize: 12}}/></View>
                         <View style={{ margin: 5}}><Button title='D' color="#6495ed" style={{ width: 100, fontSize: 12}}/></View>   
                       </View>
                     </View>
