@@ -33,6 +33,15 @@ app.use(ContactRouter);
 const ComplaintRouter = require('./routes/complaintRoutes');
 app.use(ComplaintRouter);
 
+const UserTasksRouter = require('./routes/userTasksRoutes');
+app.use(UserTasksRouter);
+
+const TaskRouter = require('./routes/taskRouter');
+app.use(TaskRouter);
+
+const ChallengeRouter = require('./routes/challengeRouter');
+app.use(ChallengeRouter);
+
 //Backend server running post number
 const port = process.env.PORT || 5000;
 

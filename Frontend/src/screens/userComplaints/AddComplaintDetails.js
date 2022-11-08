@@ -12,6 +12,16 @@ export default function AddComplaintDetails() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
+  const onPressNext = () => {
+
+    const data = {
+        title: title,
+        description: description
+    }
+
+    Navigation.navigate("AddImageToComplaint", data)
+  }
+
   return (
     <View>
       <Text>Form</Text>
@@ -33,7 +43,7 @@ export default function AddComplaintDetails() {
           textContentType="text"
         />
 
-        <SubmitButton mode="contained" color="#6495ed">
+        <SubmitButton mode="contained" color="#6495ed" onPress={onPressNext}>
         Next
       </SubmitButton>
 
