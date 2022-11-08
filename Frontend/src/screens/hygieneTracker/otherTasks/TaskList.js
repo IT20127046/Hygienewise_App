@@ -3,30 +3,29 @@ import axios from 'axios'
 import { Divider, List } from 'react-native-paper'
 import { View } from 'react-native'
 
-/** 
- * This is for displaying the daily tasks of the current logged in user
+/**
+ * This component is used to display the list of other tasks.
  */
 
 export default function TaskList() {
-  const [dailyTasks, setDailyTasks] = React.useState([])
+  const [otherTasks, setOtherTasks] = React.useState([])
   const id = "6363813ab4af9dcf571763fc"
 
   React.useEffect(() => {
+    // Get the list of other tasks from the database.
     axios.get(`http://192.168.1.103:5000/userTasks/getByUserID/${id}`)
       .then(response => {
         if (response.data.success) {
-          setDailyTasks(response.data.existingRecord.dailyTasks)
+          setOtherTasks(response.data.existingRecord.otherTasks)
         }
-        //console.log(dailyTasks)
       })
       .catch(error => {
         console.log(error)
       })
   }, [])
-  
   return (
     <List.Section>
-      {dailyTasks.map((item, index) => {
+      {otherTasks.map((item, index) => {
         return (
           <View key={index}>
             <List.Item
