@@ -5,11 +5,14 @@
 import React from 'react';
 import { Text, ImageBackground, ScrollView, StyleSheet } from 'react-native';
 import { Card } from 'react-native-paper';
+import {NavigationContainer} from '@react-navigation/native';
+import BottomTabNavigation from '../navigations/BottomTabNavigation';
 
 export default function Home({ navigation }) {
 
   return (
-    <ScrollView style={styles.scrollVew} >
+
+<ScrollView style={styles.scrollVew} >
       <Card style={styles.card}>
         <ImageBackground source={require('../assets/images/Hygienewise-Logo.png')} style={{ width: 200, height: 200, alignSelf: "center" }} />
       </Card>
@@ -45,8 +48,15 @@ export default function Home({ navigation }) {
       </Card>
       <Text/>
     </ScrollView>
+
+    
+    
   );
+
+  
 }
+
+
 
 const styles = StyleSheet.create({
   scrollVew: {

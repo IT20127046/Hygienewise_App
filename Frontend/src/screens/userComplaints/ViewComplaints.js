@@ -10,6 +10,7 @@ import {
   Image,
   ScrollView,
   ImageBackground,
+  Alert 
 } from 'react-native';
 
 import TextInput from '../../components/form/TextInput';
@@ -23,6 +24,10 @@ export default function ViewComplaints() {
   const [complaints, setComplaints] = useState([]);
 
   useEffect(() => {
+    retriveComplaints();
+  }, []);
+
+  const retriveComplaints = () => {
     axios
       .get('http://192.168.56.1:5000/complaint/getAll')
       .then(function (res) {
@@ -33,7 +38,8 @@ export default function ViewComplaints() {
       .catch(function (error) {
         alert('Fail' + error);
       });
-  }, []);
+  }
+
 
   const onViewComplaint = (complaint) => {
 
@@ -60,6 +66,41 @@ export default function ViewComplaints() {
 
     Navigation.navigate('EditComplaint', complaintData);
   }
+  
+  const onEDeleteComplaint = (id) => {
+
+    Alert.alert(
+        "Are You Sure?",
+        "Are you sure to delete this complaint?",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel"
+          },
+          { text: "Yes", onPress: () => deleteComplaint(id) }
+        ]
+      );
+
+    
+
+  }
+
+  const deleteComplaint = (id) => {
+    axios
+    .delete(`http://192.168.56.1:5000/complaint/delete/${id}`)
+    .then(function (res) {
+      if (res.data.success) {
+        alert("Delete Successfull");
+        setTimeout(()=>{
+            retriveComplaints();
+        }, 1000)
+      }
+    })
+    .catch(function (error) {
+      alert('Fail' + error);
+    });
+  }
 
   return (
     <ScrollView>
@@ -78,8 +119,8 @@ export default function ViewComplaints() {
                       <Text>{complaint.title}</Text>
                       <View style={styles.fixToButton}>
                         <View style={{ margin: 5}}><Button title='View' color="#6495ed" onPress={()=> onViewComplaint(complaint)} style={{ width: 100, fontSize: 12}}/></View>
-                        <View style={{ margin: 5}}><Button title='E' color="#6495ed"    onPress={()=> onEditComplaint(complaint)}style={{ width: 100, fontSize: 12}}/></View>
-                        <View style={{ margin: 5}}><Button title='D' color="#6495ed" style={{ width: 100, fontSize: 12}}/></View>   
+                        <View style={{ margin: 5}}><Button title='E' color="#6495ed"    onPress={()=> onEditComplaint(complaint)} style={{ width: 100, fontSize: 12}}/></View>
+                        <View style={{ margin: 5}}><Button title='D' color="#6495ed"    onPress={()=> onEDeleteComplaint(complaint._id)}style={{ width: 100, fontSize: 12}}/></View>   
                       </View>
                     </View>
                   </View>
