@@ -31,6 +31,7 @@ import OtherTasksListForSummary from '../screens/hygieneTracker/otherTasks/Other
 import PreviewComplaint from '../screens/userComplaints/PreviewComplaint';
 import ViewComplaints from '../screens/userComplaints/ViewComplaints';
 import SelectSession from '../screens/sessions/SelectSessionType';
+import ViewSpecificComplaint from '../screens/userComplaints/ViewSpecificComplaint';
 
 const Stack = createNativeStackNavigator();
 
@@ -92,9 +93,14 @@ export default function Navigation() {
           component={PreviewComplaint}
         />
         <Stack.Screen
-          options={{title: "Add New Complaint"}}
+          options={{title: "View Complaints"}}
           name="ViewComplaints"
           component={ViewComplaints}
+        />
+        <Stack.Screen
+          options={{title: "View Complaint"}}
+          name="ViewSpecificComplaint"
+          component={ViewSpecificComplaint}
         />
 
         {/* -------------------- Sessions and Donations -------------------- */}
