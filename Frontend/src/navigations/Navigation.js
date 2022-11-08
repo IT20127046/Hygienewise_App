@@ -30,6 +30,7 @@ import DailyTasksListSummary from '../screens/hygieneTracker/dailyTasks/DailyTas
 import OtherTasksListForSummary from '../screens/hygieneTracker/otherTasks/OtherTasksSummary';
 import PreviewComplaint from '../screens/userComplaints/PreviewComplaint';
 import SelectSession from '../screens/sessions/SelectSessionType';
+import ListOfDonation from '../screens/donation/ListOfDonation';
 
 const Stack = createNativeStackNavigator();
 
@@ -112,6 +113,12 @@ export default function Navigation() {
           options={{title: ''}}
           name="SelectSession"
           component={SelectSession}
+        />
+
+<Stack.Screen
+          options={{title: ''}}
+          name="ListOfDonation"
+          component={ListOfDonation}
         />
 
         {/* -------------------- Hygiene Tracker -------------------- */}
