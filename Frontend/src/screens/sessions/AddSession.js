@@ -2,12 +2,12 @@
  * This is the Post compoenets of the application
  * User can Create a Post using their post details
  */
- import {React, useState} from 'react';
+import {React, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Icon from 'react-native-vector-icons/Feather';
-import Background from '../../components/posts/Background';
+import Background from '../../components/session/Background';
 import TextInput from '../../components/posts/TextInput';
 import SubmitButton from '../../components/posts/SubmitButton';
 import DatePickerButton from '../../components/posts/DatePickerButton';
@@ -20,16 +20,16 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-export default function AddSessions() {
+export default function AddSessions({ navigation }) {
   const Navigation = useNavigation();
 
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
   const [title, setTitle] = useState({value: '', error: ''});
   const [description, setDescription] = useState({value: '', error: ''});
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [link, setLink] = useState("");
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [link, setLink] = useState('');
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -62,9 +62,8 @@ export default function AddSessions() {
       date: date,
       time: time,
       link: link.value,
-
     };
-console.log(data);
+    console.log(data);
     //Call POST method to validate user crenditals form backend and get reponse
     axios
       .post('http://192.168.43.153:5000/session/add', data)
@@ -83,14 +82,13 @@ console.log(data);
 
   return (
     <Background>
-      <Text style={styles.header}>Add New Session</Text>
-
+     <Text style={styles.header}>Add New Session</Text>
       <View style={[styles.card, styles.shadowProp]}>
         <View style={styles.container}>
           <View style={styles.background}>
             <Image
               style={styles.image}
-              source={require('../../assets/images/session.jpg')}
+              source={require('../../assets/images/session1.jpg')}
             />
           </View>
         </View>
@@ -102,8 +100,7 @@ console.log(data);
           onChangeText={text => setTitle({value: text, error: ''})}
         />
 
-
-<View style={styles.parent}>
+        <View style={styles.parent}>
           <DatePickerButton
             mode="contained"
             color="#dfdfdf"
@@ -117,7 +114,7 @@ console.log(data);
             isVisible={isDatePickerVisible}
             mode="date"
             onConfirm={handleDateConfirm}
-            onCancel={hideDatePicker}     
+            onCancel={hideDatePicker}
           />
 
           <DatePickerButton
@@ -136,11 +133,10 @@ console.log(data);
           />
         </View>
 
-
         <TextInput
           label="Link"
           value={link.value}
-          onChangeText={text => setLink({value: text, error: ''})}         
+          onChangeText={text => setLink({value: text, error: ''})}
         />
 
         <TextInput
@@ -148,11 +144,9 @@ console.log(data);
           multiline={true}
           numberOfLines={4}
           value={description.value}
-          onChangeText={text => setDescription({value: text, error: ''})}         
+          onChangeText={text => setDescription({value: text, error: ''})}
         />
 
-
-       
         <SubmitButton mode="contained" color="#6495ed" onPress={onPostPressed}>
           Submit
         </SubmitButton>
@@ -168,8 +162,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     marginTop: -60,
     bottom: 5,
-    color: 'blue'
-  },
+  }, 
   row: {
     flexDirection: 'row',
     marginTop: 4,
@@ -183,14 +176,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   card: {
-    backgroundColor: 'white',
     borderRadius: 15,
     paddingVertical: 0,
     paddingHorizontal: 25,
     width: '115%',
     height: '95%',
-    marginVertical: 3,
-   
+    marginVertical: 0,
   },
   shadowProp: {
     shadowColor: '#171717',
@@ -209,8 +200,8 @@ const styles = StyleSheet.create({
   },
   background: {
     // this shape is a circle
-     // border borderRadius same as width and height
-    borderRadius: 100,
+    // border borderRadius same as width and height
+    borderRadius: 400,
     width: 535,
     height: 600,
     marginLeft: -100, // reposition the circle inside parent view
@@ -225,4 +216,9 @@ const styles = StyleSheet.create({
     bottom: 5, // position it in circle
     marginLeft: 100, // center it in main view same value as marginLeft for circle but positive
   },
+
+
+  
+  
+ 
 });
