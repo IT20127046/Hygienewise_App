@@ -23,8 +23,14 @@ export default function Home({ navigation }) {
           <Card.Title title="Complaints" subtitle="Subtitle or description" />
         </ImageBackground>
       </Card>
+
+      <Text />
+      <Card onPress={() => navigation.navigate("MySessions")}>
+        <ImageBackground source={require('../assets/images/MenuBackground.jpg')} style={{ width: '100%', height: 120 }}>
+
       <Card style={styles.card} onPress={() => navigation.navigate("ViewAllSessions")}>
         <ImageBackground borderRadius={20} source={require('../assets/images/MenuBackground.jpg')} style={{ width: '100%', height: 120 }}>
+
           <Card.Title title="Sessions and Donations" subtitle="Subtitle or description" />
         </ImageBackground>
       </Card>
