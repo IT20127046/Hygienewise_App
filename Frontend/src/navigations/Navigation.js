@@ -37,6 +37,9 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Splash">
+
+        {/* -------------------- General -------------------- */}
+
         <Stack.Screen
           options={{ headerBackVisible: false, title: 'Dashboard' }}
           name="Home"
@@ -52,12 +55,35 @@ export default function Navigation() {
           name="Login"
           component={LoginScreen}
         />
+        
 
         <Stack.Screen
           options={{ headerShown: false }}
           name="Posts"
           component={Posts}
         /> 
+
+        <Stack.Screen
+          options={{title: ""}}
+          name="ViewAllSessions"
+          component={ViewSessions}
+        />
+         <Stack.Screen
+          options={{title: ""}}
+          name="MySessions"
+          component={MySession}
+        />
+        <Stack.Screen
+
+          options={{title: ""}}
+          name="Sessions"
+          component={AddSessions}
+        />
+        
+        {/* -------------------- Posts -------------------- */}
+
+
+        {/* -------------------- Complaints -------------------- */}
 
         <Stack.Screen
           options={{title: "User Complaints"}}
@@ -75,32 +101,15 @@ export default function Navigation() {
           component={AddComplaintDetails}
         />
         <Stack.Screen
-          options={{title: ""}}
-          name="ViewAllSessions"
-          component={ViewSessions}
-        />
-         <Stack.Screen
-          options={{title: ""}}
-          name="MySessions"
-          component={MySession}
-        />
-        <Stack.Screen
-
-          options={{title: ""}}
-          name="Sessions"
-          component={AddSessions}
-        />
-        <Stack.Screen
           options={{title: "Add New Complaint"}}
           name="AddImageToComplaint"
           component={AddImageToComplaint}
-
         />
-        {/* -------------------- Posts -------------------- */}
-
-
-        {/* -------------------- Complaints -------------------- */}
-
+        <Stack.Screen
+          options={{title: "Add New Complaint"}}
+          name="PreviewComplaint"
+          component={PreviewComplaint}
+        />
 
         {/* -------------------- Sessions and Donations -------------------- */}
 
@@ -147,22 +156,6 @@ export default function Navigation() {
           component={OtherTasksListForSummary}
         />
         
-        <Stack.Screen
-          options={{title: "Add New Complaint"}}
-          name="AddImageToComplaint"
-          component={AddImageToComplaint}
-        />
-        <Stack.Screen
-          options={{title: "Add New Complaint"}}
-          name="PreviewComplaint"
-          component={PreviewComplaint}
-        />
-        <Stack.Screen
-          options={{title: "Add New Complaint"}}
-          name="PreviewComplaint"
-          component={PreviewComplaint}
-        />
-
       </Stack.Navigator>
     </NavigationContainer>
   );
