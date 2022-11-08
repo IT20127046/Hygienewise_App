@@ -31,6 +31,8 @@ import OtherTasksListForSummary from '../screens/hygieneTracker/otherTasks/Other
 import PreviewComplaint from '../screens/userComplaints/PreviewComplaint';
 import ViewComplaints from '../screens/userComplaints/ViewComplaints';
 import SelectSession from '../screens/sessions/SelectSessionType';
+import ListOfDonation from '../screens/donation/ListOfDonation';
+import SendMessage from '../screens/contact/SendMessage';
 import ViewSpecificComplaint from '../screens/userComplaints/ViewSpecificComplaint';
 import EditComplaint from '../screens/userComplaints/EditComplaint';
 
@@ -130,6 +132,19 @@ export default function Navigation() {
           options={{title: ''}}
           name="SelectSession"
           component={SelectSession}
+        />
+
+<Stack.Screen
+          options={{title: ''}}
+          name="ListOfDonation"
+          component={ListOfDonation}
+        />
+
+        
+<Stack.Screen
+          options={{title: ''}}
+          name="SendMessage"
+          component={SendMessage}
         />
 
         {/* -------------------- Hygiene Tracker -------------------- */}

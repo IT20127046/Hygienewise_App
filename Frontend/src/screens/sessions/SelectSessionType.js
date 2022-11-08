@@ -23,7 +23,7 @@ export default function SelectSession({ navigation }) {
           <Card.Title title="Add New Session" subtitle="Add a new session to the system" />
         </ImageBackground>
       </Card>
-      <Card style={styles.card} onPress={() => navigation.navigate("MySession")}>
+      <Card style={styles.card} onPress={() => navigation.navigate("SendMessage")}>
         <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
           <Card.Title title="My Sessions" subtitle="View My Sessions" />
         </ImageBackground>
@@ -46,9 +46,10 @@ const styles = StyleSheet.create({
   card: {
     marginBottom: 10,
     borderRadius: 20,
+    height:150
   },
   imageBackground: { 
     width: '100%', 
-    height: 200 
+    height: 150 
   }
 });
