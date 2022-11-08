@@ -32,6 +32,7 @@ import PreviewComplaint from '../screens/userComplaints/PreviewComplaint';
 import ViewComplaints from '../screens/userComplaints/ViewComplaints';
 import SelectSession from '../screens/sessions/SelectSessionType';
 import ViewSpecificComplaint from '../screens/userComplaints/ViewSpecificComplaint';
+import EditComplaint from '../screens/userComplaints/EditComplaint';
 
 const Stack = createNativeStackNavigator();
 
@@ -101,6 +102,11 @@ export default function Navigation() {
           options={{title: "View Complaint"}}
           name="ViewSpecificComplaint"
           component={ViewSpecificComplaint}
+        />
+        <Stack.Screen
+          options={{title: "Edit Complaint"}}
+          name="EditComplaint"
+          component={EditComplaint}
         />
 
         {/* -------------------- Sessions and Donations -------------------- */}

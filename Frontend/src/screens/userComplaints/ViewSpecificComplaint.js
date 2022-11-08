@@ -18,6 +18,7 @@ import TextArea from '../../components/form/TextArea';
 import SubmitButton from '../../components/form/SubmitButton';
 
 export default function ViewSpecificComplaint({route}) {
+    const Navigation = useNavigation();
 
     const [complaints, setComplaints] = useState([]);
     const title = route.params.title;
