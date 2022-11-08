@@ -16,7 +16,7 @@ import HygieneTrackerMenu from '../screens/hygieneTracker/Menu';
 import UserComplaints from '../screens/userComplaints/Complaints';
 import SelectComplaintType from '../screens/userComplaints/SelectComplaintType';
 import AddComplaintDetails from '../screens/userComplaints/AddComplaintDetails';
-import Posts from '../screens/Posts';
+import Posts from '../screens/posts/Posts';
 import DailyTasksMainPage from '../screens/hygieneTracker/dailyTasks/MainPage';
 import ChallengesMainPage from '../screens/hygieneTracker/challenges/MainPage';
 import OtherTasksMainPage from '../screens/hygieneTracker/otherTasks/MainPage';
@@ -31,6 +31,8 @@ import OtherTasksListForSummary from '../screens/hygieneTracker/otherTasks/Other
 import PreviewComplaint from '../screens/userComplaints/PreviewComplaint';
 import ViewComplaints from '../screens/userComplaints/ViewComplaints';
 import SelectSession from '../screens/sessions/SelectSessionType';
+import ListOfDonation from '../screens/donation/ListOfDonation';
+import SendMessage from '../screens/contact/SendMessage';
 import ViewSpecificComplaint from '../screens/userComplaints/ViewSpecificComplaint';
 import EditComplaint from '../screens/userComplaints/EditComplaint';
 
@@ -130,6 +132,19 @@ export default function Navigation() {
           options={{title: ''}}
           name="SelectSession"
           component={SelectSession}
+        />
+
+<Stack.Screen
+          options={{title: ''}}
+          name="ListOfDonation"
+          component={ListOfDonation}
+        />
+
+        
+<Stack.Screen
+          options={{title: ''}}
+          name="SendMessage"
+          component={SendMessage}
         />
 
         {/* -------------------- Hygiene Tracker -------------------- */}
