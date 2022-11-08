@@ -21,7 +21,13 @@ import DailyTasksMainPage from '../screens/hygieneTracker/dailyTasks/MainPage';
 import ChallengesMainPage from '../screens/hygieneTracker/challenges/MainPage';
 import OtherTasksMainPage from '../screens/hygieneTracker/otherTasks/MainPage';
 import AddSessions from '../screens/sessions/AddSession';
+import AddNewDailyTask from '../screens/hygieneTracker/dailyTasks/AddNewDailyTask';
+import AddNewOtherTask from '../screens/hygieneTracker/otherTasks/AddNewOtherTask';
 import AddImageToComplaint from '../screens/userComplaints/AddImage';
+import ViewSessions from '../screens/sessions/ViewSession';
+import MySession from '../screens/sessions/MySession';
+import DailyTasksListSummary from '../screens/hygieneTracker/dailyTasks/DailyTasksListSummary';
+import OtherTasksListForSummary from '../screens/hygieneTracker/otherTasks/OtherTasksSummary';
 import PreviewComplaint from '../screens/userComplaints/PreviewComplaint';
 
 
@@ -47,38 +53,11 @@ export default function Navigation() {
           component={LoginScreen}
         />
 
-
-        <Stack.Screen
-          options={{ title: "Hygiene Tracker Menu" }}
-          name="HygieneTrackerMenu"
-          component={HygieneTrackerMenu}
-        />
         <Stack.Screen
           options={{ headerShown: false }}
           name="Posts"
           component={Posts}
-        />
-        <Stack.Screen
-          options={{ title: "Daily Tasks" }}
-          name="DailyTasksMainPage"
-          component={DailyTasksMainPage}
-        />
-        <Stack.Screen
-          options={{ title: "Challenges" }}
-          name="ChallengesMainPage"
-          component={ChallengesMainPage}
-        />
-        <Stack.Screen
-          options={{ title: "Other Tasks" }}
-          name="OtherTasksMainPage"
-          component={OtherTasksMainPage}
-        />    
-        <Stack.Screen
-          options={{title: "Sessions"}}
-          name="Sessions"
-          component={AddSessions}
-        />
-
+        /> 
 
         <Stack.Screen
           options={{title: "User Complaints"}}
@@ -96,9 +75,87 @@ export default function Navigation() {
           component={AddComplaintDetails}
         />
         <Stack.Screen
+          options={{title: ""}}
+          name="ViewAllSessions"
+          component={ViewSessions}
+        />
+         <Stack.Screen
+          options={{title: ""}}
+          name="MySessions"
+          component={MySession}
+        />
+        <Stack.Screen
+
+          options={{title: ""}}
+          name="Sessions"
+          component={AddSessions}
+        />
+        <Stack.Screen
           options={{title: "Add New Complaint"}}
           name="AddImageToComplaint"
           component={AddImageToComplaint}
+
+        />
+        {/* -------------------- Posts -------------------- */}
+
+
+        {/* -------------------- Complaints -------------------- */}
+
+
+        {/* -------------------- Sessions and Donations -------------------- */}
+
+
+        {/* -------------------- Hygiene Tracker -------------------- */}
+        <Stack.Screen
+          options={{ title: "Hygiene Tracker Menu" }}
+          name="HygieneTrackerMenu"
+          component={HygieneTrackerMenu}
+        />
+        <Stack.Screen
+          options={{ title: "Daily Tasks" }}
+          name="DailyTasksMainPage"
+          component={DailyTasksMainPage}
+        />
+        <Stack.Screen
+          options={{ title: "Challenges" }}
+          name="ChallengesMainPage"
+          component={ChallengesMainPage}
+        />
+        <Stack.Screen
+          options={{ title: "Other Tasks" }}
+          name="OtherTasksMainPage"
+          component={OtherTasksMainPage}
+        />  
+        <Stack.Screen
+          options={{title: "Add New Daily Task"}}
+          name="AddNewDailyTask"
+          component={AddNewDailyTask}
+        />
+        <Stack.Screen
+          options={{title: "Add New Other Task"}}
+          name="AddNewOtherTask"
+          component={AddNewOtherTask}
+        />
+        <Stack.Screen
+          options={{title: "Daily Tasks List For Summary"}}
+          name="DailyTasksListForSummary"
+          component={DailyTasksListSummary}
+        />
+        <Stack.Screen
+          options={{title: "Other Tasks List For Summary"}}
+          name="OtherTasksListForSummary"
+          component={OtherTasksListForSummary}
+        />
+        
+        <Stack.Screen
+          options={{title: "Add New Complaint"}}
+          name="AddImageToComplaint"
+          component={AddImageToComplaint}
+        />
+        <Stack.Screen
+          options={{title: "Add New Complaint"}}
+          name="PreviewComplaint"
+          component={PreviewComplaint}
         />
         <Stack.Screen
           options={{title: "Add New Complaint"}}

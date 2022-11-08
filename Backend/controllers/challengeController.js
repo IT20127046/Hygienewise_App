@@ -1,8 +1,8 @@
-const TasksModel = require('../models/tasksModel');
+const ChallengeModel = require('../models/challengeModel');
 
-// Save record
-const save_record = function (req, res){
-    let newRecord = new TasksModel(req.body);
+// Save Challenge
+const save_challenge = function (req, res){
+    let newRecord = new ChallengeModel(req.body);
 
     newRecord.save((err)=>{
         if(err){
@@ -16,9 +16,9 @@ const save_record = function (req, res){
     });
 }
 
-// GetAll Records
-const getAll_records = function (req, res){
-    TasksModel.find().exec((err, existingRecords) => {
+// GetAll Challenges
+const getAll_challenges = function (req, res){
+    ChallengeModel.find().exec((err, existingRecords) => {
         if (err) {
           return res.status(400).json({
             error: err,
@@ -31,11 +31,11 @@ const getAll_records = function (req, res){
       });
 }
 
-// Get Record By ID
-const get_record = function (req, res){
+// Get Challenge By ID
+const get_challenge = function (req, res){
     let recordID = req.params.id;
 
-    TasksModel.findById(recordID,(err,existingRecord)=>{
+    ChallengeModel.findById(recordID,(err,existingRecord)=>{
         if(err){
             return res.status(400).json({success:false, err});
         }
@@ -46,14 +46,14 @@ const get_record = function (req, res){
     });
 }
 
-// Update Record
-const update_record = function (req, res){
-    TasksModel.findByIdAndUpdate(
+// Update Challenge
+const update_challenge = function (req, res){
+    ChallengeModel.findByIdAndUpdate(
         req.params.id,
         {
             $set:req.body
         },
-        (err, sample)=>{
+        (err, challenge)=>{
             if(err){
                 return res.status(400).json({error:err});
             }
@@ -64,18 +64,18 @@ const update_record = function (req, res){
     );
 }
 
-// Delete Record
-const delete_record = function (req, res){
-    TasksModel.findByIdAndRemove(req.params.id).exec((err,deletedSample)=>{
+// Delete Challenge
+const delete_challenge = function (req, res){
+    ChallengeModel.findByIdAndRemove(req.params.id).exec((err,deletedChallenge)=>{
         if(err) {
             return res.status(400).json({error:err});
         }
         return res.json({
             success:true,
-            deletedSample
+            deletedChallenge
         });
 
     });
 }
 
-module.exports = { save_record, getAll_records, get_record, update_record, delete_record };
+module.exports = { save_challenge, getAll_challenges, get_challenge, update_challenge, delete_challenge };
