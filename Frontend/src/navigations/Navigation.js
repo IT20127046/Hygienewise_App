@@ -16,7 +16,7 @@ import HygieneTrackerMenu from '../screens/hygieneTracker/Menu';
 import UserComplaints from '../screens/userComplaints/Complaints';
 import SelectComplaintType from '../screens/userComplaints/SelectComplaintType';
 import AddComplaintDetails from '../screens/userComplaints/AddComplaintDetails';
-import Posts from '../screens/Posts'
+import Posts from '../screens/posts/Posts';
 import DailyTasksMainPage from '../screens/hygieneTracker/dailyTasks/MainPage';
 import ChallengesMainPage from '../screens/hygieneTracker/challenges/MainPage';
 import OtherTasksMainPage from '../screens/hygieneTracker/otherTasks/MainPage';
