@@ -7,8 +7,8 @@
  * @initialRouteName - that component start beginning of the starting application
  */
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../screens/Home';
 import SplashScreen from '../screens/splash/Splash';
 import LoginScreen from '../screens/auth/Login';
@@ -16,7 +16,7 @@ import HygieneTrackerMenu from '../screens/hygieneTracker/Menu';
 import UserComplaints from '../screens/userComplaints/Complaints';
 import SelectComplaintType from '../screens/userComplaints/SelectComplaintType';
 import AddComplaintDetails from '../screens/userComplaints/AddComplaintDetails';
-import Posts from '../screens/Posts'
+import Posts from '../screens/Posts';
 import DailyTasksMainPage from '../screens/hygieneTracker/dailyTasks/MainPage';
 import ChallengesMainPage from '../screens/hygieneTracker/challenges/MainPage';
 import OtherTasksMainPage from '../screens/hygieneTracker/otherTasks/MainPage';
@@ -30,7 +30,7 @@ import DailyTasksListSummary from '../screens/hygieneTracker/dailyTasks/DailyTas
 import OtherTasksListForSummary from '../screens/hygieneTracker/otherTasks/OtherTasksSummary';
 import PreviewComplaint from '../screens/userComplaints/PreviewComplaint';
 import ViewComplaints from '../screens/userComplaints/ViewComplaints';
-
+import SelectSession from '../screens/sessions/SelectSessionType';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,76 +38,56 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Splash">
-
         {/* -------------------- General -------------------- */}
 
         <Stack.Screen
-          options={{ headerBackVisible: false, title: 'Dashboard' }}
+          options={{headerBackVisible: false, title: 'Dashboard'}}
           name="Home"
           component={HomeScreen}
         />
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
           name="Splash"
           component={SplashScreen}
         />
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
           name="Login"
           component={LoginScreen}
         />
-        
 
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
           name="Posts"
           component={Posts}
-        /> 
+        />
 
-        <Stack.Screen
-          options={{title: ""}}
-          name="ViewAllSessions"
-          component={ViewSessions}
-        />
-         <Stack.Screen
-          options={{title: ""}}
-          name="MySessions"
-          component={MySession}
-        />
-        <Stack.Screen
-
-          options={{title: ""}}
-          name="Sessions"
-          component={AddSessions}
-        />
-        
         {/* -------------------- Posts -------------------- */}
-
 
         {/* -------------------- Complaints -------------------- */}
 
         <Stack.Screen
-          options={{title: "User Complaints"}}
+          options={{title: 'User Complaints'}}
           name="Complaints"
           component={UserComplaints}
         />
         <Stack.Screen
-          options={{title: "Add New Complaint"}}
+          options={{title: 'Add New Complaint'}}
           name="SelectComplaintType"
           component={SelectComplaintType}
         />
         <Stack.Screen
-          options={{title: "Add New Complaint"}}
+          options={{title: 'Add New Complaint'}}
           name="AddComplaintDetails"
           component={AddComplaintDetails}
         />
         <Stack.Screen
-          options={{title: "Add New Complaint"}}
+          options={{title: 'Add New Complaint'}}
           name="AddImageToComplaint"
           component={AddImageToComplaint}
         />
         <Stack.Screen
-          options={{title: "Add New Complaint"}}
+          options={{title: 'Add New Complaint'}}
           name="PreviewComplaint"
           component={PreviewComplaint}
         />
@@ -118,50 +98,69 @@ export default function Navigation() {
         />
 
         {/* -------------------- Sessions and Donations -------------------- */}
+        <Stack.Screen
+          options={{title: ''}}
+          name="ViewAllSessions"
+          component={ViewSessions}
+        />
+        <Stack.Screen
+          options={{title: ''}}
+          name="MySessions"
+          component={MySession}
+        />
+        <Stack.Screen
+          options={{title: ''}}
+          name="Sessions"
+          component={AddSessions}
+        />
 
+        <Stack.Screen
+          options={{title: ''}}
+          name="SelectSession"
+          component={SelectSession}
+        />
 
         {/* -------------------- Hygiene Tracker -------------------- */}
         <Stack.Screen
-          options={{ title: "Hygiene Tracker Menu" }}
+          options={{title: 'Hygiene Tracker Menu'}}
           name="HygieneTrackerMenu"
           component={HygieneTrackerMenu}
         />
         <Stack.Screen
-          options={{ title: "Daily Tasks" }}
+          options={{title: 'Daily Tasks'}}
           name="DailyTasksMainPage"
           component={DailyTasksMainPage}
         />
         <Stack.Screen
-          options={{ title: "Challenges" }}
+          options={{title: 'Challenges'}}
           name="ChallengesMainPage"
           component={ChallengesMainPage}
         />
         <Stack.Screen
-          options={{ title: "Other Tasks" }}
+          options={{title: 'Other Tasks'}}
           name="OtherTasksMainPage"
           component={OtherTasksMainPage}
-        />  
+        />
         <Stack.Screen
-          options={{title: "Add New Daily Task"}}
+          options={{title: 'Add New Daily Task'}}
           name="AddNewDailyTask"
           component={AddNewDailyTask}
         />
         <Stack.Screen
-          options={{title: "Add New Other Task"}}
+          options={{title: 'Add New Other Task'}}
           name="AddNewOtherTask"
           component={AddNewOtherTask}
         />
         <Stack.Screen
-          options={{title: "Daily Tasks List For Summary"}}
+          options={{title: 'Daily Tasks List For Summary'}}
           name="DailyTasksListForSummary"
           component={DailyTasksListSummary}
         />
         <Stack.Screen
-          options={{title: "Other Tasks List For Summary"}}
+          options={{title: 'Other Tasks List For Summary'}}
           name="OtherTasksListForSummary"
           component={OtherTasksListForSummary}
         />
-        
       </Stack.Navigator>
     </NavigationContainer>
   );
