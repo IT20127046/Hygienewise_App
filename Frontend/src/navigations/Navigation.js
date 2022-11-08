@@ -23,6 +23,7 @@ import OtherTasksMainPage from '../screens/hygieneTracker/otherTasks/MainPage';
 import AddSessions from '../screens/sessions/AddSession';
 import AddImageToComplaint from '../screens/userComplaints/AddImage';
 import ViewSessions from '../screens/sessions/ViewSession';
+import MySession from '../screens/sessions/MySession';
 
 
 const Stack = createNativeStackNavigator();
@@ -99,6 +100,11 @@ export default function Navigation() {
           options={{title: ""}}
           name="ViewAllSessions"
           component={ViewSessions}
+        />
+         <Stack.Screen
+          options={{title: ""}}
+          name="MySessions"
+          component={MySession}
         />
         <Stack.Screen
 
