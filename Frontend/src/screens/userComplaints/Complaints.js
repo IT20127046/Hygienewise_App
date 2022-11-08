@@ -1,6 +1,7 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, ImageBackground} from 'react-native';
+import { Card } from 'react-native-paper';
 
 export default function Complaints() {
 

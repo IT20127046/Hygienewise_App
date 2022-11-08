@@ -28,6 +28,7 @@ import ViewSessions from '../screens/sessions/ViewSession';
 import MySession from '../screens/sessions/MySession';
 import DailyTasksListSummary from '../screens/hygieneTracker/dailyTasks/DailyTasksListSummary';
 import OtherTasksListForSummary from '../screens/hygieneTracker/otherTasks/OtherTasksSummary';
+import PreviewComplaint from '../screens/userComplaints/PreviewComplaint';
 
 
 const Stack = createNativeStackNavigator();
@@ -145,6 +146,18 @@ export default function Navigation() {
           name="OtherTasksListForSummary"
           component={OtherTasksListForSummary}
         />
+        
+        <Stack.Screen
+          options={{title: "Add New Complaint"}}
+          name="AddImageToComplaint"
+          component={AddImageToComplaint}
+        />
+        <Stack.Screen
+          options={{title: "Add New Complaint"}}
+          name="PreviewComplaint"
+          component={PreviewComplaint}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
