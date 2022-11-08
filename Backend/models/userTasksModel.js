@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const tasks = new mongoose.Schema({
+const userTasks = new mongoose.Schema({
     userId: { type: String, required: true },
     dailyTasks: [{ type: Object, required: true }],
     challenges: [{ type: Object, required: true }],
@@ -10,4 +10,4 @@ const tasks = new mongoose.Schema({
     completedOtherTasks: [{ type: Object, required: true }],
 });
 
-module.exports = mongoose.model("Tasks", tasks);
+module.exports = mongoose.model("UserTasks", userTasks);
