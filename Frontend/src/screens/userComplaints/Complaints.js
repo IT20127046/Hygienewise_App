@@ -16,7 +16,7 @@ export default function Complaints() {
         <Text style={styles.mainButtonBlockText}>Add New Complaint</Text>
         </TouchableOpacity>
   
-        <TouchableOpacity style={styles.mainButtonBlock}>
+        <TouchableOpacity style={styles.mainButtonBlock} onPress={()=>{Navigation.navigate('ViewComplaints');}}>
           <Text style={styles.mainButtonBlockText}>View Complaints</Text>
         </TouchableOpacity>
       </View>

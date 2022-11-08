@@ -26,8 +26,8 @@ export default function Home({ navigation }) {
 
       <Text />
       <Card onPress={() => navigation.navigate("MySessions")}>
-        <ImageBackground source={require('../assets/images/MenuBackground.jpg')} style={{ width: '100%', height: 120 }}>
-
+        <ImageBackground source={require('../assets/images/MenuBackground.jpg')} style={{ width: '100%', height: 120 }}/>
+      </Card>
       <Card style={styles.card} onPress={() => navigation.navigate("ViewAllSessions")}>
         <ImageBackground borderRadius={20} source={require('../assets/images/MenuBackground.jpg')} style={{ width: '100%', height: 120 }}>
 

@@ -1,4 +1,5 @@
 import {React, useState} from 'react';
+import axios from 'axios';
 import {useNavigation} from '@react-navigation/native';
 import {
   StyleSheet,
@@ -24,6 +25,31 @@ export default function PreviewComplaint({route}) {
   const place = route.params.place;
   const date = route.params.date;
 
+  const onSubmitComplaint = () => {
+    const data = {
+      title:title,
+      description:description,
+      imageName: "imageName xx",
+      imagePlace:place,
+      imageDate:date,
+    }
+
+    console.log(data);
+
+    axios.post('http://192.168.56.1:5000/complaint/add', data)
+      .then(function (response) {
+        if (response.data.success) {
+          alert('Success');
+          setTimeout(() => {
+            Navigation.navigate('Complaints');
+          }, 2000);
+        }
+      })
+      .catch(function (error) {
+        alert('Fail' + error);
+      });
+  }
+
   return (
     <ScrollView>
       <View>
@@ -44,7 +70,7 @@ export default function PreviewComplaint({route}) {
         </View>
 
         <View style={{alignItems: 'center'}}>
-        <SubmitButton mode="contained" color="#6495ed" style={{ width: '80%' }}>
+        <SubmitButton mode="contained" color="#6495ed" onPress={onSubmitComplaint} style={{ width: '80%' }}>
         Next
       </SubmitButton>
         </View>
