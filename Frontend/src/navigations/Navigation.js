@@ -35,6 +35,8 @@ import ListOfDonation from '../screens/donation/ListOfDonation';
 import SendMessage from '../screens/contact/SendMessage';
 import ViewSpecificComplaint from '../screens/userComplaints/ViewSpecificComplaint';
 import EditComplaint from '../screens/userComplaints/EditComplaint';
+import DonationDetails from '../screens/donation/DonationDetails';
+import MessageA from '../screens/contact/Message';
 
 const Stack = createNativeStackNavigator();
 
@@ -145,6 +147,21 @@ export default function Navigation() {
           options={{title: ''}}
           name="SendMessage"
           component={SendMessage}
+        />
+
+
+               
+<Stack.Screen
+          options={{title: ''}}
+          name="DonationDetails"
+          component={DonationDetails}
+        />
+
+
+<Stack.Screen
+          options={{title: ''}}
+          name="MessageA"
+          component={MessageA}
         />
 
         {/* -------------------- Hygiene Tracker -------------------- */}
