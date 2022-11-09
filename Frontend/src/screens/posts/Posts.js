@@ -7,10 +7,13 @@ import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Icon from 'react-native-vector-icons/Feather';
-import Background from '../components/posts/Background';
-import TextInput from '../components/posts/TextInput';
-import SubmitButton from '../components/posts/SubmitButton';
-import DatePickerButton from '../components/posts/DatePickerButton';
+import Background from '../../components/posts/Background';
+import TextInput from '../../components/posts/TextInput';
+import SubmitButton from '../../components/posts/SubmitButton';
+import ImageButton from '../../components/posts/ImagePickerButton';
+import DatePickerButton from '../../components/posts/DatePickerButton';
+var ImagePicker = require('react-native-image-picker');
+
 import {
   StyleSheet,
   Text,
@@ -18,6 +21,7 @@ import {
   Image,
   View,
   TouchableOpacity,
+  ImagePickerIOS,
 } from 'react-native';
 
 export default function Posts() {
@@ -27,8 +31,9 @@ export default function Posts() {
   const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
   const [title, setTitle] = useState({value: '', error: ''});
   const [description, setDescription] = useState({value: '', error: ''});
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [image, setImage] = useState('');
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -52,31 +57,45 @@ export default function Posts() {
     hideTimePicker();
   };
 
+  const handelChoosePhoto = () => {
+    const options = {};
+    ImagePicker.launchImageLibrary(options, response => {
+      console.log('chamaka', response);
+    });
+  };
   // This function call when the user click submit button
   const onPostPressed = () => {
     // Create constant object to pass value to backend
-    const data = {
-      title: title.value,
-      description: description.value,
-      publishDate: date,
-      publishTime: time,
-
-    };
-console.log(data);
-    //Call POST method to validate user crenditals form backend and get reponse
-    axios
-      .post('http://172.18.12.241:5000/post/add', data)
-      .then(function (response) {
-        if (response.data.success) {
-          alert('Post Created Success');
-          setTimeout(() => {
-            Navigation.navigate('Posts');
-          }, 2000);
-        }
-      })
-      .catch(function (error) {
-        alert('Post Creation Fail');
-      });
+    if (title.value === '') {
+      alert('Please input title');
+    } else if (description.value == '') {
+      alert('Please input description');
+    } else if (date == '') {
+      alert('Please input date');
+    } else if (time == '') {
+      alert('Please input time');
+    } else {
+      const data = {
+        title: title.value,
+        description: description.value,
+        publishDate: date,
+        publishTime: time,
+      };
+      //Call POST method to validate user crenditals form backend and get reponse
+      axios
+        .post('http://172.18.12.241:5000/post/add', data)
+        .then(function (response) {
+          if (response.data.success) {
+            alert('Post Created Success');
+            setTimeout(() => {
+              Navigation.navigate('Posts');
+            }, 2000);
+          }
+        })
+        .catch(function (error) {
+          alert('Post Creation Fail');
+        });
+    }
   };
 
   return (
@@ -88,10 +107,19 @@ console.log(data);
           <View style={styles.background}>
             <Image
               style={styles.image}
-              source={require('../assets/images/CreatePost.jpg')}
+              source={require('../../assets/images/CreatePost.jpg')}
             />
           </View>
         </View>
+
+        <ImageButton
+          mode="contained"
+          color="#dfdfdf"
+          onPress={handelChoosePhoto}>
+          <Icon name="image" size={20} fontWeight="bold" color="black">
+            &nbsp;Choose Photo
+          </Icon>
+        </ImageButton>
 
         <TextInput
           label="Post Title"
@@ -105,7 +133,7 @@ console.log(data);
           multiline={true}
           numberOfLines={4}
           value={description.value}
-          onChangeText={text => setDescription({value: text, error: ''})}         
+          onChangeText={text => setDescription({value: text, error: ''})}
         />
 
         <View style={styles.parent}>
@@ -122,7 +150,7 @@ console.log(data);
             isVisible={isDatePickerVisible}
             mode="date"
             onConfirm={handleDateConfirm}
-            onCancel={hideDatePicker}     
+            onCancel={hideDatePicker}
           />
 
           <DatePickerButton
