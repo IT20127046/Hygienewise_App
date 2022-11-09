@@ -11,8 +11,10 @@ import TextInput from '../../components/auth/TextInput';
 import SubmitButton from '../../components/auth/SubmitButton';
 
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { userLogin } from '../../api/UserApi';
 
-export default function Login() {
+export default function Login({navigation}) {
   const Navigation = useNavigation();
 
   const [email, setEmail] = useState({value: '', error: ''});
@@ -27,19 +29,46 @@ export default function Login() {
     };
 
     //Call POST method to validate user crenditals form backend and get reponse
-    axios
-      .post('http://192.168.56.1:5000/user/login', data)
-      .then(function (response) {
-        if (response.data.success) {
-          alert('Login Success');
+    
+    userLogin({
+      userID: email.value,
+      password: password.value
+    }).then((result)=>{
+      if(result.data.status){
+        const getUserData = {
+          user_id: result.data.user_id,
+          userID: result.data.userID,
+          userName: result.data.userName,
+        }
+        const loggedUserData = ["loggedUserData", JSON.stringify(getUserData)];
+        const AccessToken = ["AccessToken", JSON.stringify(result.data.userToken)];
+
+        AsyncStorage.multiSet([AccessToken, loggedUserData]);
+
+        alert('Login Success');
           setTimeout(() => {
             Navigation.navigate('Home');
           }, 2000);
-        }
-      })
-      .catch(function (error) {
+      }else{
         alert('Login Fail');
-      });
+      }
+    }).catch(error=>{
+      console.log(error);
+    })
+
+    // axios
+    //   .post('http://192.168.56.1:5000/user/login', data)
+    //   .then(function (response) {
+    //     if (response.data.success) {
+    //       alert('Login Success');
+    //       setTimeout(() => {
+    //         Navigation.navigate('Home');
+    //       }, 2000);
+    //     }
+    //   })
+    //   .catch(function (error) {
+    //     alert('Login Fail');
+    //   });
   };
 
   return (

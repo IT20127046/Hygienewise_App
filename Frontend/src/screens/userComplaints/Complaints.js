@@ -1,6 +1,7 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, ImageBackground} from 'react-native';
+import { Card } from 'react-native-paper';
 
 export default function Complaints() {
 
@@ -15,7 +16,7 @@ export default function Complaints() {
         <Text style={styles.mainButtonBlockText}>Add New Complaint</Text>
         </TouchableOpacity>
   
-        <TouchableOpacity style={styles.mainButtonBlock}>
+        <TouchableOpacity style={styles.mainButtonBlock} onPress={()=>{Navigation.navigate('ViewComplaints');}}>
           <Text style={styles.mainButtonBlockText}>View Complaints</Text>
         </TouchableOpacity>
       </View>
