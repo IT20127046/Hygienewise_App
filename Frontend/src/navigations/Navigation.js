@@ -37,6 +37,15 @@ import ViewSpecificComplaint from '../screens/userComplaints/ViewSpecificComplai
 import EditComplaint from '../screens/userComplaints/EditComplaint';
 import DonationDetails from '../screens/donation/DonationDetails';
 import MessageA from '../screens/contact/Message';
+import ViewSpecificSesstion from '../screens/sessions/ViewSpecificSesstion';
+import EditSession from '../screens/sessions/EditSession';
+import SubMenu from '../screens/sessions/SubMenu';
+import DonationSubMenu from '../screens/donation/DonationSubMenu';
+import ContactSubMenu from '../screens/contact/ContactSubMenu';
+import MyDonation from '../screens/donation/MyDonation';
+import ViewSpecificDonation from '../screens/donation/ViewSpecificDonation';
+import MyIssues from '../screens/contact/MyIssues';
+import ViewSpecificIssue from '../screens/contact/ViewSpecificIssue';
 
 const Stack = createNativeStackNavigator();
 
@@ -131,7 +140,7 @@ export default function Navigation() {
         />
 
         <Stack.Screen
-          options={{title: ''}}
+          options={{title: 'Hygiene Awareness And Support'}}
           name="SelectSession"
           component={SelectSession}
         />
@@ -163,6 +172,84 @@ export default function Navigation() {
           name="MessageA"
           component={MessageA}
         />
+
+
+
+<Stack.Screen
+          options={{title: ''}}
+          name="ViewSpecificSesstion"
+          component={ViewSpecificSesstion}
+        />
+
+
+<Stack.Screen
+          options={{title: ''}}
+          name="EditSession"
+          component={EditSession}
+        />
+
+
+
+<Stack.Screen
+          options={{title: 'Hygiene Awareness And Support'}}
+          name="SubMenu"
+          component={SubMenu}
+        />
+
+
+        
+<Stack.Screen
+          options={{title: 'Hygiene Awareness And Support'}}
+          name="DonationSubMenu"
+          component={DonationSubMenu}
+        />
+
+
+
+                
+<Stack.Screen
+          options={{title: 'Hygiene Awareness And Support'}}
+          name="ContactSubMenu"
+          component={ContactSubMenu}
+        />
+
+
+
+                       
+<Stack.Screen
+          options={{title: ''}}
+          name="MyDonation"
+          component={MyDonation}
+        />
+
+
+                              
+<Stack.Screen
+          options={{title: ''}}
+          name="ViewSpecificDonation"
+          component={ViewSpecificDonation}
+        />
+
+
+
+                                      
+<Stack.Screen
+          options={{title: ''}}
+          name="MyIssues"
+          component={MyIssues}
+        />
+
+
+
+                                              
+<Stack.Screen
+          options={{title: ''}}
+          name="ViewSpecificIssue"
+          component={ViewSpecificIssue}
+        />
+
+
+
 
         {/* -------------------- Hygiene Tracker -------------------- */}
         <Stack.Screen
