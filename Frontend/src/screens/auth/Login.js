@@ -34,7 +34,7 @@ export default function Login({navigation}) {
       userID: email.value,
       password: password.value
     }).then((result)=>{
-      if(result.status){
+      if(result.data.status){
         const getUserData = {
           user_id: result.data.user_id,
           userID: result.data.userID,
