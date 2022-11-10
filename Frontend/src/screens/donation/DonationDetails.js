@@ -113,7 +113,7 @@ export default function DonationDetails({navigation}) {
         />
 
         <SubmitButton mode="contained" color="#6495ed" onPress={onPostPressed}>
-          Submit
+          Donate
         </SubmitButton>
       </View>
     </Background>
