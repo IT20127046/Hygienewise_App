@@ -68,7 +68,7 @@ export default function Home({ navigation }) {
       </Card>
  
 
-      <Card style={styles.card} onPress={() => navigation.navigate("SelectSession")}>
+      <Card style={styles.card} onPress={() => navigation.navigate("SubMenu")}>
 
         <ImageBackground borderRadius={20} source={require('../assets/images/MenuBackground.jpg')} style={{ width: '100%', height: 120 }}>
 
