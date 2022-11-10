@@ -18,8 +18,55 @@
    Linking,
  } from 'react-native';
  
- export default function SendMessage() {
+ export default function MyDonation() {
    const Navigation = useNavigation();
+
+
+   const [donations, setDonation] = useState([]);
+
+ 
+   useEffect(() => {
+     retriveDonation();
+  
+   }, []);
+ 
+ 
+   const retriveDonation = () => {
+ 
+    //Call GET method to retive order list from database and set to order array
+    axios
+    .get('http://192.168.43.153:5000/donation/getAll')
+    .then(function (response) {
+      if (response.data.success) {
+        setDonation(response.data.exsitingDonations);
+      }
+    })
+    .catch(function (error) {
+      alert('Error');
+    });
+ 
+  
+   }
+ 
+ 
+
+   const onViewComplaint = data => {
+    const donationData = {
+      donationID: data._id,
+      place: data.place,
+      date:data.date,
+      description: data.description,
+    };
+
+    Navigation.navigate('ViewSpecificDonation', donationData);
+  };
+
+
+
+
+
+
+
  
    //When user press a particular order that redirect to more details screnn of the particular order
    const onPressOrder = () => {
@@ -29,117 +76,67 @@
    return (
      <Background>
        <View style={styles.container}>
-         <Text style={styles.pageTitle}>Get help from the relevant authorities</Text>
-         <View>
+         <Text style={styles.pageTitle}>My Donations</Text>
+
+
+         {donations.map((data, index) => {
+          return (
+
+         
            <View style={styles.itemBox}>
              <View style={styles.fixToText}>
                <TouchableOpacity
                  style={styles.mainButtonBlock}
                  onPress={() => {
-                   Navigation.navigate('MessageA');
+                   Navigation.navigate('SelectComplaintType');
                  }}>
                  <Image
                    style={styles.image}
-                   source={require('../../assets/images/a1.png')}
+                   source={require('../../assets/images/d1.png')}
                  />
                </TouchableOpacity>
  
-               <TouchableOpacity  onPress={() => {
-                   Navigation.navigate('MessageA');
-                 }}
-                  style={styles.mainButtonBlock}>
-                 <Text style={styles.mainButtonBlockTextnew}>PHI</Text>
-                 <Text style={styles.mainButtonBlockText}>Mr. Sadun Gamage</Text>
+               <TouchableOpacity style={styles.mainButtonBlock}
+                onPress={() => onViewComplaint(data)}
+               >
+                 <Text style={styles.mainButtonBlockText}>{data.description}</Text>
  
                  <View
                    style={styles.statusSection}
                   >
-                   <Text style={styles.statusText}>Message</Text>
+                   <Text style={styles.statusText}>More</Text>
                  </View>
                </TouchableOpacity>
              </View>
            </View>
-         </View>
+        
  
  
  
  
-         <View>
-           <View style={styles.itemBox}>
-             <View style={styles.fixToText}>
-               <TouchableOpacity
-                 style={styles.mainButtonBlock}
-                 onPress={() => {
-                   Navigation.navigate('SelectComplaintType');
-                 }}>
-                 <Image
-                   style={styles.image}
-                   source={require('../../assets/images/a2.png')}
-                 />
-               </TouchableOpacity>
- 
-               <TouchableOpacity 
-                onPress={() => {
-                   Navigation.navigate('MessageA');
-                 }}
-               style={styles.mainButtonBlock}>
-               <Text style={styles.mainButtonBlockTextnew}>Doctor</Text>
-                 <Text style={styles.mainButtonBlockText}>Mrs. Thilini Perera</Text>
- 
-                 <View
-                   style={styles.statusSection}
-                 >
-                   <Text style={styles.statusText}>Message</Text>
-                 </View>
-               </TouchableOpacity>
-             </View>
-           </View>
-         </View>
+         
+     
+        
  
  
  
-         <View>
-           <View style={styles.itemBox}>
-             <View style={styles.fixToText}>
-               <TouchableOpacity
-                 style={styles.mainButtonBlock}
-                 onPress={() => {
-                   Navigation.navigate('SelectComplaintType');
-                 }}>
-                 <Image
-                   style={styles.image}
-                   source={require('../../assets/images/a3.png')}
-                 />
-               </TouchableOpacity>
- 
-               <TouchableOpacity  onPress={() => {
-                   Navigation.navigate('MessageA');
-                 }}
-                  style={styles.mainButtonBlock}>
-               <Text style={styles.mainButtonBlockTextnew}>Family Health Officer</Text>
-                 <Text style={styles.mainButtonBlockText}>Mrs. Sasini Perera</Text>
- 
-                 <View
-                   style={styles.statusSection}
-                   >
-                   <Text style={styles.statusText}>Message</Text>
-                 </View>
-               </TouchableOpacity>
-             </View>
-           </View>
-         </View>
+         
+         
+         
  
  
  
  
-      
+        
+         
  
  
  
  
  
  
- 
+         );
+         })}
  
  
  
@@ -225,13 +222,7 @@
    mainButtonBlockText: {
      fontSize: 20,
      color: '#000000',
-
-   },
-   mainButtonBlockTextnew:{
-    fontSize: 20,
-     color: '#000000',
-     fontWeight: 'bold',
-
+     fontSize: 25,
    },
  
    fixToText: {

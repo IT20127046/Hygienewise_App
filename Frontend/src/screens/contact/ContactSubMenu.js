@@ -7,27 +7,24 @@ import axios from 'axios'
  * Menu screen for the Hygiene tracker
  */
 
-export default function SelectSession({ navigation }) {
+export default function ContactSubMenu({ navigation }) {
 
 
   return (
     <ScrollView style={styles.scrollView} >
+
       <Text />
-      <Card style={styles.card} onPress={() => navigation.navigate("Sessions")}>
+      <Card style={styles.card} onPress={() => navigation.navigate("SendMessage")}>
         <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
-          <Card.Title title="Add New Session" subtitle="Add a new session to the system" />
+          <Card.Title title="Ask The Authorities"  />
         </ImageBackground>
       </Card>
-      <Card style={styles.card} onPress={() => navigation.navigate("ViewAllSessions")}>
+      <Card style={styles.card} onPress={() => navigation.navigate("MyIssues")}>
         <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
-          <Card.Title title="All Session" subtitle="View All Awareness Sessions" />
-        </ImageBackground>
-      </Card>   
-      <Card style={styles.card} onPress={() => navigation.navigate("MySessions")}>
-        <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
-          <Card.Title title="My Sessions" subtitle="View My Sessions" />
+          <Card.Title title="My Inquiries"  />
         </ImageBackground>
       </Card>
+    
     </ScrollView>
   )
 }
@@ -51,5 +48,12 @@ const styles = StyleSheet.create({
   imageBackground: { 
     width: '100%', 
     height: 150 
-  }
+  },
+  header: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    paddingVertical: 8,
+    bottom: 5,
+    
+  },
 });
