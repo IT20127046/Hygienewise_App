@@ -58,7 +58,7 @@ export default function MessageA({navigation}) {
           <View style={styles.background}>
             <Image
               style={styles.image}
-              source={require('../../assets/images/msg1.png')}
+              source={require('../../assets/images/msg3.png')}
             />
           </View>
         </View>

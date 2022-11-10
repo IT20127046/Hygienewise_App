@@ -73,7 +73,7 @@ export default function DonationDetails({navigation}) {
           <View style={styles.background}>
             <Image
               style={styles.image}
-              source={require('../../assets/images/donation1.png')}
+              source={require('../../assets/images/dd2.png')}
             />
           </View>
         </View>
@@ -138,7 +138,9 @@ const styles = StyleSheet.create({
   parent: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
+    width: 740,
+    alignSelf: 'center',
     
   },
   card: {
@@ -167,7 +169,7 @@ const styles = StyleSheet.create({
   background: {
     // this shape is a circle
     // border borderRadius same as width and height
-    borderRadius: 400,
+    // borderRadius: 400,
     width: 535,
     height: 600,
     marginLeft: -100, // reposition the circle inside parent view
