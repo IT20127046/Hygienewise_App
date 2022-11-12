@@ -26,7 +26,6 @@ export default function MyDonation() {
   }, []);
 
   const retriveDonation = () => {
-    //Call GET method to retive order list from database and set to order array
     axios
       .get(BASE_URL + 'donation/getAll')
       .then(function (response) {
@@ -48,11 +47,6 @@ export default function MyDonation() {
     };
 
     Navigation.navigate('ViewSpecificDonation', donationData);
-  };
-
-  //When user press a particular order that redirect to more details screnn of the particular order
-  const onPressOrder = () => {
-    Navigation.navigate('ViewOrderDetails');
   };
 
   return (

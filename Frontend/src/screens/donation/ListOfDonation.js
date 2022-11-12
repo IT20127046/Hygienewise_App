@@ -19,7 +19,7 @@ import {
 export default function ListOfDonation() {
   const Navigation = useNavigation();
 
-  //When user press a particular order that redirect to more details screnn of the particular order
+
   const onPressOrder = () => {
     Navigation.navigate('ViewOrderDetails');
   };

@@ -19,11 +19,6 @@ import {
 export default function SendMessage() {
   const Navigation = useNavigation();
 
-  //When user press a particular order that redirect to more details screnn of the particular order
-  const onPressOrder = () => {
-    Navigation.navigate('MyIssues');
-  };
-
   return (
     <Background>
       <View style={styles.container}>

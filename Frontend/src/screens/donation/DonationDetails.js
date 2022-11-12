@@ -46,7 +46,6 @@ export default function DonationDetails({navigation}) {
       date: date,
     };
     console.log(data);
-    //Call POST method to validate user crenditals form backend and get reponse
     axios
       .post(BASE_URL + 'donation/add', data)
       .then(function (response) {
