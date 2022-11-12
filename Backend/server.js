@@ -42,6 +42,9 @@ app.use(TaskRouter);
 const ChallengeRouter = require('./routes/challengeRouter');
 app.use(ChallengeRouter);
 
+const UserResponseRouter = require('./routes/userResponseRoutes');
+app.use(UserResponseRouter);
+
 //Backend server running post number
 const port = process.env.PORT || 5000;
 

@@ -1,7 +1,6 @@
 /**
  * This is Home screen of the application
  */
-
  import React, { useEffect, useState } from 'react';
  import { Text, ImageBackground, ScrollView, StyleSheet, Button, View, TouchableOpacity } from 'react-native';
  import { Card } from 'react-native-paper';
@@ -79,7 +78,7 @@
  
        <ImageBackground borderRadius={20} source={require('../assets/images/MenuBackground.jpg')} style={{ width: '100%', height: 120 }}>
  
-         <Card.Title title="Sessions and Donations" subtitle="Subtitle or description" />
+         <Card.Title title="Sessions and Donations" subtitle="Hygiene Awareness And Support" />
        </ImageBackground>
      </Card>
      <Card style={styles.card} onPress={() => navigation.navigate("HygieneTrackerMenu")} >
@@ -144,3 +143,4 @@
      borderRadius: 40
    }
  });
+

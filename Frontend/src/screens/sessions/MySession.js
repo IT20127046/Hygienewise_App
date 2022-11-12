@@ -1,11 +1,9 @@
-/**
- * This componenets used to display order list for the site manager
- */
 import {React, useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
 import Background from '../../components/session/Background';
 import Icon from 'react-native-vector-icons/Feather';
+import {BASE_URL} from '../../api/BaseURL.const';
 
 import {
   StyleSheet,
@@ -28,35 +26,21 @@ export default function MySession() {
 
   useEffect(() => {
     retriveSessions();
- 
   }, []);
 
-
   const retriveSessions = () => {
-
-   //Call GET method to retive order list from database and set to order array
-   axios
-   .get('http://192.168.43.153:5000/session/getAll')
-   .then(function (response) {
-     if (response.data.success) {
-       setSessions(response.data.exsitingSession);
-     }
-   })
-   .catch(function (error) {
-     alert('Error');
-   });
-
-
-
-    
-  }
-
-
-
-
-
-
-
+    //Call GET method to retive order list from database and set to order array
+    axios
+      .get(BASE_URL + 'session/getAll')
+      .then(function (response) {
+        if (response.data.success) {
+          setSessions(response.data.exsitingSession);
+        }
+      })
+      .catch(function (error) {
+        alert('Error');
+      });
+  };
 
   //When user press a particular order that redirect to more details screnn of the particular order
   const onPressOrder = () => {
@@ -67,69 +51,54 @@ export default function MySession() {
     const sessionData = {
       sessionID: data._id,
       title: data.title,
-      date:data.date,
-      time:data.time,
-      link:data.link,
+      date: data.date,
+      time: data.time,
+      link: data.link,
       description: data.description,
     };
 
     Navigation.navigate('ViewSpecificSesstion', sessionData);
   };
 
-  const onEditComplaint = (data) => {
+  const onEditComplaint = data => {
     const sessionData = {
       sessionID: data._id,
       title: data.title,
-      date:data.date,
-      time:data.time,
-      link:data.link,
+      date: data.date,
+      time: data.time,
+      link: data.link,
       description: data.description,
-    }
+    };
 
     Navigation.navigate('EditSession', sessionData);
-  }
+  };
 
+  const onEDeleteComplaint = id => {
+    Alert.alert('Are You Sure?', 'Are you sure to delete this session?', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'Yes', onPress: () => deleteComplaint(id)},
+    ]);
+  };
 
-
-
-
-  const onEDeleteComplaint = (id) => {
-
-    Alert.alert(
-        "Are You Sure?",
-        "Are you sure to delete this session?",
-        [
-          {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel"
-          },
-          { text: "Yes", onPress: () => deleteComplaint(id) }
-        ]
-      );
-
-  }
-
-
-
-
-
-  const deleteComplaint = (id) => {
+  const deleteComplaint = id => {
     axios
-    .delete(`http://192.168.43.153:5000/session/delete/${id}`)
-    .then(function (res) {
-      if (res.data.success) {
-        alert("Delete Successfull");
-        setTimeout(()=>{
-          
-          retriveSessions();
-        }, 1000)
-      }
-    })
-    .catch(function (error) {
-      alert('Fail' + error);
-    });
-  }
+      .delete(BASE_URL + `session/delete/${id}`)
+      .then(function (res) {
+        if (res.data.success) {
+          alert('Delete Successfull');
+          setTimeout(() => {
+            retriveSessions();
+          }, 1000);
+        }
+      })
+      .catch(function (error) {
+        alert('Fail' + error);
+      });
+  };
 
   return (
     <Background>
@@ -179,9 +148,7 @@ export default function MySession() {
                     name="delete"
                     color="#ffffff"
                     backgroundColor="#6495ed"
-                    onPress={() =>
-                      onEDeleteComplaint(data._id)
-                    }></Icon.Button>
+                    onPress={() => onEDeleteComplaint(data._id)}></Icon.Button>
                 </View>
               </View>
             </View>

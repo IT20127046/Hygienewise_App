@@ -1,7 +1,3 @@
-/**
- * This is the Post compoenets of the application
- * User can Create a Post using their post details
- */
 import {React, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
@@ -11,6 +7,7 @@ import Background from '../../components/session/Background';
 import TextInput from '../../components/posts/TextInput';
 import SubmitButton from '../../components/posts/SubmitButton';
 import DatePickerButton from '../../components/posts/DatePickerButton';
+import {BASE_URL} from '../../api/BaseURL.const';
 import {
   StyleSheet,
   Text,
@@ -36,7 +33,7 @@ export default function MessageA({navigation}) {
     console.log(data);
     //Call POST method to validate user crenditals form backend and get reponse
     axios
-      .post('http://192.168.43.153:5000/contact/add', data)
+      .post(BASE_URL + 'contact/add', data)
       .then(function (response) {
         if (response.data.success) {
           alert('Message Sent Success');
