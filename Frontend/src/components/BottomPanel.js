@@ -17,7 +17,7 @@ export default function BottomPanel({ navigation }) {
             <View style={styles.fixToText}>
 
                 <Text style={styles.textStyle} onPress={() => Navigation.navigate("Home")}><Icon name="home" size={30} color="#6495ed"></Icon></Text>
-                <Text style={styles.textStyle} onPress={() => Navigation.navigate("Posts")}><Icon02 name="post-add" size={30} color="#6495ed"></Icon02></Text>
+                <Text style={styles.textStyle} onPress={() => Navigation.navigate("PostMain")}><Icon02 name="post-add" size={30} color="#6495ed"></Icon02></Text>
                 <Text style={styles.textStyle} onPress={() => Navigation.navigate("Complaints")}><Icon name="questioncircleo" size={30} color="#6495ed"></Icon></Text>
                 <Text style={styles.textStyle} onPress={() => Navigation.navigate("SubMenu")}><Icon02 name="event" size={30} color="#6495ed"></Icon02></Text>
                 <Text style={styles.textStyle} onPress={() => Navigation.navigate("HygieneTrackerMenu")}><Icon03 name="eight-track" size={30} color="#6495ed"></Icon03></Text>

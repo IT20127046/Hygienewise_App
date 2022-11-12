@@ -34,14 +34,12 @@ export default function PreviewComplaint({route}) {
       imagePlace: place,
       imageDate: date,
     };
-
-    console.log(data);
-
+    
     axios
       .post(BASE_URL + 'complaint/add', data)
       .then(function (response) {
         if (response.data.success) {
-          alert('Success');
+          alert('Complaint Send Successfull');
           setTimeout(() => {
             Navigation.navigate('Complaints');
           }, 2000);
@@ -90,7 +88,7 @@ export default function PreviewComplaint({route}) {
             color="#6495ed"
             onPress={onSubmitComplaint}
             style={{width: '80%'}}>
-            Next
+            Send 
           </SubmitButton>
         </View>
       </View>

@@ -7,6 +7,7 @@
  import { Card } from 'react-native-paper';
  import {NavigationContainer} from '@react-navigation/native';
  import AsyncStorage from '@react-native-async-storage/async-storage';
+ import Icon from 'react-native-vector-icons/AntDesign';
  
  import BottomPanel from '../components/BottomPanel';
  
@@ -36,25 +37,17 @@
      setUserName(userDataArray.userName);
    }
  
-   const handleLogout = () => {
-     AsyncStorage.removeItem('AccessToken'); 
-     alert("User Logout")
-     setTimeout(()=>{
-       navigation.navigate("Login");
-     }, 2000)
-   }
- 
- 
    return (
  <View>
  <ScrollView style={styles.scrollVew} >
  
  <View style={styles.fixToText}>
    <View style={{ marginTop: 10 }}>
-       <Text style={styles.userNameTitle}> Hello {userToken.userName} </Text>
+       <Text style={styles.userNameTitle}> Hello {userName} </Text>
    </View>
-   <View>
-       <TouchableOpacity style={styles.userAccBtn} onPress={handleLogout}>
+   <View style={{ alignItems: 'center' }}>
+       <TouchableOpacity style={styles.userAccBtn} onPress={() => navigation.navigate("UserProfile")}>
+       <Icon name="user" size={30} color="#6495ed"></Icon>
        </TouchableOpacity>
    </View>
      
@@ -63,7 +56,7 @@
      <Card style={styles.card}>
        <ImageBackground source={require('../assets/images/Hygienewise-Logo.png')} style={{ width: 150, height: 150, alignSelf: "center" }} />
      </Card>
-     <Card style={styles.card} onPress={() => navigation.navigate("Posts")}>
+     <Card style={styles.card} onPress={() => navigation.navigate("PostMain")}>
        <ImageBackground borderRadius={20} source={require('../assets/images/MenuBackground.jpg')} style={{ width: '100%', height: 120 }}>
          <Card.Title title="Posts" subtitle="Subtitle or description" />
        </ImageBackground>
@@ -87,7 +80,7 @@
          <Card.Title title="Hygiene Tracker" subtitle="Maintain your hygiene habits" />
        </ImageBackground>
      </Card>
-     <Text/>
+     <Text/><Text/><Text/><Text/>
    </ScrollView>
  
    <BottomPanel/>
@@ -141,6 +134,9 @@
      height: 50,
      backgroundColor: '#ffffff',
      margin: 10,
-     borderRadius: 40
+     borderRadius: 40,
+     alignContent: 'center',
+     alignItems: 'center',
+     justifyContent: 'center'
    }
  });

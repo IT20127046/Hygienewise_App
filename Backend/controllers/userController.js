@@ -43,7 +43,7 @@
    };
  
    Users.findOne({
-     name: req.body.name,
+    userName: req.body.userName,
    })
      .then((user) => {
        if (!user) {
@@ -54,12 +54,13 @@
                res
                  .status(200)
                  .json({
+                  status: true,
                    success: "Registered successfully",
                  })
                  .end();
              })
              .catch((err) => {
-               res.status(400).json({
+               res.status(200).json({
                  errorMessage: "Something went wrong!",
                  status: false,
                });
@@ -67,7 +68,7 @@
              });
          });
        } else {
-         return res.status(401).json({
+         return res.status(200).json({
            errorMessage:
              "Your user name is already registered. Use another user name",
            status: false,
@@ -75,7 +76,7 @@
        }
      })
      .catch((err) => {
-       res.status(400).json({
+       res.status(200).json({
          errorMessage: "Something went wrong!",
          status: false,
        });

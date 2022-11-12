@@ -50,6 +50,9 @@ import CreatePost from '../screens/posts/CreatePost';
 import ViewPostList from '../screens/posts/ViewPostList';
 import UpdatePost from '../screens/posts/UpdatePost';
 import ViewSpecificPost from '../screens/posts/ViewSpecificPost';
+import SelectComplaintPerson from '../screens/userComplaints/SelectComplaintPerson';
+import UserProfile from '../screens/auth/UserProfile';
+import Register from '../screens/auth/Register';
 
 const Stack = createNativeStackNavigator();
 
@@ -73,6 +76,16 @@ export default function Navigation() {
           options={{headerShown: false}}
           name="Login"
           component={LoginScreen}
+        />
+        <Stack.Screen
+          options={{title: 'User Profile'}}
+          name="UserProfile"
+          component={UserProfile}
+        />
+        <Stack.Screen
+          options={{title: 'User Register'}}
+          name="Register"
+          component={Register}
         />
 
         {/* -------------------- Posts -------------------- */}
@@ -148,6 +161,11 @@ export default function Navigation() {
           options={{title: 'Edit Complaint'}}
           name="EditComplaint"
           component={EditComplaint}
+        />
+        <Stack.Screen
+          options={{title: 'Add New Complaint'}}
+          name="SelectComplaintPerson"
+          component={SelectComplaintPerson}
         />
 
         {/* -------------------- Sessions and Donations -------------------- */}

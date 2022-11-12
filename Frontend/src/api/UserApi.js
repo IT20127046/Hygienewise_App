@@ -16,3 +16,18 @@ export const userLogin = async data => {
         return error.response.data;
     }
 }
+
+export const userRegister = async data => {
+    try {
+        const result = await ApiManager("/user/registration", {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: data,
+        });
+        return result;
+    } catch (error) {
+        return error.response.data;
+    }
+}
