@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Divider, List } from 'react-native-paper'
-import { View } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
 
 /** 
  * This is for displaying the daily tasks of the current logged in user
@@ -23,7 +23,15 @@ export default function TaskList() {
         console.log(error)
       })
   }, [])
-  
+
+  const markAsDone = (task) => {
+    //console.log("Mark as done: ", task)
+  }
+
+  const removeTask = (task) => {
+    //console.log("Remove task: ", task)
+  }
+
   return (
     <List.Section>
       {dailyTasks.map((item, index) => {
@@ -34,9 +42,18 @@ export default function TaskList() {
               titleStyle={{ color: 'black', fontSize: 20 }}
               description={item.taskDescription}
               descriptionStyle={{ color: 'gray', fontSize: 15 }}
-              left={props => <List.Icon {...props} icon="checkbox-blank-circle" color="lightgray" />}
-              right={props => <List.Icon {...props} icon="close-circle" color="lightgray" />}
-            />
+              left={() =>
+                <TouchableOpacity onPress={markAsDone(item._id)}>
+                  <List.Icon  icon="checkbox-blank-circle" color="lightgray" />
+                </TouchableOpacity>
+              }
+              right={() =>
+                <TouchableOpacity onPress={removeTask(item._id)}>
+                  <List.Icon icon="close-circle" color="lightgray"/>
+                </TouchableOpacity>
+              }
+            >
+            </List.Item>
             <Divider />
           </View>
         )
