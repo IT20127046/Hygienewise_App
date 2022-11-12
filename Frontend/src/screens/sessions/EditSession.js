@@ -1,6 +1,7 @@
 import {React, useEffect, useState} from 'react';
 import axios from 'axios';
 import {useNavigation} from '@react-navigation/native';
+import {BASE_URL} from '../../api/BaseURL.const';
 import {
   StyleSheet,
   Text,
@@ -31,12 +32,12 @@ export default function EditSession({route}) {
     const data = {
       title: title,
       description: description,
-     date:date,
-     link:link
+      date: date,
+      link: link,
     };
 
     axios
-      .put(`http://192.168.43.153:5000/session/update/${sessionID}`, data)
+      .put(BASE_URL + `session/update/${sessionID}`, data)
       .then(function (res) {
         if (res.data.success) {
           alert('Successfully Updated');
@@ -60,15 +61,13 @@ export default function EditSession({route}) {
         textContentType="text"
       />
 
-<TextInput
+      <TextInput
         label="Date"
         returnKeyType="next"
         value={date}
         onChangeText={text => setDate(text)}
         textContentType="text"
       />
-
-
 
       <TextInput
         label="Link"
@@ -78,16 +77,13 @@ export default function EditSession({route}) {
         textContentType="text"
       />
 
-
-<TextArea
+      <TextArea
         label="Description"
         returnKeyType="next"
         value={description}
         onChangeText={text => setDescription(text)}
         textContentType="text"
       />
-
-      
 
       <SubmitButton mode="contained" color="#6495ed" onPress={onPressUpdate}>
         Update

@@ -1,17 +1,16 @@
-/**
- * This componenets used to display order list for the site manager
- */
 import {React, useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
 import Background from '../../components/session/Background';
 import Icon from 'react-native-vector-icons/Feather';
+import {BASE_URL} from '../../api/BaseURL.const';
 
 import {
   StyleSheet,
   Text,
   View,
   Alert,
+  Image,
   TouchableOpacity,
   Button,
   ScrollView,
@@ -27,35 +26,21 @@ export default function MySession() {
 
   useEffect(() => {
     retriveSessions();
- 
   }, []);
 
-
   const retriveSessions = () => {
-
-   //Call GET method to retive order list from database and set to order array
-   axios
-   .get('http://192.168.43.153:5000/session/getAll')
-   .then(function (response) {
-     if (response.data.success) {
-       setSessions(response.data.exsitingSession);
-     }
-   })
-   .catch(function (error) {
-     alert('Error');
-   });
-
-
-
-    
-  }
-
-
-
-
-
-
-
+    //Call GET method to retive order list from database and set to order array
+    axios
+      .get(BASE_URL + 'session/getAll')
+      .then(function (response) {
+        if (response.data.success) {
+          setSessions(response.data.exsitingSession);
+        }
+      })
+      .catch(function (error) {
+        alert('Error');
+      });
+  };
 
   //When user press a particular order that redirect to more details screnn of the particular order
   const onPressOrder = () => {
@@ -66,74 +51,68 @@ export default function MySession() {
     const sessionData = {
       sessionID: data._id,
       title: data.title,
-      date:data.date,
-      time:data.time,
-      link:data.link,
+      date: data.date,
+      time: data.time,
+      link: data.link,
       description: data.description,
     };
 
     Navigation.navigate('ViewSpecificSesstion', sessionData);
   };
 
-  const onEditComplaint = (data) => {
+  const onEditComplaint = data => {
     const sessionData = {
       sessionID: data._id,
       title: data.title,
-      date:data.date,
-      time:data.time,
-      link:data.link,
+      date: data.date,
+      time: data.time,
+      link: data.link,
       description: data.description,
-    }
+    };
 
     Navigation.navigate('EditSession', sessionData);
-  }
+  };
 
+  const onEDeleteComplaint = id => {
+    Alert.alert('Are You Sure?', 'Are you sure to delete this session?', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'Yes', onPress: () => deleteComplaint(id)},
+    ]);
+  };
 
-
-
-
-  const onEDeleteComplaint = (id) => {
-
-    Alert.alert(
-        "Are You Sure?",
-        "Are you sure to delete this session?",
-        [
-          {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel"
-          },
-          { text: "Yes", onPress: () => deleteComplaint(id) }
-        ]
-      );
-
-  }
-
-
-
-
-
-  const deleteComplaint = (id) => {
+  const deleteComplaint = id => {
     axios
-    .delete(`http://192.168.43.153:5000/session/delete/${id}`)
-    .then(function (res) {
-      if (res.data.success) {
-        alert("Delete Successfull");
-        setTimeout(()=>{
-          
-          retriveSessions();
-        }, 1000)
-      }
-    })
-    .catch(function (error) {
-      alert('Fail' + error);
-    });
-  }
+      .delete(BASE_URL + `session/delete/${id}`)
+      .then(function (res) {
+        if (res.data.success) {
+          alert('Delete Successfull');
+          setTimeout(() => {
+            retriveSessions();
+          }, 1000);
+        }
+      })
+      .catch(function (error) {
+        alert('Fail' + error);
+      });
+  };
 
   return (
     <Background>
       <View style={styles.container}>
-        <Text style={styles.pageTitle}>Awareness sessions</Text>
+        <Text style={styles.pageTitle}>My sessions</Text>
+
+        <View style={styles.containernew}>
+          <View style={styles.background}>
+            <Image
+              style={styles.image}
+              source={require('../../assets/images/mys.png')}
+            />
+          </View>
+        </View>
 
         {sessions.map((data, index) => {
           return (
@@ -169,9 +148,7 @@ export default function MySession() {
                     name="delete"
                     color="#ffffff"
                     backgroundColor="#6495ed"
-                    onPress={() =>
-                      onEDeleteComplaint(data._id)
-                    }></Icon.Button>
+                    onPress={() => onEDeleteComplaint(data._id)}></Icon.Button>
                 </View>
               </View>
             </View>
@@ -250,5 +227,32 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 15,
+  },
+  containernew: {
+    alignSelf: 'center',
+    margin: 2,
+    flex: 1,
+    width: 350,
+    overflow: 'hidden', // for hide the not important parts from circle
+    margin: 10,
+    height: 200,
+  },
+  background: {
+    // this shape is a circle
+    // border borderRadius same as width and height
+    // borderRadius: 400,
+    width: 535,
+    height: 600,
+    marginLeft: -100, // reposition the circle inside parent view
+    position: 'absolute',
+    bottom: 5, // show the bottom part of circle
+    overflow: 'hidden', // hide not important part of image
+  },
+  image: {
+    height: 200, // same width and height for the container
+    width: 350,
+    position: 'absolute', // position it in circle
+    bottom: 5, // position it in circle
+    marginLeft: 100, // center it in main view same value as marginLeft for circle but positive
   },
 });

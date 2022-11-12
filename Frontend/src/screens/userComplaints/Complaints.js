@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {StyleSheet, Text, View, TouchableOpacity, ImageBackground} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, ImageBackground,ScrollView} from 'react-native';
 import { Card } from 'react-native-paper';
 
 export default function Complaints() {
@@ -8,56 +8,40 @@ export default function Complaints() {
   const Navigation = useNavigation();
 
   return (
-    <View>
-      <Text>Complaints</Text>
 
-      <View style={styles.fixToText}>
-      <TouchableOpacity style={styles.mainButtonBlock} onPress={()=>{Navigation.navigate('SelectComplaintType');}}>
-        <Text style={styles.mainButtonBlockText}>Add New Complaint</Text>
-        </TouchableOpacity>
-  
-        <TouchableOpacity style={styles.mainButtonBlock} onPress={()=>{Navigation.navigate('ViewComplaints');}}>
-          <Text style={styles.mainButtonBlockText}>View Complaints</Text>
-        </TouchableOpacity>
-      </View>
-      
-    </View>
+    <ScrollView style={styles.scrollView} >
+      <Text />
+      <Card style={styles.card} onPress={() => Navigation.navigate("SelectComplaintType")}>
+        <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
+          <Card.Title title="Add New Complaint" subtitle="Add New Complaint" />
+        </ImageBackground>
+      </Card>
+      <Card style={styles.card} onPress={() => Navigation.navigate("ViewComplaints")}>
+        <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
+          <Card.Title title="View Complaints" subtitle="View Complaints" />
+        </ImageBackground>
+      </Card>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  mainButtonBlock: {
-    width: 150,
-    height: 150,
-    backgroundColor: '#6495ed',
-    margin: 10,
-    borderRadius: 15,
-    alignItems: 'center',
-    justifyContent: 'center'
+  scrollView: {
+    backgroundColor: 'white',
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    height: '100%',
+    marginLeft: 0,
+    marginRight: 0,
+    padding: 10,
   },
-  mainButtonBlockText: {
-    fontSize: 20,
-    color: '#ffffff'
+  card: {
+    marginBottom: 10,
+    borderRadius: 20,
   },
-
-  fixToText: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginLeft: 20,
-    marginRight: 20,
-    textAlign: 'justify',
-
-  },
-  header: {
-    fontSize: 21,
-    fontWeight: 'bold',
-    paddingVertical: 12,
-  },
-  row: {
-    flexDirection: 'row',
-    marginTop: 4,
-  },
-  link: {
-    fontWeight: 'bold',
-  },
+  imageBackground: { 
+    width: '100%', 
+    height: 150
+  }
 });

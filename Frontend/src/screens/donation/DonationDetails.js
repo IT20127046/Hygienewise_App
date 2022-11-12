@@ -11,6 +11,7 @@ import Background from '../../components/session/Background';
 import TextInput from '../../components/posts/TextInput';
 import SubmitButton from '../../components/posts/SubmitButton';
 import DatePickerButton from '../../components/posts/DatePickerButton';
+import {BASE_URL} from '../../api/BaseURL.const';
 import {
   StyleSheet,
   Text,
@@ -51,17 +52,17 @@ export default function DonationDetails({navigation}) {
     console.log(data);
     //Call POST method to validate user crenditals form backend and get reponse
     axios
-      .post('http://192.168.43.153:5000/donation/add', data)
+      .post(BASE_URL + 'donation/add', data)
       .then(function (response) {
         if (response.data.success) {
-          alert('Donation Created Success');
+          alert('Donation Added Success');
           setTimeout(() => {
-            Navigation.navigate('Sessions');
+            Navigation.navigate('MyDonation');
           }, 2000);
         }
       })
       .catch(function (error) {
-        alert('Donation Creation Fail');
+        alert('Donation Added Fail');
       });
   };
 
@@ -84,7 +85,6 @@ export default function DonationDetails({navigation}) {
           value={place.value}
           onChangeText={text => setPlace({value: text, error: ''})}
         />
-
 
         <View style={styles.parent}>
           <DatePickerButton
@@ -141,7 +141,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 740,
     alignSelf: 'center',
-    
   },
   card: {
     borderRadius: 15,
