@@ -16,16 +16,18 @@ export default function SubmitButton({mode, style, ...props}) {
 
 const styles = StyleSheet.create({
   button: {
-    width: '45%',
+    width: '30%',
     marginVertical: 10,
     paddingVertical: 2,
     borderRadius: 5,
-    marginHorizontal: 13,
+    marginHorizontal: 0,
+    backgroundColor: '#6495ed',
   },
   text: {
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 10,
     lineHeight: 26,
     color: '#ffffff',
+    marginLeft:11,
   },
 });

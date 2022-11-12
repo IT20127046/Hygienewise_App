@@ -29,7 +29,7 @@ export default function ViewComplaints() {
 
   const retriveComplaints = () => {
     axios
-      .get('http://192.168.56.1:5000/complaint/getAll')
+      .get('http://172.18.12.241:5000/complaint/getAll')
       .then(function (res) {
         if (res.data.success) {
           setComplaints(res.data.exsitingComplaint);
