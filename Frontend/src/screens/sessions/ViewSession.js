@@ -11,6 +11,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Image,
   Button,
   ScrollView,
   SectionList,
@@ -47,12 +48,21 @@ export default function ViewSessions() {
       <View style={styles.container}>
         <Text style={styles.pageTitle}>Awareness sessions</Text>
 
+        <View style={styles.containernew}>
+          <View style={styles.background}>
+            <Image
+              style={styles.image}
+              source={require('../../assets/images/all.png')}
+            />
+          </View>
+        </View>
+
         {sessions.map((data, index) => {
           return (
             <TouchableOpacity
               style={styles.itemBox}
               onPress={() => {
-                Linking.openURL('https://zoom.com');
+                Linking.openURL(`https://meet.google.com/${data.link}`);
               }}>
               <View style={styles.orderListSection}>
                 <View style={styles.orderTitle}>
@@ -139,5 +149,32 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 10,
     padding: 5,
+  },
+  containernew: {
+    alignSelf: 'center',
+    margin: 2,
+    flex: 1,
+    width: 350,
+    overflow: 'hidden', // for hide the not important parts from circle
+    margin: 10,
+    height: 200,
+  },
+  background: {
+    // this shape is a circle
+    // border borderRadius same as width and height
+    // borderRadius: 400,
+    width: 535,
+    height: 600,
+    marginLeft: -100, // reposition the circle inside parent view
+    position: 'absolute',
+    bottom: 5, // show the bottom part of circle
+    overflow: 'hidden', // hide not important part of image
+  },
+  image: {
+    height: 200, // same width and height for the container
+    width: 350,
+    position: 'absolute', // position it in circle
+    bottom: 5, // position it in circle
+    marginLeft: 100, // center it in main view same value as marginLeft for circle but positive
   },
 });

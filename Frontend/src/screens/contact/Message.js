@@ -41,7 +41,7 @@ export default function MessageA({navigation}) {
         if (response.data.success) {
           alert('Message Sent Success');
           setTimeout(() => {
-            Navigation.navigate('MessageA');
+            Navigation.navigate('MyIssues');
           }, 2000);
         }
       })

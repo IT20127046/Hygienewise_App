@@ -23,7 +23,7 @@
  
    //When user press a particular order that redirect to more details screnn of the particular order
    const onPressOrder = () => {
-     Navigation.navigate('ViewOrderDetails');
+     Navigation.navigate('MyIssues');
    };
  
    return (
@@ -70,7 +70,7 @@
                <TouchableOpacity
                  style={styles.mainButtonBlock}
                  onPress={() => {
-                   Navigation.navigate('SelectComplaintType');
+                   Navigation.navigate('MessageA');
                  }}>
                  <Image
                    style={styles.image}
@@ -104,7 +104,7 @@
                <TouchableOpacity
                  style={styles.mainButtonBlock}
                  onPress={() => {
-                   Navigation.navigate('SelectComplaintType');
+                   Navigation.navigate('MessageA');
                  }}>
                  <Image
                    style={styles.image}
