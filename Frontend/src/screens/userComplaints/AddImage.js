@@ -1,12 +1,14 @@
 import {React, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Button, ScrollView} from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 import TextInput from '../../components/form/TextInput';
 import FormBackground from '../../components/form/FormBackground';
 import TextArea from '../../components/form/TextArea';
 import SubmitButton  from '../../components/form/SubmitButton';
+import ImageButton from '../../components/posts/ImagePickerButton';
+import Icon from 'react-native-vector-icons/Feather';
 
 export default function AddImage({route}) {
     const Navigation = useNavigation();
@@ -59,12 +61,35 @@ export default function AddImage({route}) {
     }
 
   return (
-    <View>
-      <Text>Form</Text>
+    <ScrollView style={styles.scrollView}>
+<View>
+      <View
+          style={{
+            backgroundColor: '#6495ed',
+            padding: 8,
+            borderRadius: 20,
+            alignItems: 'center',
+          }}>
+          <Text style={{fontSize: 20, color: '#ffffff'}}>
+            Add New Complaint
+          </Text>
+        </View>
 
-      <Button title={'Select Image'} onPress={onSelectImage}/>
+      
 
       <FormBackground>
+
+      <Icon name="image" size={100} color="#6495ed"></Icon>
+
+      <ImageButton
+          mode="contained"
+          color="#dfdfdf"
+          onPress={onSelectImage}>
+          <Icon name="image" size={20} fontWeight="bold" color="black">
+            &nbsp;Choose Photo
+          </Icon>
+        </ImageButton>
+
         <TextInput
           label="Place"
           returnKeyType="next"
@@ -73,7 +98,7 @@ export default function AddImage({route}) {
           textContentType="text"
         />
 
-        <TextArea
+        <TextInput
           label="Date"
           returnKeyType="next"
           value={date}
@@ -85,7 +110,23 @@ export default function AddImage({route}) {
         Next
       </SubmitButton>
 
+    <Text/>
       </FormBackground>
     </View>
+    </ScrollView>
+    
   )
 }
+
+const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: '#ffffff',
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    height: '100%',
+    marginLeft: 0,
+    marginRight: 0,
+    padding: 10,
+  },
+});
