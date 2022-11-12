@@ -88,7 +88,7 @@ export default function Posts() {
           if (response.data.success) {
             alert('Post Created Success');
             setTimeout(() => {
-              Navigation.navigate('Posts');
+              Navigation.navigate('ViewPostList');
             }, 2000);
           }
         })
@@ -100,7 +100,7 @@ export default function Posts() {
 
   return (
     <Background>
-      <Text style={styles.header}>Create New Post</Text>
+      <Text style={styles.header}></Text>
 
       <View style={[styles.card, styles.shadowProp]}>
         <View style={styles.container}>
@@ -181,8 +181,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 25,
     fontWeight: 'bold',
-    paddingVertical: 8,
-    marginTop: -60,
+    marginTop: -100,
     bottom: 5,
   },
   row: {
@@ -203,7 +202,7 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
     paddingHorizontal: 25,
     width: '115%',
-    height: '95%',
+    height: '100%',
     marginVertical: 3,
     borderWidth: 1,
   },

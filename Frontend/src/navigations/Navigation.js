@@ -16,7 +16,6 @@ import HygieneTrackerMenu from '../screens/hygieneTracker/Menu';
 import UserComplaints from '../screens/userComplaints/Complaints';
 import SelectComplaintType from '../screens/userComplaints/SelectComplaintType';
 import AddComplaintDetails from '../screens/userComplaints/AddComplaintDetails';
-import Posts from '../screens/posts/Posts';
 import DailyTasksMainPage from '../screens/hygieneTracker/dailyTasks/MainPage';
 import ChallengesMainPage from '../screens/hygieneTracker/challenges/MainPage';
 import OtherTasksMainPage from '../screens/hygieneTracker/otherTasks/MainPage';
@@ -46,6 +45,11 @@ import MyDonation from '../screens/donation/MyDonation';
 import ViewSpecificDonation from '../screens/donation/ViewSpecificDonation';
 import MyIssues from '../screens/contact/MyIssues';
 import ViewSpecificIssue from '../screens/contact/ViewSpecificIssue';
+import PostMain from '../screens/posts/PostMain';
+import CreatePost from '../screens/posts/CreatePost';
+import ViewPostList from '../screens/posts/ViewPostList';
+import UpdatePost from '../screens/posts/UpdatePost';
+import ViewSpecificPost from '../screens/posts/ViewSpecificPost';
 
 const Stack = createNativeStackNavigator();
 
@@ -71,14 +75,38 @@ export default function Navigation() {
           component={LoginScreen}
         />
 
-        <Stack.Screen
-          options={{headerShown: false}}
-          name="Posts"
-          component={Posts}
-        />
-
         {/* -------------------- Posts -------------------- */}
 
+        <Stack.Screen
+          options={{title: 'Posts Menu'}}
+          name="PostMain"
+          component={PostMain}
+        />
+        
+        <Stack.Screen
+          options={{title: 'Create New Post'}}
+          name="CreatePost"
+          component={CreatePost}
+        />
+
+        <Stack.Screen
+          options={{title: 'View Posts'}}
+          name="ViewPostList"
+          component={ViewPostList}
+        />
+
+        <Stack.Screen
+          options={{title: 'View Specific Post'}}
+          name="ViewSpecificPost"
+          component={ViewSpecificPost}
+        />
+        <Stack.Screen
+          options={{title: 'Update Post'}}
+          name="UpdatePost"
+          component={UpdatePost}
+        />
+
+       
         {/* -------------------- Complaints -------------------- */}
 
         <Stack.Screen
@@ -107,17 +135,17 @@ export default function Navigation() {
           component={PreviewComplaint}
         />
         <Stack.Screen
-          options={{title: "View Complaints"}}
+          options={{title: 'View Complaints'}}
           name="ViewComplaints"
           component={ViewComplaints}
         />
         <Stack.Screen
-          options={{title: "View Complaint"}}
+          options={{title: 'View Complaint'}}
           name="ViewSpecificComplaint"
           component={ViewSpecificComplaint}
         />
         <Stack.Screen
-          options={{title: "Edit Complaint"}}
+          options={{title: 'Edit Complaint'}}
           name="EditComplaint"
           component={EditComplaint}
         />
@@ -145,111 +173,83 @@ export default function Navigation() {
           component={SelectSession}
         />
 
-<Stack.Screen
+        <Stack.Screen
           options={{title: ''}}
           name="ListOfDonation"
           component={ListOfDonation}
         />
 
-        
-<Stack.Screen
+        <Stack.Screen
           options={{title: ''}}
           name="SendMessage"
           component={SendMessage}
         />
 
-
-               
-<Stack.Screen
+        <Stack.Screen
           options={{title: ''}}
           name="DonationDetails"
           component={DonationDetails}
         />
 
-
-<Stack.Screen
+        <Stack.Screen
           options={{title: ''}}
           name="MessageA"
           component={MessageA}
         />
 
-
-
-<Stack.Screen
+        <Stack.Screen
           options={{title: ''}}
           name="ViewSpecificSesstion"
           component={ViewSpecificSesstion}
         />
 
-
-<Stack.Screen
+        <Stack.Screen
           options={{title: ''}}
           name="EditSession"
           component={EditSession}
         />
 
-
-
-<Stack.Screen
+        <Stack.Screen
           options={{title: 'Hygiene Awareness And Support'}}
           name="SubMenu"
           component={SubMenu}
         />
 
-
-        
-<Stack.Screen
+        <Stack.Screen
           options={{title: 'Hygiene Awareness And Support'}}
           name="DonationSubMenu"
           component={DonationSubMenu}
         />
 
-
-
-                
-<Stack.Screen
+        <Stack.Screen
           options={{title: 'Hygiene Awareness And Support'}}
           name="ContactSubMenu"
           component={ContactSubMenu}
         />
 
-
-
-                       
-<Stack.Screen
+        <Stack.Screen
           options={{title: ''}}
           name="MyDonation"
           component={MyDonation}
         />
 
-
-                              
-<Stack.Screen
+        <Stack.Screen
           options={{title: ''}}
           name="ViewSpecificDonation"
           component={ViewSpecificDonation}
         />
 
-
-
-                                      
-<Stack.Screen
+        <Stack.Screen
           options={{title: ''}}
           name="MyIssues"
           component={MyIssues}
         />
 
-
-
-                                              
-<Stack.Screen
+        <Stack.Screen
           options={{title: ''}}
           name="ViewSpecificIssue"
           component={ViewSpecificIssue}
         />
-
-
-
 
         {/* -------------------- Hygiene Tracker -------------------- */}
         <Stack.Screen
