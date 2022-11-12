@@ -39,6 +39,7 @@ export default function Login({navigation}) {
           user_id: result.data.user_id,
           userID: result.data.userID,
           userName: result.data.userName,
+          authorizedUser: result.data.authorizedUser
         }
         const loggedUserData = ["loggedUserData", JSON.stringify(getUserData)];
         const AccessToken = ["AccessToken", JSON.stringify(result.data.userToken)];

@@ -9,13 +9,13 @@ export default function BottomPanel() {
       <View style={styles.containerMain}>
         <View style={styles.bottomView}>
             <View style={styles.fixToText}>
-                <Text style={styles.textStyle}></Text>
+
+                <Text style={styles.textStyle}>Hello</Text>
                 <Text style={styles.textStyle}>Hello</Text>
                 <Text style={styles.textStyle}>Hello</Text>
                 <Text style={styles.textStyle}>Hello</Text>
                 <Text style={styles.textStyle}>Hello</Text>
             </View>
-          {/* <Text style={styles.textStyle}>Bottom View</Text> */}
         </View>
       </View>
     </SafeAreaView>
