@@ -39,7 +39,7 @@ export default function ViewSpecificIssue({route}) {
          <View style={styles.background}>
            <Image
              style={styles.image}
-             source={require('../../assets/images/msg1.png')}
+             source={require('../../assets/images/msg4.png')}
            />
          </View>
        </View>

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import { Card, List } from 'react-native-paper'
-import { ImageBackground, StyleSheet, View } from 'react-native'
+import { Button, Card, Dialog, List, Portal, Provider, Text } from 'react-native-paper'
+import { ImageBackground, StyleSheet, View, ScrollView } from 'react-native'
 
 /**
  * To render the list of challenges existing in the database
@@ -26,9 +26,45 @@ export default function ChallengesList() {
             })
     }, [])
 
-    // To render each challenge
-    const onSelectChallenge = () => {
+    // This is the state for the dialog box
+    const [visible, setVisible] = React.useState(false);
+    const [selectedChallenge, setSelectedChallenge] = React.useState({});
+    const showDialog = () => {
+        setVisible(true);
+    }
+    const hideDialog = () => {
+        setVisible(false);
+        setSelectedChallenge({});
+    }
 
+    const onAccept = () => {
+        // add the challenge to the logged in user's challenges list
+    }
+
+    // To display a dialog box with task name and calendar view when a task is clicked
+    if (visible) {
+        return (
+            <Provider>
+                <Portal.Host>
+                    <Dialog visible={visible} onDismiss={hideDialog}>
+                        <Dialog.Title>{selectedChallenge.challengeName}</Dialog.Title>
+                        <Dialog.ScrollArea>
+                            <ScrollView>
+                                {selectedChallenge.taskList.map((task, index) => {
+                                    return (
+                                        <Text key={index}>{task.taskName}</Text>
+                                    )
+                                })}
+                            </ScrollView>
+                        </Dialog.ScrollArea>
+                        <Dialog.Actions>
+                            <Button onPress={onAccept} color="#5CB3FF">Accept</Button>
+                            <Button onPress={hideDialog} color="#5CB3FF">Done</Button>
+                        </Dialog.Actions>
+                    </Dialog>
+                </Portal.Host>
+            </Provider>
+        );
     }
 
     return (
@@ -36,7 +72,12 @@ export default function ChallengesList() {
             {allChallenges.map((item, index) => {
                 return (
                     <View style={styles.container} key={index}>
-                        <Card style={styles.card} onPress={onSelectChallenge}>
+                        <Card style={styles.card} onPress={
+                            () => {
+                                showDialog();
+                                setSelectedChallenge(item);
+                            }
+                        }>
                             <ImageBackground borderRadius={20} source={require('../../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
                                 <Card.Title title={item.challengeName} />
                             </ImageBackground>

@@ -38,7 +38,7 @@ export default function ViewSpecificDonation({route}) {
          <View style={styles.background}>
            <Image
              style={styles.image}
-             source={require('../../assets/images/donation1.png')}
+             source={require('../../assets/images/dd2.png')}
            />
          </View>
        </View>

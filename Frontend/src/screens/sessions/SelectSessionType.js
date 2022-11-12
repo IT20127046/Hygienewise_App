@@ -13,16 +13,16 @@ export default function SelectSession({ navigation }) {
   return (
     <ScrollView style={styles.scrollView} >
       <Text />
-      <Card style={styles.card} onPress={() => navigation.navigate("ViewAllSessions")}>
-        <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
-          <Card.Title title="All Session" subtitle="View All Awareness Sessions" />
-        </ImageBackground>
-      </Card>
       <Card style={styles.card} onPress={() => navigation.navigate("Sessions")}>
         <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
           <Card.Title title="Add New Session" subtitle="Add a new session to the system" />
         </ImageBackground>
       </Card>
+      <Card style={styles.card} onPress={() => navigation.navigate("ViewAllSessions")}>
+        <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
+          <Card.Title title="All Session" subtitle="View All Awareness Sessions" />
+        </ImageBackground>
+      </Card>   
       <Card style={styles.card} onPress={() => navigation.navigate("MySessions")}>
         <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
           <Card.Title title="My Sessions" subtitle="View My Sessions" />

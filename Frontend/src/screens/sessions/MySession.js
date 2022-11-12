@@ -12,6 +12,7 @@ import {
   Text,
   View,
   Alert,
+  Image,
   TouchableOpacity,
   Button,
   ScrollView,
@@ -133,7 +134,16 @@ export default function MySession() {
   return (
     <Background>
       <View style={styles.container}>
-        <Text style={styles.pageTitle}>Awareness sessions</Text>
+        <Text style={styles.pageTitle}>My sessions</Text>
+
+        <View style={styles.containernew}>
+          <View style={styles.background}>
+            <Image
+              style={styles.image}
+              source={require('../../assets/images/mys.png')}
+            />
+          </View>
+        </View>
 
         {sessions.map((data, index) => {
           return (
@@ -250,5 +260,32 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 15,
+  },
+  containernew: {
+    alignSelf: 'center',
+    margin: 2,
+    flex: 1,
+    width: 350,
+    overflow: 'hidden', // for hide the not important parts from circle
+    margin: 10,
+    height: 200,
+  },
+  background: {
+    // this shape is a circle
+    // border borderRadius same as width and height
+    // borderRadius: 400,
+    width: 535,
+    height: 600,
+    marginLeft: -100, // reposition the circle inside parent view
+    position: 'absolute',
+    bottom: 5, // show the bottom part of circle
+    overflow: 'hidden', // hide not important part of image
+  },
+  image: {
+    height: 200, // same width and height for the container
+    width: 350,
+    position: 'absolute', // position it in circle
+    bottom: 5, // position it in circle
+    marginLeft: 100, // center it in main view same value as marginLeft for circle but positive
   },
 });

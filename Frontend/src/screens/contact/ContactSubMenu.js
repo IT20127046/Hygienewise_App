@@ -14,7 +14,7 @@ export default function ContactSubMenu({ navigation }) {
     <ScrollView style={styles.scrollView} >
 
       <Text />
-      <Card style={styles.card} onPress={() => navigation.navigate("MessageA")}>
+      <Card style={styles.card} onPress={() => navigation.navigate("SendMessage")}>
         <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
           <Card.Title title="Ask The Authorities"  />
         </ImageBackground>
