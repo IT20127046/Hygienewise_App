@@ -5,6 +5,7 @@ import {React, useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
 import Background from '../../components/session/Background';
+import {BASE_URL} from '../../api/BaseURL.const';
 
 import {
   StyleSheet,
@@ -45,15 +46,13 @@ export default function ListOfDonation() {
               </TouchableOpacity>
 
               <TouchableOpacity
-               onPress={() => {
+                onPress={() => {
                   Navigation.navigate('DonationDetails');
                 }}
-               style={styles.mainButtonBlock}>
+                style={styles.mainButtonBlock}>
                 <Text style={styles.mainButtonBlockText}>Sanitizing Gel</Text>
 
-                <View
-                  style={styles.statusSection}
-                 >
+                <View style={styles.statusSection}>
                   <Text style={styles.statusText}>Donate</Text>
                 </View>
               </TouchableOpacity>
@@ -61,15 +60,10 @@ export default function ListOfDonation() {
           </View>
         </View>
 
-
-
-
         <View>
           <View style={styles.itemBox}>
             <View style={styles.fixToText}>
-              <TouchableOpacity
-                style={styles.mainButtonBlock}
-              >
+              <TouchableOpacity style={styles.mainButtonBlock}>
                 <Image
                   style={styles.image}
                   source={require('../../assets/images/d2.png')}
@@ -77,10 +71,10 @@ export default function ListOfDonation() {
               </TouchableOpacity>
 
               <TouchableOpacity
-              onPress={() => {
+                onPress={() => {
                   Navigation.navigate('DonationDetails');
                 }}
-               style={styles.mainButtonBlock}>
+                style={styles.mainButtonBlock}>
                 <Text style={styles.mainButtonBlockText}>Face Masks</Text>
 
                 <View
@@ -95,30 +89,24 @@ export default function ListOfDonation() {
           </View>
         </View>
 
-
-
         <View>
           <View style={styles.itemBox}>
             <View style={styles.fixToText}>
-              <TouchableOpacity
-                style={styles.mainButtonBlock}
-               >
+              <TouchableOpacity style={styles.mainButtonBlock}>
                 <Image
                   style={styles.image}
                   source={require('../../assets/images/d3.png')}
                 />
               </TouchableOpacity>
 
-              <TouchableOpacity 
-              onPress={() => {
+              <TouchableOpacity
+                onPress={() => {
                   Navigation.navigate('DonationDetails');
                 }}
-              style={styles.mainButtonBlock}>
+                style={styles.mainButtonBlock}>
                 <Text style={styles.mainButtonBlockText}>Clean Water</Text>
 
-                <View
-                  style={styles.statusSection}
-                >
+                <View style={styles.statusSection}>
                   <Text style={styles.statusText}>Donate</Text>
                 </View>
               </TouchableOpacity>
@@ -126,48 +114,30 @@ export default function ListOfDonation() {
           </View>
         </View>
 
-
-
-
         <View>
           <View style={styles.itemBox}>
             <View style={styles.fixToText}>
-              <TouchableOpacity
-                style={styles.mainButtonBlock}
-               >
+              <TouchableOpacity style={styles.mainButtonBlock}>
                 <Image
                   style={styles.image}
                   source={require('../../assets/images/d4.png')}
                 />
               </TouchableOpacity>
 
-              <TouchableOpacity 
-              onPress={() => {
+              <TouchableOpacity
+                onPress={() => {
                   Navigation.navigate('DonationDetails');
                 }}
-              style={styles.mainButtonBlock}>
+                style={styles.mainButtonBlock}>
                 <Text style={styles.mainButtonBlockText}>Towels</Text>
 
-                <View
-                  style={styles.statusSection}
-                >
+                <View style={styles.statusSection}>
                   <Text style={styles.statusText}>Donate</Text>
                 </View>
               </TouchableOpacity>
             </View>
           </View>
         </View>
-
-
-
-
-
-
-
-
-
-
-
       </View>
     </Background>
   );
