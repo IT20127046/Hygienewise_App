@@ -1,6 +1,3 @@
-/**
- * This componenets used to display order list for the site manager
- */
 import {React, useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
