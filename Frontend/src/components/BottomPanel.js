@@ -1,7 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faMugSaucer } from '@fortawesome/free-solid-svg-icons/faMugSaucer'
+
 
 export default function BottomPanel() {
 
@@ -10,7 +9,7 @@ export default function BottomPanel() {
       <View style={styles.containerMain}>
         <View style={styles.bottomView}>
             <View style={styles.fixToText}>
-                <Text style={styles.textStyle}><FontAwesomeIcon icon={ faMugSaucer } /></Text>
+                <Text style={styles.textStyle}></Text>
                 <Text style={styles.textStyle}>Hello</Text>
                 <Text style={styles.textStyle}>Hello</Text>
                 <Text style={styles.textStyle}>Hello</Text>

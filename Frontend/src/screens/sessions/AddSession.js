@@ -71,7 +71,7 @@ export default function AddSessions({ navigation }) {
         if (response.data.success) {
           alert('Session Created Success');
           setTimeout(() => {
-            Navigation.navigate('Sessions');
+            Navigation.navigate('MySessions');
           }, 2000);
         }
       })
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 200, // same width and height for the container
-    width: 380,
+    width: 350,
     position: 'absolute', // position it in circle
     bottom: 5, // position it in circle
     marginLeft: 100, // center it in main view same value as marginLeft for circle but positive

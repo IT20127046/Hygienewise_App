@@ -50,7 +50,7 @@ export default function EditSession({route}) {
       });
   };
 
-  return (
+  return (   
     <FormBackground>
       <TextInput
         label="Title"
