@@ -1,5 +1,6 @@
 import {React, useState} from 'react';
 import axios from 'axios';
+import {BASE_URL} from '../../api/BaseURL.const';
 import {useNavigation} from '@react-navigation/native';
 import {
   StyleSheet,
@@ -36,7 +37,7 @@ export default function PreviewComplaint({route}) {
 
     console.log(data);
 
-    axios.post('http://192.168.56.1:5000/complaint/add', data)
+    axios.post(BASE_URL + 'complaint/add', data)
       .then(function (response) {
         if (response.data.success) {
           alert('Success');
