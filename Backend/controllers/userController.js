@@ -96,6 +96,7 @@
              userID: user.userID,
              nicNo: user.nicNo,
              userName: user.userName,
+             authorizedUser: user.authorizedUser
            };
            const userToken = jwt.sign(payload, process.env.SECRET_KEY, {
              expiresIn: 1440,
@@ -106,7 +107,8 @@
               userToken: userToken,
               user_id: payload._id,
               userID: payload.userID,
-              userName: payload.userName
+              userName: payload.userName,
+              authorizedUser: payload.authorizedUser
            });
          } else {
            return res.status(200).json({

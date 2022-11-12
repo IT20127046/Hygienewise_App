@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Divider, List } from 'react-native-paper'
-import { View } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
 
 /**
  * This component is used to display the list of other tasks.
@@ -23,6 +23,15 @@ export default function TaskList() {
         console.log(error)
       })
   }, [])
+
+  const markAsDone = (task) => {
+    //console.log("Mark as done: ", task)
+  }
+
+  const removeTask = (task) => {
+    //console.log("Remove task: ", task)
+  }
+
   return (
     <List.Section>
       {otherTasks.map((item, index) => {
@@ -33,8 +42,16 @@ export default function TaskList() {
               titleStyle={{ color: 'black', fontSize: 20 }}
               description={item.taskDescription}
               descriptionStyle={{ color: 'gray', fontSize: 15 }}
-              left={props => <List.Icon {...props} icon="checkbox-blank-circle" color="lightgray" />}
-              right={props => <List.Icon {...props} icon="close-circle" color="lightgray" />}
+              left={props =>
+                <TouchableOpacity onPress={markAsDone(item)}>
+                  <List.Icon {...props} icon="checkbox-blank-circle" color="lightgray" />
+                </TouchableOpacity>
+              }
+              right={props =>
+                <TouchableOpacity onPress={removeTask(item)}>
+                  <List.Icon {...props} icon="close-circle" color="lightgray" />
+                </TouchableOpacity>
+              }
             />
             <Divider />
           </View>

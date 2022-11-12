@@ -8,6 +8,7 @@
     userID: { type: String, required: true },
      userName: { type: String, required: true },
      password: { type: String, required: true },
+     authorizedUser: { type: Boolean, default: false },
  });
  
  module.exports = mongoose.model("User", user);

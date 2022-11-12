@@ -71,7 +71,7 @@ export default function AddSessions({ navigation }) {
         if (response.data.success) {
           alert('Session Created Success');
           setTimeout(() => {
-            Navigation.navigate('Sessions');
+            Navigation.navigate('MySessions');
           }, 2000);
         }
       })
@@ -88,7 +88,7 @@ export default function AddSessions({ navigation }) {
           <View style={styles.background}>
             <Image
               style={styles.image}
-              source={require('../../assets/images/session1.jpg')}
+              source={require('../../assets/images/s3.png')}
             />
           </View>
         </View>
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
   background: {
     // this shape is a circle
     // border borderRadius same as width and height
-    borderRadius: 400,
+    // borderRadius: 400,
     width: 535,
     height: 600,
     marginLeft: -100, // reposition the circle inside parent view
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 200, // same width and height for the container
-    width: 380,
+    width: 350,
     position: 'absolute', // position it in circle
     bottom: 5, // position it in circle
     marginLeft: 100, // center it in main view same value as marginLeft for circle but positive

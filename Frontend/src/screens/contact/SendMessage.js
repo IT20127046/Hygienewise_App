@@ -23,7 +23,7 @@
  
    //When user press a particular order that redirect to more details screnn of the particular order
    const onPressOrder = () => {
-     Navigation.navigate('ViewOrderDetails');
+     Navigation.navigate('MyIssues');
    };
  
    return (
@@ -36,7 +36,7 @@
                <TouchableOpacity
                  style={styles.mainButtonBlock}
                  onPress={() => {
-                   Navigation.navigate('SelectComplaintType');
+                   Navigation.navigate('MessageA');
                  }}>
                  <Image
                    style={styles.image}
@@ -44,15 +44,16 @@
                  />
                </TouchableOpacity>
  
-               <TouchableOpacity style={styles.mainButtonBlock}>
+               <TouchableOpacity  onPress={() => {
+                   Navigation.navigate('MessageA');
+                 }}
+                  style={styles.mainButtonBlock}>
                  <Text style={styles.mainButtonBlockTextnew}>PHI</Text>
                  <Text style={styles.mainButtonBlockText}>Mr. Sadun Gamage</Text>
  
                  <View
                    style={styles.statusSection}
-                   onPress={() => {
-                     Linking.openURL('https://google.com');
-                   }}>
+                  >
                    <Text style={styles.statusText}>Message</Text>
                  </View>
                </TouchableOpacity>
@@ -69,7 +70,7 @@
                <TouchableOpacity
                  style={styles.mainButtonBlock}
                  onPress={() => {
-                   Navigation.navigate('SelectComplaintType');
+                   Navigation.navigate('MessageA');
                  }}>
                  <Image
                    style={styles.image}
@@ -77,15 +78,17 @@
                  />
                </TouchableOpacity>
  
-               <TouchableOpacity style={styles.mainButtonBlock}>
+               <TouchableOpacity 
+                onPress={() => {
+                   Navigation.navigate('MessageA');
+                 }}
+               style={styles.mainButtonBlock}>
                <Text style={styles.mainButtonBlockTextnew}>Doctor</Text>
                  <Text style={styles.mainButtonBlockText}>Mrs. Thilini Perera</Text>
  
                  <View
                    style={styles.statusSection}
-                   onPress={() => {
-                     Linking.openURL('https://google.com');
-                   }}>
+                 >
                    <Text style={styles.statusText}>Message</Text>
                  </View>
                </TouchableOpacity>
@@ -101,7 +104,7 @@
                <TouchableOpacity
                  style={styles.mainButtonBlock}
                  onPress={() => {
-                   Navigation.navigate('SelectComplaintType');
+                   Navigation.navigate('MessageA');
                  }}>
                  <Image
                    style={styles.image}
@@ -109,15 +112,16 @@
                  />
                </TouchableOpacity>
  
-               <TouchableOpacity style={styles.mainButtonBlock}>
+               <TouchableOpacity  onPress={() => {
+                   Navigation.navigate('MessageA');
+                 }}
+                  style={styles.mainButtonBlock}>
                <Text style={styles.mainButtonBlockTextnew}>Family Health Officer</Text>
                  <Text style={styles.mainButtonBlockText}>Mrs. Sasini Perera</Text>
  
                  <View
                    style={styles.statusSection}
-                   onPress={() => {
-                     Linking.openURL('https://google.com');
-                   }}>
+                   >
                    <Text style={styles.statusText}>Message</Text>
                  </View>
                </TouchableOpacity>

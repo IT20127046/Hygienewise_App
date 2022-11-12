@@ -41,7 +41,7 @@ export default function MessageA({navigation}) {
         if (response.data.success) {
           alert('Message Sent Success');
           setTimeout(() => {
-            Navigation.navigate('MessageA');
+            Navigation.navigate('MyIssues');
           }, 2000);
         }
       })
@@ -58,7 +58,7 @@ export default function MessageA({navigation}) {
           <View style={styles.background}>
             <Image
               style={styles.image}
-              source={require('../../assets/images/msg1.png')}
+              source={require('../../assets/images/msg3.png')}
             />
           </View>
         </View>

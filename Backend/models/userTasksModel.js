@@ -5,9 +5,6 @@ const userTasks = new mongoose.Schema({
     dailyTasks: [{ type: Object, required: true }],
     challenges: [{ type: Object, required: true }],
     otherTasks: [{ type: Object, required: true }],
-    completedDailyTasks: [{ type: Object, required: true }],
-    completedChallenges: [{ type: Object, required: true }],
-    completedOtherTasks: [{ type: Object, required: true }],
 });
 
 module.exports = mongoose.model("UserTasks", userTasks);
