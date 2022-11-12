@@ -29,7 +29,6 @@ export default function MySession() {
   }, []);
 
   const retriveSessions = () => {
-    //Call GET method to retive order list from database and set to order array
     axios
       .get(BASE_URL + 'session/getAll')
       .then(function (response) {
