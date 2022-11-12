@@ -36,7 +36,7 @@ export default function ListOfDonation() {
               <TouchableOpacity
                 style={styles.mainButtonBlock}
                 onPress={() => {
-                  Navigation.navigate('SelectComplaintType');
+                  Navigation.navigate('DonationDetails');
                 }}>
                 <Image
                   style={styles.image}
@@ -44,14 +44,16 @@ export default function ListOfDonation() {
                 />
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.mainButtonBlock}>
+              <TouchableOpacity
+               onPress={() => {
+                  Navigation.navigate('DonationDetails');
+                }}
+               style={styles.mainButtonBlock}>
                 <Text style={styles.mainButtonBlockText}>Sanitizing Gel</Text>
 
                 <View
                   style={styles.statusSection}
-                  onPress={() => {
-                    Linking.openURL('https://google.com');
-                  }}>
+                 >
                   <Text style={styles.statusText}>Donate</Text>
                 </View>
               </TouchableOpacity>
@@ -67,16 +69,18 @@ export default function ListOfDonation() {
             <View style={styles.fixToText}>
               <TouchableOpacity
                 style={styles.mainButtonBlock}
-                onPress={() => {
-                  Navigation.navigate('SelectComplaintType');
-                }}>
+              >
                 <Image
                   style={styles.image}
                   source={require('../../assets/images/d2.png')}
                 />
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.mainButtonBlock}>
+              <TouchableOpacity
+              onPress={() => {
+                  Navigation.navigate('DonationDetails');
+                }}
+               style={styles.mainButtonBlock}>
                 <Text style={styles.mainButtonBlockText}>Face Masks</Text>
 
                 <View
@@ -98,23 +102,23 @@ export default function ListOfDonation() {
             <View style={styles.fixToText}>
               <TouchableOpacity
                 style={styles.mainButtonBlock}
-                onPress={() => {
-                  Navigation.navigate('SelectComplaintType');
-                }}>
+               >
                 <Image
                   style={styles.image}
                   source={require('../../assets/images/d3.png')}
                 />
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.mainButtonBlock}>
+              <TouchableOpacity 
+              onPress={() => {
+                  Navigation.navigate('DonationDetails');
+                }}
+              style={styles.mainButtonBlock}>
                 <Text style={styles.mainButtonBlockText}>Clean Water</Text>
 
                 <View
                   style={styles.statusSection}
-                  onPress={() => {
-                    Linking.openURL('https://google.com');
-                  }}>
+                >
                   <Text style={styles.statusText}>Donate</Text>
                 </View>
               </TouchableOpacity>
@@ -130,23 +134,23 @@ export default function ListOfDonation() {
             <View style={styles.fixToText}>
               <TouchableOpacity
                 style={styles.mainButtonBlock}
-                onPress={() => {
-                  Navigation.navigate('SelectComplaintType');
-                }}>
+               >
                 <Image
                   style={styles.image}
                   source={require('../../assets/images/d4.png')}
                 />
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.mainButtonBlock}>
+              <TouchableOpacity 
+              onPress={() => {
+                  Navigation.navigate('DonationDetails');
+                }}
+              style={styles.mainButtonBlock}>
                 <Text style={styles.mainButtonBlockText}>Towels</Text>
 
                 <View
                   style={styles.statusSection}
-                  onPress={() => {
-                    Linking.openURL('https://google.com');
-                  }}>
+                >
                   <Text style={styles.statusText}>Donate</Text>
                 </View>
               </TouchableOpacity>
