@@ -1,6 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 
+
 export default function BottomPanel() {
 
   return (
@@ -8,6 +9,7 @@ export default function BottomPanel() {
       <View style={styles.containerMain}>
         <View style={styles.bottomView}>
             <View style={styles.fixToText}>
+
                 <Text style={styles.textStyle}>Hello</Text>
                 <Text style={styles.textStyle}>Hello</Text>
                 <Text style={styles.textStyle}>Hello</Text>
