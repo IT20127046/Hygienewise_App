@@ -63,7 +63,7 @@
      <Card style={styles.card}>
        <ImageBackground source={require('../assets/images/Hygienewise-Logo.png')} style={{ width: 150, height: 150, alignSelf: "center" }} />
      </Card>
-     <Card style={styles.card} onPress={() => navigation.navigate("Posts")}>
+     <Card style={styles.card} onPress={() => navigation.navigate("PostMain")}>
        <ImageBackground borderRadius={20} source={require('../assets/images/MenuBackground.jpg')} style={{ width: '100%', height: 120 }}>
          <Card.Title title="Posts" subtitle="Subtitle or description" />
        </ImageBackground>
