@@ -11,6 +11,7 @@ import Background from '../../components/session/Background';
 import TextInput from '../../components/posts/TextInput';
 import SubmitButton from '../../components/posts/SubmitButton';
 import DatePickerButton from '../../components/posts/DatePickerButton';
+import {BASE_URL} from '../../api/BaseURL.const';
 import {
   StyleSheet,
   Text,
@@ -20,7 +21,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-export default function AddSessions({ navigation }) {
+export default function AddSessions({navigation}) {
   const Navigation = useNavigation();
 
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -66,7 +67,7 @@ export default function AddSessions({ navigation }) {
     console.log(data);
     //Call POST method to validate user crenditals form backend and get reponse
     axios
-      .post('http://192.168.43.153:5000/session/add', data)
+      .post(BASE_URL + 'session/add', data)
       .then(function (response) {
         if (response.data.success) {
           alert('Session Created Success');
@@ -82,7 +83,7 @@ export default function AddSessions({ navigation }) {
 
   return (
     <Background>
-     <Text style={styles.header}>Add New Session</Text>
+      <Text style={styles.header}>Add New Session</Text>
       <View style={[styles.card, styles.shadowProp]}>
         <View style={styles.container}>
           <View style={styles.background}>
@@ -162,7 +163,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     marginTop: -60,
     bottom: 5,
-  }, 
+  },
   row: {
     flexDirection: 'row',
     marginTop: 4,
@@ -216,9 +217,4 @@ const styles = StyleSheet.create({
     bottom: 5, // position it in circle
     marginLeft: 100, // center it in main view same value as marginLeft for circle but positive
   },
-
-
-  
-  
- 
 });
