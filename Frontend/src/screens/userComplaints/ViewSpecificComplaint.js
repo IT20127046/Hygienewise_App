@@ -2,6 +2,7 @@ import {React, useEffect, useState} from 'react';
 import axios from 'axios';
 import {BASE_URL} from '../../api/BaseURL.const';
 import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   StyleSheet,
   Text,
@@ -29,10 +30,23 @@ export default function ViewSpecificComplaint({route}) {
   const imagePlace = route.params.imagePlace;
   const imageDate = route.params.imageDate;
 
+  const [user_id, setUser_id] = useState("");
+  const [userName, setUserName] = useState("");
+
+  const [userResponse, setUserResponse] = useState([]);
   const [responseForm, setResponseForm] = useState(false);
   const [response, setResponse] = useState('');
 
   useEffect(() => {
+
+    handleLoggedUser();
+
+    retriveComplaint();
+
+    retriveUserResponse();
+  }, []);
+
+  const retriveComplaint = () => {
     axios
       .get(BASE_URL + 'complaint/getAll')
       .then(function (res) {
@@ -43,14 +57,58 @@ export default function ViewSpecificComplaint({route}) {
       .catch(function (error) {
         alert('Fail' + error);
       });
-  }, []);
+  }
+
+  const retriveUserResponse = () => {
+    axios
+      .get(BASE_URL + 'userResponse/getAll')
+      .then(function (res) {
+        if (res.data.success) {
+          setUserResponse(res.data.exsitingUserResponses);
+        }
+      })
+      .catch(function (error) {
+        alert('Fail' + error);
+      });
+  }
+
+  const handleLoggedUser = async () => {
+
+    // Get user data from AsyncStorage
+    const userData = await AsyncStorage.getItem('loggedUserData');  
+
+    // Pass userData JSON object to array
+    const userDataArray = JSON.parse(userData);
+
+    setUser_id(userDataArray.user_id);
+    setUserName(userDataArray.userName);
+  }
 
   const onPressResponse = () => {
     setResponseForm(true);
   };
 
   const onPressSendResponse = () => {
-    
+    const data = {
+      userID: user_id,
+      userName: userName,
+      complaintID: complaintID,
+      reponse: response
+    }
+
+    axios
+      .post(BASE_URL + 'userResponse/add', data)
+      .then(function (response) {
+        if (response.data.success) {
+          alert("Response Send Successfull");
+          retriveComplaint();
+          retriveUserResponse();
+          setResponseForm(false);
+        }
+      })
+      .catch(function (error) {
+        alert('Fail' + error);
+      });
   }
 
   return (
@@ -117,6 +175,23 @@ export default function ViewSpecificComplaint({route}) {
             ) : (
               <View></View>
             )}
+          </View>
+
+          <View>
+          <View style={{alignItems: 'center'}}>
+                <View style={styles.reponseDiv}>
+                {userResponse.map((response, index)=>{
+              return(
+                <View style={{borderRadius: 10, padding: 8, backgroundColor: '#ffffff', margin: 8}}>
+                  <Text style={{fontSize: 18}}>{response.reponse}</Text>
+                  <Text style={{fontSize: 15}}> By - {response.userName}</Text>
+                  <Text/>
+                </View>
+              )
+            })}
+                  </View>
+                  </View>
+            
           </View>
 
           <Text />
