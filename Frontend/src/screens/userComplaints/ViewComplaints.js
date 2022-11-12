@@ -13,6 +13,7 @@ import {
   ImageBackground,
   Alert 
 } from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 import TextInput from '../../components/form/TextInput';
 import FormBackground from '../../components/form/FormBackground';
@@ -104,20 +105,31 @@ export default function ViewComplaints() {
   }
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.scrollView}>
       <View>
-        <Text>My Complaints</Text>
+      <View
+          style={{
+            backgroundColor: '#6495ed',
+            padding: 8,
+            borderRadius: 20,
+            alignItems: 'center',
+          }}>
+          <Text style={{fontSize: 20, color: '#ffffff'}}>
+            View Complaints
+          </Text>
+        </View>
+
         <View style={{alignItems: 'center'}}>
           {complaints.map((complaint, index) => {
             return (
               <View style={styles.complaintViewDiv}>
                 <View style={styles.fixToText}>
                   <View style={{width: 150}}>
-                    <ImageBackground style={styles.complaintImage} />
+                    <Image source={require('../../assets/images/img2.png')} style={styles.previewImage} />
                   </View>
                   <View style={{width: 100}}>
                     <View>
-                      <Text>{complaint.title}</Text>
+                      <Text style={{fontSize: 18}}>{complaint.title}</Text>
                       <View style={styles.fixToButton}>
                         <View style={{ margin: 5}}><Button title='View' color="#6495ed" onPress={()=> onViewComplaint(complaint)} style={{ width: 100, fontSize: 12}}/></View>
                         <View style={{ margin: 5}}><Button title='E' color="#6495ed"    onPress={()=> onEditComplaint(complaint)} style={{ width: 100, fontSize: 12}}/></View>
@@ -136,8 +148,18 @@ export default function ViewComplaints() {
 }
 
 const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: 'white',
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    height: '100%',
+    marginLeft: 0,
+    marginRight: 0,
+    padding: 10,
+  },
   complaintViewDiv: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#F8F6F0',
     shadowColor: '#6495ed',
     shadowOffset: {
       width: 0,
@@ -146,12 +168,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    width: '80%',
+    width: '90%',
     minHeight: 150,
     padding: 20,
     margin: 10,
-    borderColor: '#6495ed',
-    borderWidth: 2,
+    borderRadius: 10
   },
   fixToText: {
     flexDirection: 'row',
@@ -170,5 +191,11 @@ const styles = StyleSheet.create({
     width: '80%',
     borderWidth: 1,
     borderColor: 'black',
+  },
+  previewImage: {
+    height: 100,
+    width: '90%',
+    borderWidth: 1,
+    borderRadius: 10
   },
 });

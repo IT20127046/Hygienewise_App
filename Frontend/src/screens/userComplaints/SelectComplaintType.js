@@ -1,50 +1,48 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Button, ScrollView, ImageBackground} from 'react-native';
+import { Card } from 'react-native-paper';
 
 export default function SelectComplaintType() {
 
     const Navigation = useNavigation();
 
   return (
-    <View>
-      <Text>Complaints</Text>
+    <ScrollView style={styles.scrollView} >
+      <Text />
+      <Card style={styles.card} onPress={() => Navigation.navigate("AddComplaintDetails")}>
+        <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
+          <Card.Title title="Community Complaint" subtitle="Community Complaint" />
+        </ImageBackground>
+      </Card>
+      <Card style={styles.card} onPress={() => Navigation.navigate("AddComplaintDetails")}>
+        <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
+          <Card.Title title="Complaint to Authorized Person" subtitle="Complaint to Authorized Person" />
+        </ImageBackground>
+      </Card>
+  </ScrollView>
 
-      <View style={styles.fixToText}>
-      <TouchableOpacity style={styles.mainButtonBlock} onPress={()=>{Navigation.navigate('AddComplaintDetails');}}>
-        <Text style={styles.mainButtonBlockText}>Community Complaint</Text>
-        </TouchableOpacity>
-  
-        <TouchableOpacity style={styles.mainButtonBlock}>
-          <Text style={styles.mainButtonBlockText}>Complaint to Authorized Person</Text>
-        </TouchableOpacity>
-      </View>
-      
-    </View>
   )
 }
 
 const styles = StyleSheet.create({
-    mainButtonBlock: {
-      width: 300,
-      height: 150,
-      backgroundColor: '#6495ed',
-      margin: 10,
-      borderRadius: 15,
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    mainButtonBlockText: {
-      fontSize: 20,
-      color: '#ffffff'
-    },
-  
-    fixToText: {
-      marginLeft: 20,
-      marginRight: 20,
-      textAlign: 'justify',
-      alignItems: 'center'
-    },
-
+  scrollView: {
+    backgroundColor: 'white',
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    height: '100%',
+    marginLeft: 0,
+    marginRight: 0,
+    padding: 10,
+  },
+  card: {
+    marginBottom: 10,
+    borderRadius: 20,
+  },
+  imageBackground: { 
+    width: '100%', 
+    height: 150
+  }
   });
   

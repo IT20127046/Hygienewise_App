@@ -13,10 +13,13 @@ export default function FormBackground({children}) {
 
 const styles = StyleSheet.create({
     container: {
+      backgroundColor: '#F8F6F0',
+      margin: 10,
       padding: 20,
       width: '100%',
       maxWidth: 340,
       alignSelf: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      borderRadius: 20
     },
   })
