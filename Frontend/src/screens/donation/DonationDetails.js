@@ -54,14 +54,14 @@ export default function DonationDetails({navigation}) {
       .post('http://192.168.43.153:5000/donation/add', data)
       .then(function (response) {
         if (response.data.success) {
-          alert('Donation Created Success');
+          alert('Donation Added Success');
           setTimeout(() => {
-            Navigation.navigate('Sessions');
+            Navigation.navigate('MyDonation');
           }, 2000);
         }
       })
       .catch(function (error) {
-        alert('Donation Creation Fail');
+        alert('Donation Added Fail');
       });
   };
 
