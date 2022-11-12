@@ -1,5 +1,6 @@
 import {React, useEffect, useState} from 'react';
 import axios from 'axios';
+import {BASE_URL} from '../../api/BaseURL.const';
 import {useNavigation} from '@react-navigation/native';
 import {
   StyleSheet,
@@ -36,7 +37,7 @@ export default function EditComplaint({route}) {
     };
 
     axios
-      .put(`http://192.168.56.1:5000/complaint/update/${complaintID}`, data)
+      .put(BASE_URL + `complaint/update/${complaintID}`, data)
       .then(function (res) {
         if (res.data.success) {
           alert('Success');
