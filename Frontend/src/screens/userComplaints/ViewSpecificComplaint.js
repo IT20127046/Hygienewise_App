@@ -36,6 +36,7 @@ export default function ViewSpecificComplaint({route}) {
   const [userResponse, setUserResponse] = useState([]);
   const [responseForm, setResponseForm] = useState(false);
   const [response, setResponse] = useState('');
+  const [isArray, setIsArray] = useState(true);
 
   useEffect(() => {
 
@@ -61,9 +62,12 @@ export default function ViewSpecificComplaint({route}) {
 
   const retriveUserResponse = () => {
     axios
-      .get(BASE_URL + 'userResponse/getAll')
+      .get(BASE_URL + `userResponse/getAll`)
       .then(function (res) {
         if (res.data.success) {
+          if(res.data.exsitingUserResponses === 0){
+            setIsArray(false);
+          }
           setUserResponse(res.data.exsitingUserResponses);
         }
       })
@@ -180,7 +184,8 @@ export default function ViewSpecificComplaint({route}) {
           <View>
           <View style={{alignItems: 'center'}}>
                 <View style={styles.reponseDiv}>
-                {userResponse.map((response, index)=>{
+                  {isArray ? <View>
+                    {userResponse.map((response, index)=>{
               return(
                 <View style={{borderRadius: 10, padding: 8, backgroundColor: '#ffffff', margin: 8}}>
                   <Text style={{fontSize: 18}}>{response.reponse}</Text>
@@ -189,6 +194,8 @@ export default function ViewSpecificComplaint({route}) {
                 </View>
               )
             })}
+                  </View> : <View></View>}
+                
                   </View>
                   </View>
             

@@ -15,7 +15,7 @@ export default function SelectComplaintType() {
           <Card.Title title="Community Complaint" subtitle="Community Complaint" />
         </ImageBackground>
       </Card>
-      <Card style={styles.card} onPress={() => Navigation.navigate("AddComplaintDetails")}>
+      <Card style={styles.card} onPress={() => Navigation.navigate("SelectComplaintPerson")}>
         <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
           <Card.Title title="Complaint to Authorized Person" subtitle="Complaint to Authorized Person" />
         </ImageBackground>

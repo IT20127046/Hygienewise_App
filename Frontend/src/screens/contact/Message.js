@@ -31,7 +31,7 @@ export default function MessageA({navigation}) {
       issue: issue.value,
     };
     console.log(data);
-    //Call POST method to validate user crenditals form backend and get reponse
+
     axios
       .post(BASE_URL + 'contact/add', data)
       .then(function (response) {

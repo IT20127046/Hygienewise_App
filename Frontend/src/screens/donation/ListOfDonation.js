@@ -1,6 +1,3 @@
-/**
- * This componenets used to display order list for the site manager
- */
 import {React, useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
@@ -22,7 +19,7 @@ import {
 export default function ListOfDonation() {
   const Navigation = useNavigation();
 
-  //When user press a particular order that redirect to more details screnn of the particular order
+
   const onPressOrder = () => {
     Navigation.navigate('ViewOrderDetails');
   };
