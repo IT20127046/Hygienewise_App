@@ -23,6 +23,7 @@
     "react-cross-form": "^1.2.12",
     "react-native": "0.70.4",
     "react-native-calendar-picker": "^7.1.2",
+    "react-native-dropdown-select-list": "^2.0.2",
     "react-native-image-picker": "^4.10.0",
     "react-native-modal-datetime-picker": "^14.0.0",
     "react-native-paper": "^4.12.5",

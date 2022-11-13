@@ -50,6 +50,12 @@ import CreatePost from '../screens/posts/CreatePost';
 import ViewPostList from '../screens/posts/ViewPostList';
 import UpdatePost from '../screens/posts/UpdatePost';
 import ViewSpecificPost from '../screens/posts/ViewSpecificPost';
+import SavedPosts from '../screens/posts/SavedPosts';
+import SelectComplaintPerson from '../screens/userComplaints/SelectComplaintPerson';
+import UserProfile from '../screens/auth/UserProfile';
+import Register from '../screens/auth/Register';
+import MyComplaints from '../screens/userComplaints/MyComplaints';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -73,6 +79,16 @@ export default function Navigation() {
           options={{headerShown: false}}
           name="Login"
           component={LoginScreen}
+        />
+        <Stack.Screen
+          options={{title: 'User Profile'}}
+          name="UserProfile"
+          component={UserProfile}
+        />
+        <Stack.Screen
+          options={{title: 'User Register'}}
+          name="Register"
+          component={Register}
         />
 
         {/* -------------------- Posts -------------------- */}
@@ -104,6 +120,11 @@ export default function Navigation() {
           options={{title: 'Update Post'}}
           name="UpdatePost"
           component={UpdatePost}
+        />
+         <Stack.Screen
+          options={{title: 'Saved Posts'}}
+          name="SavedPosts"
+          component={SavedPosts}
         />
 
        
@@ -148,6 +169,16 @@ export default function Navigation() {
           options={{title: 'Edit Complaint'}}
           name="EditComplaint"
           component={EditComplaint}
+        />
+        <Stack.Screen
+          options={{title: 'Add New Complaint'}}
+          name="SelectComplaintPerson"
+          component={SelectComplaintPerson}
+        />
+        <Stack.Screen
+          options={{title: 'My Complaints'}}
+          name="MyComplaints"
+          component={MyComplaints}
         />
 
         {/* -------------------- Sessions and Donations -------------------- */}

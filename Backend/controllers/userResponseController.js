@@ -35,7 +35,7 @@ const getAll_userResponses = function (req, res){
 const get_userResponse = function (req, res){
     let sampleID = req.params.id;
 
-    UserResponseModel.findById(sampleID,(err,exsitingUserResponse)=>{
+    UserResponseModel.find({ complaintID: sampleID },(err,exsitingUserResponse)=>{
         if(err){
             return res.status(400).json({success:false, err});
         }

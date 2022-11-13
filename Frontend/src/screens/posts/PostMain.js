@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text, ScrollView, ImageBackground, StyleSheet} from 'react-native';
 import {Card} from 'react-native-paper';
-import axios from 'axios';
 
 /**
  * Menu screen for the Hygiene tracker
@@ -32,6 +31,16 @@ export default function Menu({navigation}) {
           source={require('../../assets/images/MenuBackground.jpg')}
           style={styles.imageBackground}>
           <Card.Title title="View Posts" subtitle="View Created Posts" />
+        </ImageBackground>
+      </Card>
+      <Card
+        style={styles.card}
+        onPress={() => navigation.navigate('SavedPosts')}>
+        <ImageBackground
+          borderRadius={20}
+          source={require('../../assets/images/MenuBackground.jpg')}
+          style={styles.imageBackground}>
+          <Card.Title title="Saved Posts" subtitle="View Your Saved Posts" />
         </ImageBackground>
       </Card>
     </ScrollView>

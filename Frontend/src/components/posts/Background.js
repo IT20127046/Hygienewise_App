@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     backgroundColor: 'white',
+    
   },
   container: {
     flex: 1,
@@ -35,6 +36,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 70,
+    marginTop:70,
   },
 });

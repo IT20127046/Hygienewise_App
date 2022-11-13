@@ -1,7 +1,3 @@
-/**
- * This is the Post compoenets of the application
- * User can Create a Post using their post details
- */
 import {React, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
@@ -54,31 +50,36 @@ export default function AddSessions({navigation}) {
     hideTimePicker();
   };
 
-  // This function call when the user click submit button
   const onPostPressed = () => {
-    // Create constant object to pass value to backend
-    const data = {
-      title: title.value,
-      description: description.value,
-      date: date,
-      time: time,
-      link: link.value,
-    };
-    console.log(data);
-    //Call POST method to validate user crenditals form backend and get reponse
-    axios
-      .post(BASE_URL + 'session/add', data)
-      .then(function (response) {
-        if (response.data.success) {
-          alert('Session Created Success');
-          setTimeout(() => {
-            Navigation.navigate('MySessions');
-          }, 2000);
-        }
-      })
-      .catch(function (error) {
-        alert('Session Creation Fail');
-      });
+    if (title.length == 0) {
+      alert('Please fill all details');
+    } else if (description.length == 0) {
+      alert('Please fill all details');
+    } else if (link.length == 0) {
+      alert('Please fill all details');
+    } else {
+      const data = {
+        title: title.value,
+        description: description.value,
+        date: date,
+        time: time,
+        link: link.value,
+      };
+      console.log(data);
+      axios
+        .post(BASE_URL + 'session/add', data)
+        .then(function (response) {
+          if (response.data.success) {
+            alert('Session Created Success');
+            setTimeout(() => {
+              Navigation.navigate('MySessions');
+            }, 2000);
+          }
+        })
+        .catch(function (error) {
+          alert('Session Creation Fail');
+        });
+    }
   };
 
   return (
