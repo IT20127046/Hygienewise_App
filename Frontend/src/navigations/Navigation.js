@@ -50,10 +50,12 @@ import CreatePost from '../screens/posts/CreatePost';
 import ViewPostList from '../screens/posts/ViewPostList';
 import UpdatePost from '../screens/posts/UpdatePost';
 import ViewSpecificPost from '../screens/posts/ViewSpecificPost';
+import SavedPosts from '../screens/posts/SavedPosts';
 import SelectComplaintPerson from '../screens/userComplaints/SelectComplaintPerson';
 import UserProfile from '../screens/auth/UserProfile';
 import Register from '../screens/auth/Register';
 import MyComplaints from '../screens/userComplaints/MyComplaints';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -118,6 +120,11 @@ export default function Navigation() {
           options={{title: 'Update Post'}}
           name="UpdatePost"
           component={UpdatePost}
+        />
+         <Stack.Screen
+          options={{title: 'Saved Posts'}}
+          name="SavedPosts"
+          component={SavedPosts}
         />
 
        

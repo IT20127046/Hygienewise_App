@@ -2,27 +2,42 @@ import axios from 'axios';
 import React from 'react'
 import { Alert, ScrollView, Text, ImageBackground, View, StyleSheet } from 'react-native'
 import { Button, TextInput } from 'react-native-paper'
+import { BASE_URL } from '../../../api/BaseURL.const'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
  * This component is used to add a new other task.
  */
 
 export default function AddNewOtherTask({ navigation }) {
-  const [userId, setUserId] = React.useState({ value: "6363813ab4af9dcf571763fc", error: "" });
+  const [userId, setUserId] = React.useState("");               // To store the userID of the current logged in user
   const [taskName, setTaskName] = React.useState({ value: "", error: "" });
   const [taskType, setTaskType] = React.useState({ value: "Other", error: "" });
   const [taskDescription, setTaskDescription] = React.useState({ value: "", error: "" });
   const [userTasksList, setUserTasksList] = React.useState({ value: {}, error: "" });
 
+  // Get logged user details -> loggedUserData: { 'user_id' }
+  const handleLoggedUser = async () => {
+
+    // Get user data from AsyncStorage
+    const userData = await AsyncStorage.getItem('loggedUserData');
+
+    // Pass userData JSON object to array
+    const userDataArray = JSON.parse(userData);
+
+    setUserId(userDataArray.user_id);
+  }
+
   React.useEffect(() => {
-    axios.get(`http://192.168.1.103:5000/userTasks/getByUserID/${userId.value}`).then(function (response) {
+    handleLoggedUser();
+    axios.get(BASE_URL + `userTasks/getByUserID/${userId}`).then(function (response) {
       if (response.data.success && response.data.existingRecord !== null) {
         setUserTasksList({ value: response.data.existingRecord, error: "" });
       }
     }).catch(function (error) {
       console.log(error);
     })
-  }, []);
+  }, [userId]);
 
   // This function is used to add a new other task when the user clicks the "Add" button.
   const onSubmit = () => {
@@ -41,30 +56,29 @@ export default function AddNewOtherTask({ navigation }) {
       setTaskType({ ...taskType, error: "Task Type is invalid" });
       Alert.alert("Task Type is invalid. Please try again later");
     }
-    else if (userId.value === "") {
-      setUserId({ ...userId, error: "User Id is invalid" });
+    else if (userId === "") {
       Alert.alert("User Id is invalid. Please try again");
     }
-    else if (taskName.value !== "" && taskDescription.value !== "" && taskType.value !== "" && userId.value !== "") {
+    else if (taskName.value !== "" && taskDescription.value !== "" && taskType.value !== "" && userId !== "") {
       isValid = true;
     }
 
     const data = {
-      userId: userId.value,
+      userId: userId,
       taskName: taskName.value,
       taskType: taskType.value,
-      taskDescription: taskDescription.value
+      taskDescription: taskDescription.value,
     }
 
     // If the user enters valid data, the new task is added to the database.
     if (isValid) {
       // insert task to tasks collection
-      axios.post('http://192.168.1.103:5000/task/add', data).then(function (response) {
+      axios.post(BASE_URL + `task/add`, data).then(function (response) {
         if (response.data.success) {
           // update task in the userTasks collection
 
-          axios.patch(`http://192.168.1.103:5000/userTasks/update/${userTasksList.value._id}`, {
-            otherTasks: [...userTasksList.value.otherTasks, { id: response.data._id, userId: userId.value, taskName: taskName.value, taskType: taskType.value, taskDescription: taskDescription.value }]
+          axios.patch(BASE_URL + `userTasks/update/${userTasksList.value._id}`, {
+            otherTasks: [...userTasksList.value.otherTasks, { id: response.data._id, userId: userId, taskName: taskName.value, taskType: taskType.value, taskDescription: taskDescription.value, completion: [""] }]
           }).then(function (response1) {
             console.log(response1.data);
             if (response1.data.success) {
@@ -75,7 +89,7 @@ export default function AddNewOtherTask({ navigation }) {
           }).catch(function (error1) {
 
             // delete task from tasks collection if the task is not added to userTasks collection
-            axios.delete(`http://192.168.1.103:5000/task/delete/${response.data._id}`).then(function (response2) {
+            axios.delete(BASE_URL + `task/delete/${response.data._id}`).then(function (response2) {
               console.log(response2.data);
               if (response2.data.success) {
                 console.log("Task Deleted Successfully");
@@ -129,9 +143,9 @@ export default function AddNewOtherTask({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  imageBackground: { 
-    width: '100%', 
-    height: '100%' 
+  imageBackground: {
+    width: '100%',
+    height: '100%'
   },
   viewForTextInput: {
     flexDirection: 'column',
@@ -148,7 +162,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     bottom: 0,
   },
-  textInput: { 
-    backgroundColor: 'white' 
+  textInput: {
+    backgroundColor: 'white'
   }
 });
