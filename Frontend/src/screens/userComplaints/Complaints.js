@@ -21,6 +21,11 @@ export default function Complaints() {
           <Card.Title title="View Complaints" subtitle="View Complaints" />
         </ImageBackground>
       </Card>
+      <Card style={styles.card} onPress={() => Navigation.navigate("MyComplaints")}>
+        <ImageBackground borderRadius={20} source={require('../../assets/images/MenuBackground.jpg')} style={styles.imageBackground}>
+          <Card.Title title="My Complaints" subtitle="My Complaints" />
+        </ImageBackground>
+      </Card>
     </ScrollView>
   )
 }

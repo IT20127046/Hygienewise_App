@@ -132,8 +132,6 @@ export default function ViewComplaints() {
                       <Text style={{fontSize: 18}}>{complaint.title}</Text>
                       <View style={styles.fixToButton}>
                         <View style={{ margin: 5}}><Button title='View' color="#6495ed" onPress={()=> onViewComplaint(complaint)} style={{ width: 100, fontSize: 12}}/></View>
-                        <View style={{ margin: 5}}><Button title='E' color="#6495ed"    onPress={()=> onEditComplaint(complaint)} style={{ width: 100, fontSize: 12}}/></View>
-                        <View style={{ margin: 5}}><Button title='D' color="#6495ed"    onPress={()=> onEDeleteComplaint(complaint._id)}style={{ width: 100, fontSize: 12}}/></View>   
                       </View>
                     </View>
                   </View>
@@ -142,7 +140,9 @@ export default function ViewComplaints() {
             );
           })}
         </View>
+        <Text/>
       </View>
+      
     </ScrollView>
   );
 }
