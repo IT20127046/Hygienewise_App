@@ -40,9 +40,9 @@ export default function EditComplaint({route}) {
       .put(BASE_URL + `complaint/update/${complaintID}`, data)
       .then(function (res) {
         if (res.data.success) {
-          alert('Success');
+          alert('Updated Successfull');
           setTimeout(() => {
-            Navigation.navigate('ViewComplaints');
+            Navigation.navigate('MyComplaints');
           }, 2000);
         }
       })

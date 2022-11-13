@@ -53,6 +53,7 @@ import ViewSpecificPost from '../screens/posts/ViewSpecificPost';
 import SelectComplaintPerson from '../screens/userComplaints/SelectComplaintPerson';
 import UserProfile from '../screens/auth/UserProfile';
 import Register from '../screens/auth/Register';
+import MyComplaints from '../screens/userComplaints/MyComplaints';
 
 const Stack = createNativeStackNavigator();
 
@@ -166,6 +167,11 @@ export default function Navigation() {
           options={{title: 'Add New Complaint'}}
           name="SelectComplaintPerson"
           component={SelectComplaintPerson}
+        />
+        <Stack.Screen
+          options={{title: 'My Complaints'}}
+          name="MyComplaints"
+          component={MyComplaints}
         />
 
         {/* -------------------- Sessions and Donations -------------------- */}
