@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Button, Card, Dialog, List, Portal, Provider, Text } from 'react-native-paper'
 import { ImageBackground, StyleSheet, View, ScrollView } from 'react-native'
+import { BASE_URL } from '../../../api/BaseURL.const'
 
 /**
  * To render the list of challenges existing in the database
@@ -13,7 +14,7 @@ export default function ChallengesList() {
 
     // To get all the challenges from the database
     React.useEffect(() => {
-        axios.get(`http://192.168.1.103:5000/challenge/getAll`)
+        axios.get(BASE_URL + `challenge/getAll`)
             .then(response => {
                 if (response.data.success) {
                     // Save retrieved challenges to the state

@@ -2,31 +2,47 @@ import axios from 'axios';
 import React from 'react'
 import { Alert, ScrollView, Text, ImageBackground, View, StyleSheet } from 'react-native'
 import { Button, TextInput } from 'react-native-paper'
+import { BASE_URL } from '../../../api/BaseURL.const';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
  * To add a new daily task 
  */
 
 export default function AddNewDailyTask({ navigation }) {
-  const [userId, setUserId] = React.useState({ value: "6363813ab4af9dcf571763fc", error: "" });               // To store the userID of the current logged in user
+  const [userId, setUserId] = React.useState("");               // To store the userID of the current logged in user
   const [taskName, setTaskName] = React.useState({ value: "", error: "" });                                   // To store the name of the new daily task
   const [taskType, setTaskType] = React.useState({ value: "Daily", error: "" });                              // To store the type of the task
   const [taskDescription, setTaskDescription] = React.useState({ value: "", error: "" });                     // To store the description of the new daily task
   const [userTasksList, setUserTasksList] = React.useState({ value: {}, error: "" });                         // To store the userTasksList of the current logged in user
 
+  // Get logged user details -> loggedUserData: { 'user_id' }
+  const handleLoggedUser = async () => {
+
+    // Get user data from AsyncStorage
+    const userData = await AsyncStorage.getItem('loggedUserData');
+
+    // Pass userData JSON object to array
+    const userDataArray = JSON.parse(userData);
+
+    setUserId(userDataArray.user_id);
+  }
+
   React.useEffect(() => {
-    axios.get(`http://192.168.1.103:5000/userTasks/getByUserID/${userId.value}`).then(function (response) {   // To get the userTasksList of the current logged in user
+    handleLoggedUser();
+
+    axios.get(BASE_URL + `userTasks/getByUserID/${userId}`).then(function (response) {   // To get the userTasksList of the current logged in user
       if (response.data.success && response.data.existingRecord !== null) {
         setUserTasksList({ value: response.data.existingRecord, error: "" });                                 // To set the userTasksList of the current logged in user
       }
     }).catch(function (error) {                                                                               // To handle the error
-      console.log(error); 
+      console.log(error);
     })
-  }, []);
+  }, [userId]);
 
   // To add a new daily task
-  const onSubmit = () => {                                                                                    
-    let isValid = false;                                                                                      
+  const onSubmit = () => {
+    let isValid = false;
 
     if (taskName.value === "") {
       setTaskName({ ...taskName, error: "Task Name is required" });
@@ -40,31 +56,30 @@ export default function AddNewDailyTask({ navigation }) {
       setTaskType({ ...taskType, error: "Task Type is invalid" });
       Alert.alert("Task Type is invalid. Please try again later");
     }
-    else if (userId.value === "") {
-      setUserId({ ...userId, error: "User Id is invalid" });
+    else if (userId === "") {
       Alert.alert("User Id is invalid. Please try again");
     }
-    else if (taskName.value !== "" && taskDescription.value !== "" && taskType.value !== "" && userId.value !== "") {
+    else if (taskName.value !== "" && taskDescription.value !== "" && taskType.value !== "" && userId !== "") {
       isValid = true;
     }
 
     // Data to be sent to the backend
     const data = {
-      userId: userId.value,
+      userId: userId,
       taskName: taskName.value,
       taskType: taskType.value,
-      taskDescription: taskDescription.value
+      taskDescription: taskDescription.value,
     }
 
     // validate input fields
     if (isValid) {
       // insert task to tasks collection
-      axios.post('http://192.168.1.103:5000/task/add', data).then(function (response) {
+      axios.post(BASE_URL + `task/add`, data).then(function (response) {
         if (response.data.success) {
           // update task in the userTasks collection
 
-          axios.patch(`http://192.168.1.103:5000/userTasks/update/${userTasksList.value._id}`, {
-            dailyTasks: [...userTasksList.value.dailyTasks, { id: response.data._id, userId: userId.value, taskName: taskName.value, taskType: taskType.value, taskDescription: taskDescription.value }]
+          axios.patch(BASE_URL + `userTasks/update/${userTasksList.value._id}`, {
+            dailyTasks: [...userTasksList.value.dailyTasks, { id: response.data._id, userId: userId, taskName: taskName.value, taskType: taskType.value, taskDescription: taskDescription.value, completion: [] }]
           }).then(function (response1) {
             console.log(response1.data);
             if (response1.data.success) {
@@ -75,7 +90,7 @@ export default function AddNewDailyTask({ navigation }) {
           }).catch(function (error1) {
 
             // delete task from tasks collection if the task is not added to userTasks collection
-            axios.delete(`http://192.168.1.103:5000/task/delete/${response.data._id}`).then(function (response2) {
+            axios.delete(BASE_URL + `task/delete/${response.data._id}`).then(function (response2) {
               console.log(response2.data);
               if (response2.data.success) {
                 console.log("Task Deleted Successfully");
