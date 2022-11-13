@@ -12,17 +12,9 @@ import TextInput from '../../components/posts/TextInput';
 import SubmitButton from '../../components/posts/SubmitButton';
 import ImageButton from '../../components/posts/ImagePickerButton';
 import DatePickerButton from '../../components/posts/DatePickerButton';
+import {BASE_URL} from '../../api/BaseURL.const';
+import {StyleSheet, Text, Image, View} from 'react-native';
 var ImagePicker = require('react-native-image-picker');
-
-import {
-  StyleSheet,
-  Text,
-  Button,
-  Image,
-  View,
-  TouchableOpacity,
-  ImagePickerIOS,
-} from 'react-native';
 
 export default function Posts() {
   const Navigation = useNavigation();
@@ -33,7 +25,7 @@ export default function Posts() {
   const [description, setDescription] = useState({value: '', error: ''});
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState('img1.png');
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -76,6 +68,7 @@ export default function Posts() {
       alert('Please input time');
     } else {
       const data = {
+        image: image,
         title: title.value,
         description: description.value,
         publishDate: date,
@@ -83,7 +76,7 @@ export default function Posts() {
       };
       //Call POST method to validate user crenditals form backend and get reponse
       axios
-        .post('http://172.18.12.241:5000/post/add', data)
+        .post(BASE_URL + 'post/add', data)
         .then(function (response) {
           if (response.data.success) {
             alert('Post Created Success');

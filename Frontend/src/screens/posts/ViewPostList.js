@@ -7,7 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
 import Icon from 'react-native-vector-icons/Feather';
 import Button from '../../components/posts/Button';
-
+import {BASE_URL} from '../../api/BaseURL.const';
 import {
   StyleSheet,
   Text,
@@ -15,6 +15,7 @@ import {
   ScrollView,
   ImageBackground,
   Alert,
+  Image,
 } from 'react-native';
 
 export default function Posts() {
@@ -28,8 +29,8 @@ export default function Posts() {
 
   const retrivePosts = () => {
     axios
-      .get('http://172.18.12.241:5000/post/getAll')     
-      .then(function (res) {        
+      .get(BASE_URL + 'post/getAll')
+      .then(function (res) {
         if (res.data.success) {
           setPosts(res.data.exsitingpost);
         }
@@ -37,7 +38,6 @@ export default function Posts() {
       .catch(function (error) {
         alert('Fail' + error);
       });
-      
   };
 
   const onViewPost = post => {
@@ -51,7 +51,7 @@ export default function Posts() {
     Navigation.navigate('ViewSpecificPost', postData);
   };
 
-  const onEditPost = (post) => {
+  const onEditPost = post => {
     const postData = {
       postId: post._id,
       title: post.title,
@@ -61,7 +61,7 @@ export default function Posts() {
     Navigation.navigate('UpdatePost', postData);
   };
 
-  const onDeletePost = (id) => {
+  const onDeletePost = id => {
     Alert.alert('Are You Sure?', 'Are you sure to delete this post?', [
       {
         text: 'Cancel',
@@ -74,7 +74,7 @@ export default function Posts() {
 
   const deletePost = id => {
     axios
-      .delete(`http://172.18.12.241:5000/post/delete/${id}`)
+      .delete(BASE_URL + `post/delete/${id}`)
       .then(function (res) {
         if (res.data.success) {
           alert('Delete Successfull');
@@ -103,7 +103,7 @@ export default function Posts() {
                   <View style={{width: 150}}>
                     <ImageBackground
                       style={styles.image}
-                      source={require('../../assets/images/img3.png')}
+                      source={require('../../assets/images/img7.png')}
                     />
                   </View>
 
