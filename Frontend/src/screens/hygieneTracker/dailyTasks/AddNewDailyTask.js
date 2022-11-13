@@ -79,7 +79,7 @@ export default function AddNewDailyTask({ navigation }) {
           // update task in the userTasks collection
 
           axios.patch(BASE_URL + `userTasks/update/${userTasksList.value._id}`, {
-            dailyTasks: [...userTasksList.value.dailyTasks, { id: response.data._id, userId: userId, taskName: taskName.value, taskType: taskType.value, taskDescription: taskDescription.value, completion: [] }]
+            dailyTasks: [...userTasksList.value.dailyTasks, { id: response.data._id, userId: userId, taskName: taskName.value, taskType: taskType.value, taskDescription: taskDescription.value, completion: [""] }]
           }).then(function (response1) {
             console.log(response1.data);
             if (response1.data.success) {

@@ -78,7 +78,7 @@ export default function AddNewOtherTask({ navigation }) {
           // update task in the userTasks collection
 
           axios.patch(BASE_URL + `userTasks/update/${userTasksList.value._id}`, {
-            otherTasks: [...userTasksList.value.otherTasks, { id: response.data._id, userId: userId, taskName: taskName.value, taskType: taskType.value, taskDescription: taskDescription.value, completion: [] }]
+            otherTasks: [...userTasksList.value.otherTasks, { id: response.data._id, userId: userId, taskName: taskName.value, taskType: taskType.value, taskDescription: taskDescription.value, completion: [""] }]
           }).then(function (response1) {
             console.log(response1.data);
             if (response1.data.success) {

@@ -13,6 +13,7 @@ export default function TaskList() {
   const [otherTasks, setOtherTasks] = React.useState([])
   const [id, setId] = React.useState("")
   const [userTaskId, setUserTaskId] = React.useState("")
+  const today = new Date().toLocaleDateString();
 
   // Get logged user details -> loggedUserData: { 'user_id' }
   const handleLoggedUser = async () => {
@@ -41,8 +42,28 @@ export default function TaskList() {
       })
   }, [id])
 
-  const markAsDone = (selectedTaskId) => {
-    console.log("Mark as done: ", selectedTaskId)
+  const markAsDone = (item) => {
+    console.log("Mark as done: ", item)
+    let len = item.completion.length;
+    if (item.completion[len - 1] !== today) {
+      for (let i = 0; i < otherTasks.length; i++) {
+        if (item.id === otherTasks[i].id) {
+          otherTasks[i].completion.push(today);
+        }
+      }
+      axios.patch(BASE_URL + `userTasks/update/${userTaskId}`, {
+        otherTasks: otherTasks
+      })
+        .then(response => {
+          if (response.data.success) {
+            Alert.alert("Task marked as done!")
+            navigation.navigate("HygieneTrackerMenu")
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
   }
 
   const removeTask = (selectedTaskId) => {
@@ -83,10 +104,23 @@ export default function TaskList() {
               left={props =>
                 <TouchableOpacity onPress={
                   () => {
-                    markAsDone(item.id)
+                    markAsDone(item)
                   }
                 }>
-                  <List.Icon {...props} icon="checkbox-blank-circle" color="lightgray" />
+                  {item.completion.map((item1, index1) => {
+                    let completionArrayLen = item.completion.length;
+                    if (index1 === completionArrayLen - 1 && item1 === today) {
+                      return (
+                        <List.Icon icon="check-circle" color="green" />
+                      )
+                    }
+                    else if (index1 === completionArrayLen - 1 && item1 !== today) {
+                      return (
+                        <List.Icon icon="circle-outline" color="black" />
+                      )
+                    }
+                  })
+                  }
                 </TouchableOpacity>
               }
               right={props =>
