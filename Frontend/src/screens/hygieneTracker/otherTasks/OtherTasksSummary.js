@@ -2,7 +2,9 @@ import axios from 'axios'
 import React from 'react'
 import { ImageBackground, ScrollView, StyleSheet, View } from 'react-native'
 import { Button, Dialog, Divider, List, Paragraph, Portal } from 'react-native-paper'
+import { BASE_URL } from '../../../api/BaseURL.const'
 import CalenderViewSummary from '../../../components/hygieneTracker/CalenderView'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
  * This component is used to display the list of other tasks to view the summary
@@ -11,7 +13,19 @@ import CalenderViewSummary from '../../../components/hygieneTracker/CalenderView
 export default function OtherTasksListForSummary() {
 
   const [otherTasks, setOtherTasks] = React.useState([])
-  const id = "6363813ab4af9dcf571763fc"
+  const [id, setId] = React.useState("")
+
+  // Get logged user details -> loggedUserData: { 'user_id' }
+  const handleLoggedUser = async () => {
+
+    // Get user data from AsyncStorage
+    const userData = await AsyncStorage.getItem('loggedUserData');
+
+    // Pass userData JSON object to array
+    const userDataArray = JSON.parse(userData);
+
+    setId(userDataArray.user_id);
+  }
 
   // This state is used to display the dialog box.
   const [visible, setVisible] = React.useState(false);
@@ -26,7 +40,8 @@ export default function OtherTasksListForSummary() {
   }
 
   React.useEffect(() => {
-    axios.get(`http://192.168.1.103:5000/userTasks/getByUserID/${id}`)
+    handleLoggedUser();
+    axios.get(BASE_URL + `userTasks/getByUserID/${id}`)
       .then(response => {
         if (response.data.success) {
           setOtherTasks(response.data.existingRecord.otherTasks)
@@ -35,7 +50,7 @@ export default function OtherTasksListForSummary() {
       .catch(error => {
         console.log(error)
       })
-  }, [])
+  }, [id])
 
   // to render the dialog box with the selected task details and calender
   if (visible) {

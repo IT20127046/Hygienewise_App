@@ -2,6 +2,8 @@ import React from 'react'
 import { Text, ScrollView, ImageBackground, StyleSheet } from 'react-native'
 import { Card } from 'react-native-paper';
 import axios from 'axios'
+import { BASE_URL } from '../../api/BaseURL.const';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
  * Menu screen for the Hygiene tracker
@@ -9,14 +11,27 @@ import axios from 'axios'
 
 export default function Menu({ navigation }) {
 
-  const id = "6363813ab4af9dcf571763fc"
+  const [id, setId] = React.useState("")
+
+  // Get logged user details -> loggedUserData: { 'user_id' }
+  const handleLoggedUser = async () => {
+
+    // Get user data from AsyncStorage
+    const userData = await AsyncStorage.getItem('loggedUserData');
+
+    // Pass userData JSON object to array
+    const userDataArray = JSON.parse(userData);
+
+    setId(userDataArray.user_id);
+  }
 
   React.useEffect(() => {
+    handleLoggedUser();
     // if the current user does not have userTask record, create one
-    axios.get(`http://192.168.1.103:5000/userTasks/getByUserID/${id}`).then(function (response) {
+    axios.get(`${BASE_URL}userTasks/getByUserID/${id}`).then(function (response) {
       if (response.data.success) {
         if (response.data.existingRecord === null) {
-          axios.post('http://192.168.1.103:5000/userTasks/add', {
+          axios.post(`${BASE_URL}userTasks/add`, {
             userId: id,
             dailyTasks: [],
             challenges: [],
@@ -35,7 +50,7 @@ export default function Menu({ navigation }) {
     }).catch(function (error) {
       console.log(error);
     })
-  }, []);
+  }, [id]);
 
   return (
     <ScrollView style={styles.scrollView} >
